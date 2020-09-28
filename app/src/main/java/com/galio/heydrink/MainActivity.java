@@ -4,10 +4,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.galio.heydrink.Adapter.CustomerAdapter;
+import com.galio.heydrink.Adapter.DeliveryAdapter;
+import com.galio.heydrink.Adapter.MainAdapter;
+import com.galio.heydrink.ui.home.HomeViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,6 +26,8 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private CustomerAdapter customerAdapter = new CustomerAdapter();
+    private DeliveryAdapter deliveryAdapter = new DeliveryAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        init();
     }
 
     @Override
@@ -59,5 +70,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void init(){
+        HomeViewModel viewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        viewModel.setAdapter(customerAdapter);
     }
 }
