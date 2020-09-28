@@ -14,7 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.galio.heydrink.Adapter.MainAdapter;
+import com.galio.heydrink.Data.DeliverOrder;
+import com.galio.heydrink.Data.Order;
+import com.galio.heydrink.Data.User;
 import com.galio.heydrink.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
 public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
@@ -39,9 +46,12 @@ public class HomeFragment extends Fragment {
 
         init(root);
 
+        System.out.println("INIT Fragment");
+
         homeViewModel.getAdapter().observe(getActivity(), new Observer<MainAdapter>() {
             @Override
             public void onChanged(MainAdapter adpater) {
+                adapter.addOrders(makeDummy());
                 homeRecyclerView.setAdapter(adapter);
             }
         });
@@ -57,5 +67,31 @@ public class HomeFragment extends Fragment {
         homeRecyclerView.setLayoutManager(linearLayoutManager);
 
         searchBtn = view.findViewById(R.id.homeSearchBtn);
+    }
+
+    private ArrayList<Order> makeDummy(){
+        ArrayList<Order> dummy = new ArrayList<>();
+        String[] building = {"208관", "310관", "도서관", "정문", "입학처"};
+
+        for (int i=0; i<5; i++){
+            DeliverOrder deliverOrder = new DeliverOrder(new User());
+
+            ArrayList<String> buildings = new ArrayList<>();
+            HashMap<String, String> times = new HashMap<>();
+
+            String time = "09:1";
+
+            for (int j = 0; i< (new Random()).nextInt(2) + 1; i++){
+                int idx = (new Random()).nextInt(5);
+                buildings.add(building[idx]);
+                times.put(building[idx], time + Integer.toString(i*3));
+            }
+
+            deliverOrder.setDestinations(buildings);
+            deliverOrder.setDestTime(times);
+            dummy.add(deliverOrder);
+        }
+
+        return dummy;
     }
 }

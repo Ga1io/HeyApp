@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/person"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/walking_man" />
+
+    <ImageView
+        android:id="@+id/dest1"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/building3" />
+
+    <TextView
+        android:id="@+id/dest1Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/dest1"
+        android:layout_alignEnd="@id/dest1"
+        android:layout_alignTop="@id/dest1"
+        android:layout_alignBottom="@id/dest1"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:text="208관" />
+
+    <ImageView
+        android:id="@+id/dest2"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/building1" />
+
+    <TextView
+        android:id="@+id/dest2Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/dest2"
+        android:layout_alignEnd="@id/dest2"
+        android:layout_alignTop="@id/dest2"
+        android:layout_alignBottom="@id/dest2"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:text="310관" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#BDBDBD"
+        android:layout_below="@id/person"/>
+
+    <TextView
+        android:id="@+id/dest1Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dest1"
+        android:layout_alignStart="@id/dest1"
+        android:layout_alignEnd="@id/dest1"
+        android:text="09:15" />
+
+    <TextView
+        android:id="@+id/dest2Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dest2"
+        android:layout_alignStart="@id/dest2"
+        android:layout_alignEnd="@id/dest2"
+        android:text="09:18" />
+
+</RelativeLayout>

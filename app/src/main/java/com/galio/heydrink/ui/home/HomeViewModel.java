@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.galio.heydrink.Adapter.CustomerAdapter;
 import com.galio.heydrink.Adapter.MainAdapter;
+import com.galio.heydrink.MainActivity;
 
 public class HomeViewModel extends ViewModel {
 
