@@ -33,9 +33,11 @@ public class CustomerAdapter extends MainAdapter {
             destTime[0] = itemView.findViewById(R.id.dest1Time);
             destTime[1] = itemView.findViewById(R.id.dest2Time);
 
-            for (int i =0; i<2; i++){
-                String destImg = "building" + Integer.toString(getRandomIdx());
-                String name = "dest" + Integer.toString(i);
+            Random random = new Random();
+
+            for (int i = 0; i < 2; i++) {
+                String destImg = "building" + Integer.toString(random.nextInt(3) + 1);
+                String name = "dest" + Integer.toString(i + 1);
                 String buildingName = name + "Name";
                 String time = name + "Time";
 
@@ -51,10 +53,6 @@ public class CustomerAdapter extends MainAdapter {
             }
         }
 
-        private int getRandomIdx(){
-            return ((new Random()).nextInt(2) + 1);
-        }
-
         public void setUI(DeliverOrder deliverOrder) {
             ArrayList<String> destinations = deliverOrder.getDestinations();
             HashMap<String, String> orderDestTime = deliverOrder.getDestTime();
@@ -64,11 +62,16 @@ public class CustomerAdapter extends MainAdapter {
 
                 destName[0].setVisibility(View.INVISIBLE);
                 destTime[0].setVisibility(View.INVISIBLE);
+                dest[0].setVisibility(View.INVISIBLE);
 
                 destName[1].setText(destinationName);
                 destTime[1].setText(orderDestTime.get(destinationName));
 
             } else if (destinations.size() == 2) {
+                destName[0].setVisibility(View.VISIBLE);
+                destTime[0].setVisibility(View.VISIBLE);
+                dest[0].setVisibility(View.VISIBLE);
+
                 for (int i = 0; i < destinations.size(); i++) {
                     String destinationName = destinations.get(i);
 

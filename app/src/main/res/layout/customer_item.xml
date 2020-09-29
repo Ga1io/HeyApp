@@ -2,19 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/boarder"
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/person"
-        android:layout_width="40dp"
-        android:layout_height="70dp"
+        android:layout_width="25dp"
+        android:layout_height="45dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
+        android:layout_alignBottom="@id/dest1"
         app:srcCompat="@drawable/walking_man" />
 
     <ImageView
         android:id="@+id/dest1"
-        android:layout_width="40dp"
+        android:layout_width="50dp"
         android:layout_height="70dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
@@ -29,14 +32,14 @@
         android:layout_alignEnd="@id/dest1"
         android:layout_alignTop="@id/dest1"
         android:layout_alignBottom="@id/dest1"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|center_horizontal"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:text="208관" />
 
     <ImageView
         android:id="@+id/dest2"
-        android:layout_width="40dp"
+        android:layout_width="50dp"
         android:layout_height="70dp"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
@@ -51,7 +54,7 @@
         android:layout_alignEnd="@id/dest2"
         android:layout_alignTop="@id/dest2"
         android:layout_alignBottom="@id/dest2"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|center_horizontal"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:text="310관" />
@@ -60,15 +63,16 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:background="#BDBDBD"
-        android:layout_below="@id/person"/>
+        android:layout_below="@id/dest1"/>
 
     <TextView
         android:id="@+id/dest1Time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dest1"
-        android:layout_alignStart="@id/dest1"
-        android:layout_alignEnd="@id/dest1"
+        android:layout_alignRight="@id/dest1"
+        android:layout_alignLeft="@id/dest1"
+        android:gravity="center_horizontal"
         android:text="09:15" />
 
     <TextView
@@ -76,8 +80,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dest2"
-        android:layout_alignStart="@id/dest2"
-        android:layout_alignEnd="@id/dest2"
+        android:layout_alignRight="@id/dest2"
+        android:layout_alignLeft="@id/dest2"
+        android:gravity="center_horizontal"
         android:text="09:18" />
 
 </RelativeLayout>

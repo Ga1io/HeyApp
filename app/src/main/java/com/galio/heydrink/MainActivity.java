@@ -8,6 +8,7 @@ import com.galio.heydrink.Adapter.CustomerAdapter;
 import com.galio.heydrink.Adapter.DeliveryAdapter;
 import com.galio.heydrink.Data.DeliverOrder;
 import com.galio.heydrink.Data.User;
+import com.galio.heydrink.ui.home.HomeFragment;
 import com.galio.heydrink.ui.home.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
@@ -45,12 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 .setDrawerLayout(drawer)
                 .build();
 
-        Bundle adapterBundle = new Bundle();
-        adapterBundle.putSerializable("adapter", customerAdapter);
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        init();
     }
 
     @Override
@@ -65,5 +65,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void init(){
+        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        homeViewModel.setAdapter(customerAdapter);
     }
 }

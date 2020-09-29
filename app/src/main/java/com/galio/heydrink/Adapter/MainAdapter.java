@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> implements Serializable {
-    protected ArrayList<Order> orders;
+    protected ArrayList<Order> orders = new ArrayList<>();
 
     @NonNull
     @Override

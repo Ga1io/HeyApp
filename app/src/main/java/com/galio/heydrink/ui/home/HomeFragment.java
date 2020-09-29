@@ -9,10 +9,12 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.galio.heydrink.Adapter.CustomerAdapter;
 import com.galio.heydrink.Adapter.MainAdapter;
 import com.galio.heydrink.Data.DeliverOrder;
 import com.galio.heydrink.Data.Order;
@@ -30,6 +32,8 @@ public class HomeFragment extends Fragment {
     private MainAdapter adapter;
     private ImageButton searchBtn;
 
+    private boolean isCustomer = true;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -40,8 +44,8 @@ public class HomeFragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+        homeViewModel = ViewModelProviders.of(requireActivity()).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         init(root);
@@ -50,9 +54,11 @@ public class HomeFragment extends Fragment {
 
         homeViewModel.getAdapter().observe(getActivity(), new Observer<MainAdapter>() {
             @Override
-            public void onChanged(MainAdapter adpater) {
-                adapter.addOrders(makeDummy());
-                homeRecyclerView.setAdapter(adapter);
+            public void onChanged(MainAdapter adapter) {
+                if (isCustomer) {
+                    adapter.addOrders(makeDummy());
+                    homeRecyclerView.setAdapter(adapter);
+                }
             }
         });
 
@@ -73,18 +79,19 @@ public class HomeFragment extends Fragment {
         ArrayList<Order> dummy = new ArrayList<>();
         String[] building = {"208관", "310관", "도서관", "정문", "입학처"};
 
-        for (int i=0; i<5; i++){
+        for (int i=0; i<10; i++){
             DeliverOrder deliverOrder = new DeliverOrder(new User());
 
             ArrayList<String> buildings = new ArrayList<>();
             HashMap<String, String> times = new HashMap<>();
 
             String time = "09:1";
+            Random random = new Random();
 
-            for (int j = 0; i< (new Random()).nextInt(2) + 1; i++){
-                int idx = (new Random()).nextInt(5);
+            for (int j = 0; j< random.nextInt(2) + 1; j++){
+                int idx = random.nextInt(5);
                 buildings.add(building[idx]);
-                times.put(building[idx], time + Integer.toString(i*3));
+                times.put(building[idx], time + Integer.toString(j*3));
             }
 
             deliverOrder.setDestinations(buildings);

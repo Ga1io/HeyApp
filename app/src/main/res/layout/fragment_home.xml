@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="@dimen/home_relativeLayout_sidePadding"
     android:paddingLeft="@dimen/home_relativeLayout_sidePadding"
+    android:paddingRight="@dimen/home_relativeLayout_sidePadding"
     tools:context=".ui.home.HomeFragment">
 
     <ImageButton
         android:id="@+id/homeSearchBtn"
         android:layout_width="@dimen/home_searchBtn_width"
         android:layout_height="@dimen/home_searchBtn_height"
+        android:layout_alignParentRight="true"
         android:background="@null"
         android:scaleType="fitXY"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/home_search_btn"/>
+        android:src="@drawable/home_search_btn" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/homeSearchBtn"
-        android:layout_marginBottom="@dimen/home_banner_margin">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginBottom="@dimen/home_banner_margin"
+        android:background="@drawable/boarder" />
+
 </RelativeLayout>
