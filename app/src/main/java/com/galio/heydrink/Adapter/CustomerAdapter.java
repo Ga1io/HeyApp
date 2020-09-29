@@ -1,11 +1,9 @@
 package com.galio.heydrink.Adapter;
 
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.content.Context;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -14,24 +12,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.galio.heydrink.Data.DeliverOrder;
 import com.galio.heydrink.Data.Order;
 import com.galio.heydrink.R;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class CustomerAdapter extends MainAdapter {
-    private SparseBooleanArray selectedItems = new SparseBooleanArray();
-    private int prePosition = -1;
+    public class CustomerAdapter extends MainAdapter {
+        private SparseBooleanArray selectedItems = new SparseBooleanArray();
+        private int prePosition = -1;
 
     public class CustomerViewHolder extends MainViewHolder implements View.OnClickListener {
         private Context context;
@@ -112,7 +105,7 @@ public class CustomerAdapter extends MainAdapter {
 
 
                 case R.id.orderBtn:
-                    Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_gallery);
+                    Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_customer_select_store);
                     break;
             }
         }

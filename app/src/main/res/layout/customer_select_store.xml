@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".ui.customer.SelectStoreFragment">
+
+
+    <ImageButton
+        android:id="@+id/searchStoreBtn"
+        android:layout_width="@dimen/searchBtn_width"
+        android:layout_height="@dimen/searchBtn_height"
+        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/search_store" />
+
+    <ImageButton
+        android:id="@+id/searchDrinkBtn"
+        android:layout_below="@id/searchStoreBtn"
+        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/searchBtn_width"
+        android:layout_height="@dimen/searchBtn_height"
+        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/search_drink" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/searchDrinkBtn"
+        android:layout_marginTop="10dp"
+        android:id="@+id/storeRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/home_banner_margin">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

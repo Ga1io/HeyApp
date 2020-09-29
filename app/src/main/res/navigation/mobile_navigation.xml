@@ -11,15 +11,15 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_nav_gallery"
-            app:destination="@id/nav_gallery" />
+            android:id="@+id/action_nav_home_to_nav_customer_select_store"
+            app:destination="@id/nav_customer_select_store" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.galio.heydrink.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_customer_select_store"
+        android:name="com.galio.heydrink.ui.customer.SelectStoreFragment"
+        android:label="@string/customer_select_store"
+        tools:layout="@layout/customer_select_store" />
 
     <fragment
         android:id="@+id/nav_slideshow"

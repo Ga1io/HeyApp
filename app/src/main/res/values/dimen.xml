@@ -14,4 +14,8 @@
     <dimen name="customerItem_View_text_size">15sp</dimen>
     <dimen name="customerItem_cup_size">35dp</dimen>
     <dimen name="customerItem_left_margin">5dp</dimen>
+
+    <!--Customer Select Store-->
+    <dimen name="searchBtn_width">400dp</dimen>
+    <dimen name="searchBtn_height">60dp</dimen>
 </resources>
