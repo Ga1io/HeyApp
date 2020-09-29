@@ -1,6 +1,7 @@
 package com.galio.heydrink.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.galio.heydrink.Data.Store;
@@ -67,18 +69,27 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         private ImageView icon;
         private TextView name;
 
+        private int currentIcon;
+        private String currentName;
+
         public StoreViewHolder(@NonNull View itemView) {
             super(itemView);
 
             cardView = itemView.findViewById(R.id.storeGridItem);
             icon = itemView.findViewById(R.id.storeIcon);
             name = itemView.findViewById(R.id.storeName);
+
+            cardView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.storeGridItem:
+                    Bundle data = new Bundle();
+                    data.putString("name", this.currentName);
+                    data.putInt("icon", this.currentIcon);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_customer_select_menu, data);
                     break;
             }
         }
@@ -86,6 +97,9 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         public void bind(int icon, String name){
             this.icon.setBackgroundResource(icon);
             this.name.setText(name);
+
+            this.currentName = name;
+            this.currentIcon = icon;
         }
     }
 }

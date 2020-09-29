@@ -2,13 +2,9 @@ package com.galio.heydrink;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.Adapter;
 
 import com.galio.heydrink.Adapter.CustomerAdapter;
 import com.galio.heydrink.Adapter.DeliveryAdapter;
-import com.galio.heydrink.Data.DeliverOrder;
-import com.galio.heydrink.Data.User;
-import com.galio.heydrink.ui.home.HomeFragment;
 import com.galio.heydrink.ui.home.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
@@ -20,10 +16,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_customer_select_menu)
                 .setDrawerLayout(drawer)
                 .build();
 

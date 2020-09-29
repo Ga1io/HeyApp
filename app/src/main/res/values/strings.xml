@@ -9,7 +9,6 @@
 
     <string name="menu_home">Home</string>
     <string name="customer_select_store">식당 선택하기</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="customer_select_menu">메뉴 선택하기</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

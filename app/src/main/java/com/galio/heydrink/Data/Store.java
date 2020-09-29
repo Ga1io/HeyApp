@@ -3,6 +3,8 @@ package com.galio.heydrink.Data;
 public class Store {
     private int icon;
     private String name;
+    private double lang;
+    private double lng;
 
     public Store(int icon, String name){
         this.icon = icon;
