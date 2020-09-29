@@ -145,6 +145,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="@dimen/customerItem_cup_size"
                     android:layout_height="@dimen/customerItem_cup_size"
+                    android:layout_marginLeft="@dimen/customerItem_left_margin"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/full_cup" />
 
