@@ -1,9 +1,11 @@
 package com.galio.heydrink.Adapter;
 
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -12,10 +14,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.galio.heydrink.Data.DeliverOrder;
 import com.galio.heydrink.Data.Order;
 import com.galio.heydrink.R;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +43,7 @@ public class CustomerAdapter extends MainAdapter {
 
         private RelativeLayout hideView;
         private ImageButton foldBtn;
+        private ImageButton orderBtn;
 
         private int position;
 
@@ -45,6 +54,7 @@ public class CustomerAdapter extends MainAdapter {
             wholeLayout =itemView.findViewById(R.id.customerItemRecyclerView);
             hideView = itemView.findViewById(R.id.hideRecyclerView);
             foldBtn = itemView.findViewById(R.id.foldBtn);
+            orderBtn = itemView.findViewById(R.id.orderBtn);
             Random random = new Random();
 
             for (int i = 0; i < 2; i++) {
@@ -66,6 +76,7 @@ public class CustomerAdapter extends MainAdapter {
 
             wholeLayout.setOnClickListener(this);
             foldBtn.setOnClickListener(this);
+            orderBtn.setOnClickListener(this);
         }
 
         @Override
@@ -98,6 +109,10 @@ public class CustomerAdapter extends MainAdapter {
                     notifyItemChanged(position);
                     // 클릭된 position 저장
                     prePosition = position;
+
+
+                case R.id.orderBtn:
+                    Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_gallery);
                     break;
             }
         }
