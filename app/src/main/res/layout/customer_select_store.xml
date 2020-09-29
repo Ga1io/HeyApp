@@ -33,8 +33,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/storeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/home_banner_margin">
+        android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
