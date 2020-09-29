@@ -1,10 +1,14 @@
 package com.galio.heydrink.Adapter;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,21 +22,29 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class CustomerAdapter extends MainAdapter {
+    private SparseBooleanArray selectedItems = new SparseBooleanArray();
+    private int prePosition = -1;
 
-    public class CustomerViewHolder extends MainViewHolder {
+    public class CustomerViewHolder extends MainViewHolder implements View.OnClickListener {
+        private Context context;
+        private RelativeLayout wholeLayout;
 
         private TextView[] destName = new TextView[2];
         private TextView[] destTime = new TextView[2];
         private ImageView[] dest = new ImageView[2];
 
+        private RelativeLayout hideView;
+        private ImageButton foldBtn;
+
+        private int position;
+
         public CustomerViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
 
-            destName[0] = itemView.findViewById(R.id.dest1Name);
-            destName[1] = itemView.findViewById(R.id.dest2Name);
-            destTime[0] = itemView.findViewById(R.id.dest1Time);
-            destTime[1] = itemView.findViewById(R.id.dest2Time);
-
+            this.context = context;
+            wholeLayout =itemView.findViewById(R.id.customerItemRecyclerView);
+            hideView = itemView.findViewById(R.id.hideRecyclerView);
+            foldBtn = itemView.findViewById(R.id.foldBtn);
             Random random = new Random();
 
             for (int i = 0; i < 2; i++) {
@@ -51,11 +63,51 @@ public class CustomerAdapter extends MainAdapter {
                 dest[i].setBackgroundResource(itemView.getResources().
                         getIdentifier(destImg, "drawable", context.getPackageName()));
             }
+
+            wholeLayout.setOnClickListener(this);
+            foldBtn.setOnClickListener(this);
         }
 
-        public void setUI(DeliverOrder deliverOrder) {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.customerItemRecyclerView:
+                    if (selectedItems.get(position)) {
+                        // 펼쳐진 Item을 클릭 시
+                        selectedItems.delete(position);
+                    } else {
+                        // 직전의 클릭됐던 Item의 클릭상태를 지움
+                        selectedItems.delete(prePosition);
+                        // 클릭한 Item의 position을 저장
+                        selectedItems.put(position, true);
+                    }
+                    // 해당 포지션의 변화를 알림
+                    if (prePosition != -1) notifyItemChanged(prePosition);
+                    notifyItemChanged(position);
+                    // 클릭된 position 저장
+                    prePosition = position;
+                    break;
+
+                case R.id.foldBtn:
+                    if (selectedItems.get(position)) {
+                        // 펼쳐진 Item을 클릭 시
+                        selectedItems.delete(position);
+                    }
+                    // 해당 포지션의 변화를 알림
+                    if (prePosition != -1) notifyItemChanged(prePosition);
+                    notifyItemChanged(position);
+                    // 클릭된 position 저장
+                    prePosition = position;
+                    break;
+            }
+        }
+
+        public void setUI(DeliverOrder deliverOrder, int position) {
             ArrayList<String> destinations = deliverOrder.getDestinations();
             HashMap<String, String> orderDestTime = deliverOrder.getDestTime();
+            this.position = position;
+
+            changeVisibility(selectedItems.get(position));
 
             if (destinations.size() == 1) {
                 String destinationName = destinations.get(0);
@@ -79,6 +131,32 @@ public class CustomerAdapter extends MainAdapter {
                     destTime[i].setText(orderDestTime.get(destinationName));
                 }
             }
+        }
+
+        private void changeVisibility(final boolean isExpanded) {
+            // height 값을 dp로 지정해서 넣고싶으면 아래 소스를 이용
+            int dpValue = 300;
+            float d = context.getResources().getDisplayMetrics().density;
+            int height = (int) (dpValue * d);
+
+            // ValueAnimator.ofInt(int... values)는 View가 변할 값을 지정, 인자는 int 배열
+            ValueAnimator va = isExpanded ? ValueAnimator.ofInt(0, height) : ValueAnimator.ofInt(height, 0);
+            // Animation이 실행되는 시간, n/1000초
+            va.setDuration(300);
+            va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    // value는 height 값
+                    int value = (int) animation.getAnimatedValue();
+                    // imageView의 높이 변경
+                    hideView.getLayoutParams().height = value;
+                    hideView.requestLayout();
+                    // imageView가 실제로 사라지게하는 부분
+                    hideView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                }
+            });
+            // Animation start
+            va.start();
         }
     }
 
@@ -106,7 +184,7 @@ public class CustomerAdapter extends MainAdapter {
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         DeliverOrder deliverOrder = (DeliverOrder) orders.get(position);
 
-        ((CustomerViewHolder) holder).setUI(deliverOrder);
+        ((CustomerViewHolder) holder).setUI(deliverOrder, position);
     }
 
     @Override
