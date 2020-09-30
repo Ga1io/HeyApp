@@ -12,6 +12,7 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
         android:scaleType="fitXY"/>
 
     <TextView
@@ -30,7 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/menuName"
         android:layout_toRightOf="@id/menuImg"
-        android:layout_marginTop="5dp"
         android:textSize="15sp"
         android:text="TextView" />
 

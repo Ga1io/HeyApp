@@ -17,6 +17,7 @@ import com.galio.heydrink.R;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class StoreMenuFragment extends Fragment {
@@ -72,6 +73,16 @@ public class StoreMenuFragment extends Fragment {
             Menu newMenu = new Menu();
             newMenu.name = menuName[i];
             newMenu.price = NumberFormat.getNumberInstance(Locale.US).format(price);
+
+            if (i== 2 || i ==3 || i == 8){
+                HashMap<String, String> options = new HashMap<>();
+
+                options.put("타피오카 펄 추가", "500");
+                options.put("알로에 펄 추가", "500");
+                options.put("샷추가", "500");
+
+                newMenu.options = options;
+            }
 
             if (i == 0 || i == 3 || i ==4 || i == 7 || i== 8){
                 newMenu.img = menuImg[idx];
