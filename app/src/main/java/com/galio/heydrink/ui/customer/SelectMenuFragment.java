@@ -43,6 +43,11 @@ public class SelectMenuFragment extends Fragment {
         super.onCreate(savedInstanceState);
         storeName = getArguments().getString("name");
         storeIcon = getArguments().getInt("icon");
+
+        fm = getActivity().getSupportFragmentManager();
+        fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.add(R.id.menuFragment, storeMenuFragment);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -57,11 +62,6 @@ public class SelectMenuFragment extends Fragment {
     }
 
     private void init(View v){
-        fm = getActivity().getSupportFragmentManager();
-        fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.add(R.id.menuFragment, storeMenuFragment);
-        fragmentTransaction.commit();
-
         storeIconImageView = v.findViewById(R.id.storeIcon);
         storeNameTextView = v.findViewById(R.id.storeName);
         menuBtn = v.findViewById(R.id.menuTextView);

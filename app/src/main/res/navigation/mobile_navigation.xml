@@ -29,5 +29,14 @@
         android:id="@+id/nav_customer_select_menu"
         android:name="com.galio.heydrink.ui.customer.SelectMenuFragment"
         android:label="@string/customer_select_menu"
-        tools:layout="@layout/fragment_select_menu" />
+        tools:layout="@layout/fragment_select_menu" >
+        <action
+            android:id="@+id/action_nav_customer_select_menu_to_customerShoppingCartFragment"
+            app:destination="@id/customerShoppingCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerShoppingCartFragment"
+        android:name="com.galio.heydrink.ui.customer.CustomerShoppingCartFragment"
+        android:label="customer_shopping_cart_fragment"
+        tools:layout="@layout/customer_shopping_cart_fragment" />
 </navigation>

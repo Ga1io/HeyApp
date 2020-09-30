@@ -73,6 +73,7 @@ public class StoreMenuFragment extends Fragment {
             Menu newMenu = new Menu();
             newMenu.name = menuName[i];
             newMenu.price = NumberFormat.getNumberInstance(Locale.US).format(price);
+            newMenu.info = "메뉴에 대한 설명......";
 
             if (i== 2 || i ==3 || i == 8){
                 HashMap<String, String> options = new HashMap<>();
