@@ -86,7 +86,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 menuImg.setBackgroundResource(menu.img);
             }
             menuName.setText(menu.name);
-            menuPrice.setText(menu.price);
+            menuPrice.setText(menu.price + "원");
 
             // 옵션 동적 생성
             int textId = R.id.menuName;
@@ -95,7 +95,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                String option = entry.getKey() + " " + entry.getValue();
+                String option = entry.getKey() + " " + entry.getValue() + "원";
                 optionText.setText(option);
 
                 params.addRule(RelativeLayout.BELOW, textId);
