@@ -90,7 +90,9 @@ public class ShoppingCartFragment extends Fragment {
         if (menu.options.size() > 0){
             LinearLayout lr = v.findViewById(R.id.optionScrollLinearLayout);
 
-            for (Map.Entry<String, String> entry : menu.options.entrySet()) {
+            for (int i =0; i<menu.options.size(); i++) {
+                Menu.Option op = menu.options.get(i);
+
                 // TextView 2개, RadioButton 1개 생성
                 TextView optionName = new TextView(v.getContext());
                 TextView optionPrice = new TextView(v.getContext());
@@ -115,8 +117,8 @@ public class ShoppingCartFragment extends Fragment {
                 optionCheck.setId(checkID);
 
                 // 텍스트 입력
-                optionName.setText(entry.getKey());
-                optionPrice.setText(entry.getValue() + "원");
+                optionName.setText(op.name);
+                optionPrice.setText(op.price + "원");
 
                 // LayoutParameter 설정
                 nameParam.addRule(RelativeLayout.ALIGN_PARENT_LEFT);

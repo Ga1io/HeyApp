@@ -25,7 +25,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     private Context mContext;
     private Store store;
 
-    public MenuAdapter(Store store){
+    public MenuAdapter(Store store) {
         this.store = store;
     }
 
@@ -107,12 +107,14 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
             // 옵션 동적 생성
             int textId = R.id.menuName;
-            for (Map.Entry<String, String> entry : menu.options.entrySet()) {
+            for (int i = 0; i < currentMenu.options.size(); i++) {
                 TextView optionText = new TextView(context);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                String option = entry.getKey() + " " + entry.getValue() + "원";
+                Menu.Option op = currentMenu.options.get(i);
+
+                String option = op.name + " " + op.price + "원";
                 optionText.setText(option);
 
                 params.addRule(RelativeLayout.BELOW, textId);
@@ -126,7 +128,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             }
 
             // 옵션 생성 후 가격 위치를 옵션 밑으로 설정
-            if (menu.options.size() > 0){
+            if (menu.options.size() > 0) {
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 

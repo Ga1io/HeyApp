@@ -81,11 +81,11 @@ public class StoreMenuFragment extends Fragment {
             newMenu.info = "메뉴에 대한 설명......";
 
             if (i== 2 || i ==3 || i == 8){
-                HashMap<String, String> options = new HashMap<>();
+                ArrayList<Menu.Option> options = new ArrayList<>();
 
-                options.put("타피오카 펄 추가", "500");
-                options.put("알로에 펄 추가", "500");
-                options.put("샷추가", "500");
+                options.add(new Menu.Option("타피오카 펄 추가", "500"));
+                options.add(new Menu.Option("알로에 펄 추가", "500"));
+                options.add(new Menu.Option("샷추가", "500"));
 
                 newMenu.options = options;
             }
