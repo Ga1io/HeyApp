@@ -4,11 +4,13 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,7 +19,6 @@ import com.galio.heydrink.Data.Me;
 import com.galio.heydrink.Data.Menu;
 import com.galio.heydrink.R;
 
-import java.nio.DoubleBuffer;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ import java.util.Map;
 
 public class OrderFragment extends Fragment {
     private TextView address;
-    private TextView totatlPriceView;
+    private TextView totalPriceView;
+    private ImageButton orderBtn;
 
     private int totalPrice = 0;
 
@@ -54,13 +56,21 @@ public class OrderFragment extends Fragment {
 
     private void init(View v){
         address = v.findViewById(R.id.address);
-        address.setText(Me.getInstance().address);
+        orderBtn = v.findViewById(R.id.orderBtn);
+        totalPriceView = v.findViewById(R.id.totalPrice);
 
-        totatlPriceView = v.findViewById(R.id.totalPrice);
+        address.setText(Me.getInstance().address);
 
         addMenu(v);
 
-        totatlPriceView.setText(NumberFormat.getInstance().format(totalPrice) + "원");
+        totalPriceView.setText(NumberFormat.getInstance().format(totalPrice) + "원");
+
+        orderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_customer_order_to_customer_payment);
+            }
+        });
     }
 
     private void addMenu(View v){

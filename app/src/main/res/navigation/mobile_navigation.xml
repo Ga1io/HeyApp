@@ -65,5 +65,29 @@
         android:id="@+id/customer_order"
         android:name="com.galio.heydrink.ui.customer.OrderFragment"
         android:label="customer_order"
-        tools:layout="@layout/customer_order" />
+        tools:layout="@layout/customer_order" >
+        <action
+            android:id="@+id/action_customer_order_to_customer_payment"
+            app:destination="@id/customer_payment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customer_payment"
+        android:name="com.galio.heydrink.ui.customer.Payment"
+        android:label="fragment_customer_payment"
+        tools:layout="@layout/fragment_customer_payment" >
+        <action
+            android:id="@+id/action_customer_payment_to_customer_order_finish"
+            app:destination="@id/customer_order_finish" />
+    </fragment>
+    <fragment
+        android:id="@+id/customer_order_finish"
+        android:name="com.galio.heydrink.ui.customer.Order_finish"
+        android:label="fragment_customer_order_finish"
+        tools:layout="@layout/fragment_customer_order_finish" >
+        <action
+            android:id="@+id/action_customer_order_finish_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

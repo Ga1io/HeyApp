@@ -49,9 +49,10 @@ import java.util.Random;
             foldBtn = itemView.findViewById(R.id.foldBtn);
             orderBtn = itemView.findViewById(R.id.orderBtn);
             Random random = new Random();
+            random.setSeed(System.currentTimeMillis());
 
             for (int i = 0; i < 2; i++) {
-                String destImg = "building" + Integer.toString(random.nextInt(3) + 1);
+                String destImg = "building" + Integer.toString((random.nextInt(100) % 3) + 1);
                 String name = "dest" + Integer.toString(i + 1);
                 String buildingName = name + "Name";
                 String time = name + "Time";
