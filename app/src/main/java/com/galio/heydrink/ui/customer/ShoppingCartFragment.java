@@ -60,7 +60,6 @@ public class ShoppingCartFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ShoppingCartViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     private void init(View v){

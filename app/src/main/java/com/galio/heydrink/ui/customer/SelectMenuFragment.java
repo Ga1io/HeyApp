@@ -5,15 +5,19 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.galio.heydrink.Data.Me;
 import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class SelectMenuFragment extends Fragment {
@@ -29,6 +33,8 @@ public class SelectMenuFragment extends Fragment {
     private TextView menuBtn;
     private TextView infoBtn;
 
+    private ImageButton orderBtn;
+
     private String currentFragment = "menu";
 
     public SelectMenuFragment() {
@@ -38,10 +44,8 @@ public class SelectMenuFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
+        if (getArguments() != null){
             store = (Store) getArguments().getSerializable("store");
-        }catch (Exception e){
-
         }
 
         storeMenuFragment = new StoreMenuFragment(store);
@@ -69,6 +73,7 @@ public class SelectMenuFragment extends Fragment {
         storeNameTextView = v.findViewById(R.id.storeName);
         menuBtn = v.findViewById(R.id.menuTextView);
         infoBtn = v.findViewById(R.id.infoTextView);
+        orderBtn = v.findViewById(R.id.orderBtn);
  
         storeIconImageView.setBackgroundResource(store.icon);
         storeNameTextView.setText(store.name);
@@ -102,6 +107,17 @@ public class SelectMenuFragment extends Fragment {
                 }
 
                 currentFragment = "info";
+            }
+        });
+
+        orderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Me.getInstance().cart.size() == 0){
+                    Snackbar.make(view, "장바구니에 아무것도 없습니다.", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    Navigation.findNavController(view).navigate(R.id.action_global_customer_order);
+                }
             }
         });
     }

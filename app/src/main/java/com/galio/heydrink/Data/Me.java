@@ -16,7 +16,7 @@ public class Me extends User {
     public String address;
 
     // 장소 ex, 310관
-    public ArrayList<String> building = new ArrayList<>();
+    public String building;
 
     public static Me getInstance() {
         return ourInstance;

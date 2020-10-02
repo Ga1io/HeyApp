@@ -28,8 +28,8 @@
 
     <!-- Customer Order-->
     <dimen name="order_layout_side_padding">15dp</dimen>
-    <dimen name="order_info_text_size">17sp</dimen>
+    <dimen name="order_info_text_size">20sp</dimen>
     <dimen name="order_input_side_margin">15dp</dimen>
     <dimen name="order_part_top_margin">15dp</dimen>
-    <dimen name="order_text_top_margin">10dp</dimen>
+    <dimen name="order_text_top_margin">15dp</dimen>
 </resources>

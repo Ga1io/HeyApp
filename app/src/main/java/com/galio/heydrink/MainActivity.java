@@ -5,6 +5,7 @@ import android.view.Menu;
 
 import com.galio.heydrink.Adapter.CustomerAdapter;
 import com.galio.heydrink.Adapter.DeliveryAdapter;
+import com.galio.heydrink.Data.Me;
 import com.galio.heydrink.ui.home.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
@@ -62,5 +63,13 @@ public class MainActivity extends AppCompatActivity {
     private void init(){
         HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         homeViewModel.setAdapter(customerAdapter);
+
+        makeDummy();
+    }
+
+    private void makeDummy(){
+        Me.getInstance().address = "중앙대학교 서울캠퍼스";
+        Me.getInstance().building = "310관";
+
     }
 }

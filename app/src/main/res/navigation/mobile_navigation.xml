@@ -63,7 +63,7 @@
     </navigation>
     <fragment
         android:id="@+id/customer_order"
-        android:name="com.galio.heydrink.ui.customer.customer_order"
+        android:name="com.galio.heydrink.ui.customer.OrderFragment"
         android:label="customer_order"
         tools:layout="@layout/customer_order" />
 </navigation>
