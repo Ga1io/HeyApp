@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.galio.heydrink.Adapter.MenuAdapter;
 import com.galio.heydrink.Data.Menu;
+import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
 
 import java.text.NumberFormat;
@@ -23,7 +24,13 @@ public class StoreMenuFragment extends Fragment {
     private RecyclerView menuRecyclerView;
     private LinearLayoutManager linearLayoutManager;
 
+    private Store store;
+
     public StoreMenuFragment(){
+    }
+
+    public StoreMenuFragment(Store store){
+        this.store = store;
     }
 
     @Override
@@ -43,7 +50,7 @@ public class StoreMenuFragment extends Fragment {
     }
 
     private void init(View v){
-        adapter = new MenuAdapter();
+        adapter = new MenuAdapter(store);
         adapter.setMenu(makeDummy());
 
         menuRecyclerView = v.findViewById(R.id.menuRecyclerView);

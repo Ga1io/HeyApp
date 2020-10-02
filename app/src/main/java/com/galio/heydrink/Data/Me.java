@@ -7,6 +7,8 @@ public class Me extends User {
 
     private ArrayList<Menu> cart = new ArrayList<>();
     private String demand;
+    private String address;
+    private ArrayList<String> building = new ArrayList<>();
 
     public static Me getInstance() {
         return ourInstance;

@@ -1,8 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.customer.customer_order">
 
-</FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/orderBtn"
+        android:paddingLeft="@dimen/order_layout_side_padding"
+        android:paddingRight="@dimen/order_layout_side_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/addressInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/order_info_text_size"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:text="배달 주소" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/order_info_text_size"
+                android:textColor="@android:color/black"
+                android:layout_marginRight="@dimen/order_input_side_margin"
+                android:layout_marginLeft="@dimen/order_input_side_margin"
+                android:ellipsize="middle"
+                android:layout_marginTop="@dimen/order_text_top_margin"
+                android:text="중앙대학교 서울캠퍼스"
+                android:singleLine="true" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/order_text_top_margin"
+                android:layout_marginLeft="@dimen/order_input_side_margin"
+                android:layout_marginRight="@dimen/order_input_side_margin"/>
+
+            <TextView
+                android:id="@+id/foodInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/order_info_text_size"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/order_part_top_margin"
+                android:textStyle="bold"
+                android:text="배달 음식" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/order_text_top_margin"
+                android:orientation="vertical"></LinearLayout>
+
+            <TextView
+                android:id="@+id/demandInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/order_info_text_size"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/order_part_top_margin"
+                android:textStyle="bold"
+                android:text="요청사항" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:layout_marginTop="@dimen/order_text_top_margin"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/notice"
+                android:layout_marginTop="@dimen/order_part_top_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="주의사항\n배달시 책임 없고\n....\n.....\n....." />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/orderBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/customer_item_order_btn" />
+</RelativeLayout>

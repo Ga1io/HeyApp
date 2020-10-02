@@ -31,7 +31,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         store = new ArrayList<>();
 
         for (int i=0; i<iconIds.length; i++){
-            store.add(new Store(iconIds[i], storeNames[i]));
+            store.add(new Store(storeNames[i], iconIds[i]));
         }
     }
 
@@ -53,8 +53,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     @Override
     public void onBindViewHolder(@NonNull StoreViewHolder holder, int position) {
-        String storeName = store.get(position).getName();
-        int storeIcon = store.get(position).getIcon();
+        String storeName = store.get(position).name;
+        int storeIcon = store.get(position).icon;
 
         holder.bind(storeIcon, storeName);
     }
@@ -86,9 +86,9 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.storeGridItem:
+                    Store store = new Store(currentName, currentIcon);
                     Bundle data = new Bundle();
-                    data.putString("name", this.currentName);
-                    data.putInt("icon", this.currentIcon);
+                    data.putSerializable("store", store);
                     Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_customer_select_menu, data);
                     break;
             }

@@ -29,7 +29,13 @@
         android:id="@+id/customerShoppingCartFragment"
         android:name="com.galio.heydrink.ui.customer.ShoppingCartFragment"
         android:label="customer_shopping_cart_fragment"
-        tools:layout="@layout/customer_shopping_cart_fragment" />
+        tools:layout="@layout/customer_shopping_cart_fragment" >
+        <action
+            android:id="@+id/action_customerShoppingCartFragment_to_navigation"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <navigation android:id="@+id/navigation"
         app:startDestination="@id/nav_customer_select_menu">
@@ -51,5 +57,13 @@
                 android:id="@+id/action_nav_customer_select_menu_to_customerShoppingCartFragment"
                 app:destination="@id/customerShoppingCartFragment" />
         </fragment>
+        <action
+            android:id="@+id/action_global_customer_order"
+            app:destination="@id/customer_order" />
     </navigation>
+    <fragment
+        android:id="@+id/customer_order"
+        android:name="com.galio.heydrink.ui.customer.customer_order"
+        android:label="customer_order"
+        tools:layout="@layout/customer_order" />
 </navigation>

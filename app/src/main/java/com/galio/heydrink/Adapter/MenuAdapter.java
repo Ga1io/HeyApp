@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.galio.heydrink.Data.Menu;
+import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
 
 import java.util.ArrayList;
@@ -22,6 +23,11 @@ import java.util.Map;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
     private ArrayList<Menu> data = new ArrayList<>();
     private Context mContext;
+    private Store store;
+
+    public MenuAdapter(Store store){
+        this.store = store;
+    }
 
     @NonNull
     @Override
@@ -32,7 +38,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         mContext = parent.getContext();
 
         View view = inflater.inflate(R.layout.menu_item, parent, false);
-        MenuViewHolder holder = new MenuViewHolder(view, mContext);
+        MenuViewHolder holder = new MenuViewHolder(view, mContext, store);
 
         return holder;
     }
@@ -60,10 +66,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         private RelativeLayout relativeLayout;
 
         private Menu currentMenu = null;
+        private Store store;
 
-        public MenuViewHolder(@NonNull View itemView, Context context) {
+        public MenuViewHolder(@NonNull View itemView, Context context, Store store) {
             super(itemView);
             this.context = context;
+            this.store = store;
 
             menuImg = itemView.findViewById(R.id.menuImg);
             menuName = itemView.findViewById(R.id.menuName);
@@ -78,6 +86,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             switch (view.getId()) {
                 case R.id.menuItemRelativeLayout:
                     Bundle data = new Bundle();
+                    data.putSerializable("store", store);
                     data.putSerializable("menu", currentMenu);
                     Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_menu_to_customerShoppingCartFragment, data);
                     break;

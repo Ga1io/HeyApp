@@ -1,21 +1,19 @@
 package com.galio.heydrink.Data;
 
-public class Store {
-    private int icon;
-    private String name;
-    private double lang;
-    private double lng;
+import java.io.Serializable;
 
-    public Store(int icon, String name){
-        this.icon = icon;
+public class Store implements Serializable {
+    public int icon;
+    public String name;
+    public double lang;
+    public double lng;
+
+    public Store(){
+
+    }
+
+    public Store(String name, int icon){
         this.name = name;
-    }
-
-    public int getIcon() {
-        return icon;
-    }
-
-    public String getName() {
-        return name;
+        this.icon = icon;
     }
 }

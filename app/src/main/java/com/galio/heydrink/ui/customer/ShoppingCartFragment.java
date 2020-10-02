@@ -7,18 +7,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.galio.heydrink.Data.Menu;
+import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Map;
 
@@ -30,6 +35,9 @@ public class ShoppingCartFragment extends Fragment {
     private ImageView menuImg;
     private TextView menuName;
     private TextView menuInfo;
+
+    private ImageButton orderBtn;
+    private Store store;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -50,10 +58,13 @@ public class ShoppingCartFragment extends Fragment {
 
     private void init(View v){
         this.menu = (Menu) getArguments().getSerializable("menu");
+        this.store = (Store) getArguments().getSerializable("store");
 
         menuImg = v.findViewById(R.id.menuImg);
         menuName = v.findViewById(R.id.menuName);
         menuInfo = v.findViewById(R.id.menuInfo);
+
+        orderBtn = v.findViewById(R.id.orderBtn);
 
         if (menu.img != Menu.NO_IMG){
             menuImg.setBackgroundResource(menu.img);
@@ -62,6 +73,20 @@ public class ShoppingCartFragment extends Fragment {
         menuName.setText(menu.name);
         menuInfo.setText(menu.info);
 
+        orderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "장바구니에 담겼습니다.", Snackbar.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("store", store);
+                Navigation.findNavController(view).navigate(R.id.action_customerShoppingCartFragment_to_navigation, bundle);
+            }
+        });
+
+        makeOptions(v);
+    }
+
+    private void makeOptions(View v){
         if (menu.options.size() > 0){
             LinearLayout lr = v.findViewById(R.id.optionScrollLinearLayout);
 
@@ -112,5 +137,4 @@ public class ShoppingCartFragment extends Fragment {
             }
         }
     }
-
 }

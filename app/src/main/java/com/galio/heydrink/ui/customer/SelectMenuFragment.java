@@ -12,16 +12,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
 
 
 public class SelectMenuFragment extends Fragment {
-    private String storeName;
+    private Store store;
     private FragmentManager fm;
     private FragmentTransaction fragmentTransaction;
-    private Fragment storeMenuFragment = new StoreMenuFragment();
+    private Fragment storeMenuFragment;
     private Fragment storeInfoFragment = new StoreInfoFragment();
-    private int storeIcon;
 
     private TextView storeNameTextView;
     private ImageView storeIconImageView;
@@ -38,13 +38,18 @@ public class SelectMenuFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        storeName = getArguments().getString("name");
-        storeIcon = getArguments().getInt("icon");
+        try {
+            store = (Store) getArguments().getSerializable("store");
+        }catch (Exception e){
+
+        }
+
+        storeMenuFragment = new StoreMenuFragment(store);
 
         fm = getActivity().getSupportFragmentManager();
         fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.menuFragment, storeMenuFragment);
-        fragmentTransaction.addToBackStack("test");
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -65,8 +70,8 @@ public class SelectMenuFragment extends Fragment {
         menuBtn = v.findViewById(R.id.menuTextView);
         infoBtn = v.findViewById(R.id.infoTextView);
  
-        storeIconImageView.setBackgroundResource(this.storeIcon);
-        storeNameTextView.setText(this.storeName);
+        storeIconImageView.setBackgroundResource(store.icon);
+        storeNameTextView.setText(store.name);
 
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
