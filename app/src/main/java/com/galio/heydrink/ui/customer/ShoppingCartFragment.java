@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,11 +21,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.galio.heydrink.Data.Me;
 import com.galio.heydrink.Data.Menu;
 import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ShoppingCartFragment extends Fragment {
@@ -38,6 +42,9 @@ public class ShoppingCartFragment extends Fragment {
 
     private ImageButton orderBtn;
     private Store store;
+
+    // 체크박스와 옵션 이름 매핑해주는 변수
+    private HashMap<CheckBox, TextView> optionNameMap = new HashMap<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -77,6 +84,21 @@ public class ShoppingCartFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "장바구니에 담겼습니다.", Snackbar.LENGTH_SHORT).show();
+
+                ArrayList<Menu.Option> options = new ArrayList<>();
+
+                for (Map.Entry<CheckBox, TextView> optionEntry : optionNameMap.entrySet()){
+                    if (optionEntry.getKey().isChecked()){
+                        Menu.Option selectedOption = Menu.Option.findByName(menu, optionEntry.getValue().getText().toString());
+
+                        if (selectedOption != null){
+                            options.add(selectedOption);
+                        }
+                    }
+                }
+
+                Me.getInstance().cart.put(menu, options);
+
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("store", store);
                 Navigation.findNavController(view).navigate(R.id.action_customerShoppingCartFragment_to_navigation, bundle);
@@ -96,8 +118,10 @@ public class ShoppingCartFragment extends Fragment {
                 // TextView 2개, RadioButton 1개 생성
                 TextView optionName = new TextView(v.getContext());
                 TextView optionPrice = new TextView(v.getContext());
-                RadioButton optionCheck = new RadioButton(v.getContext());
+                CheckBox optionCheck = new CheckBox(v.getContext());
                 RelativeLayout rl = new RelativeLayout(v.getContext());
+
+                optionNameMap.put(optionCheck, optionName);
 
                 // LayoutParameter 생성
                 RelativeLayout.LayoutParams nameParam = new RelativeLayout.LayoutParams(

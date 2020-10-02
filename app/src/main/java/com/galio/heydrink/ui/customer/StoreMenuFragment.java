@@ -36,6 +36,9 @@ public class StoreMenuFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        adapter = new MenuAdapter(store);
+        adapter.setMenu(makeDummy());
     }
 
     @Override
@@ -50,9 +53,6 @@ public class StoreMenuFragment extends Fragment {
     }
 
     private void init(View v){
-        adapter = new MenuAdapter(store);
-        adapter.setMenu(makeDummy());
-
         menuRecyclerView = v.findViewById(R.id.menuRecyclerView);
         linearLayoutManager = new LinearLayoutManager(getActivity());
 
@@ -83,9 +83,9 @@ public class StoreMenuFragment extends Fragment {
             if (i== 2 || i ==3 || i == 8){
                 ArrayList<Menu.Option> options = new ArrayList<>();
 
-                options.add(new Menu.Option("타피오카 펄 추가", "500"));
-                options.add(new Menu.Option("알로에 펄 추가", "500"));
-                options.add(new Menu.Option("샷추가", "500"));
+                options.add(new Menu.Option(newMenu, "타피오카 펄 추가", "500"));
+                options.add(new Menu.Option(newMenu,"알로에 펄 추가", "500"));
+                options.add(new Menu.Option(newMenu,"샷추가", "500"));
 
                 newMenu.options = options;
             }
