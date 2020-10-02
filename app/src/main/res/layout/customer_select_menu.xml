@@ -87,5 +87,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/linearLayout"
+        android:layout_above="@id/orderBtn"
         android:id="@+id/menuFragment"/>
+
+    <ImageButton
+        android:id="@+id/orderBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/customer_item_order_btn" />
 </RelativeLayout>

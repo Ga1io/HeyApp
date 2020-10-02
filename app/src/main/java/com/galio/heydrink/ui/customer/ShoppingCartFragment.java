@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +22,9 @@ import com.galio.heydrink.R;
 
 import java.util.Map;
 
-public class CustomerShoppingCartFragment extends Fragment {
+public class ShoppingCartFragment extends Fragment {
 
-    private CustomerShoppingCartViewModel mViewModel;
+    private ShoppingCartViewModel mViewModel;
     private Menu menu;
 
     private ImageView menuImg;
@@ -45,7 +44,7 @@ public class CustomerShoppingCartFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(CustomerShoppingCartViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(ShoppingCartViewModel.class);
         // TODO: Use the ViewModel
     }
 

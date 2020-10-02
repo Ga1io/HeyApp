@@ -24,7 +24,7 @@ public class StoreInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_store_info, container, false);
+        View root = inflater.inflate(R.layout.customer_store_info, container, false);
 
         return root;
     }

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -16,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.galio.heydrink.Data.Menu;
 import com.galio.heydrink.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Map;

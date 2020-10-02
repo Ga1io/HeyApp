@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.galio.heydrink.R;
-
-import org.w3c.dom.Text;
 
 
 public class SelectMenuFragment extends Fragment {
@@ -47,6 +44,7 @@ public class SelectMenuFragment extends Fragment {
         fm = getActivity().getSupportFragmentManager();
         fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.menuFragment, storeMenuFragment);
+        fragmentTransaction.addToBackStack("test");
         fragmentTransaction.commit();
     }
 
@@ -54,7 +52,7 @@ public class SelectMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_select_menu, container, false);
+        View root = inflater.inflate(R.layout.customer_select_menu, container, false);
 
         init(root);
 
@@ -66,7 +64,7 @@ public class SelectMenuFragment extends Fragment {
         storeNameTextView = v.findViewById(R.id.storeName);
         menuBtn = v.findViewById(R.id.menuTextView);
         infoBtn = v.findViewById(R.id.infoTextView);
-
+ 
         storeIconImageView.setBackgroundResource(this.storeIcon);
         storeNameTextView.setText(this.storeName);
 

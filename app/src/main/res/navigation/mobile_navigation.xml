@@ -22,21 +22,34 @@
         tools:layout="@layout/customer_select_store" >
         <action
             android:id="@+id/action_nav_customer_select_store_to_nav_customer_select_menu"
-            app:destination="@id/nav_customer_select_menu" />
+            app:destination="@id/navigation" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_customer_select_menu"
-        android:name="com.galio.heydrink.ui.customer.SelectMenuFragment"
-        android:label="@string/customer_select_menu"
-        tools:layout="@layout/fragment_select_menu" >
-        <action
-            android:id="@+id/action_nav_customer_select_menu_to_customerShoppingCartFragment"
-            app:destination="@id/customerShoppingCartFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/customerShoppingCartFragment"
-        android:name="com.galio.heydrink.ui.customer.CustomerShoppingCartFragment"
+        android:name="com.galio.heydrink.ui.customer.ShoppingCartFragment"
         android:label="customer_shopping_cart_fragment"
         tools:layout="@layout/customer_shopping_cart_fragment" />
+
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/nav_customer_select_menu">
+        <fragment
+            android:id="@+id/storeInfoFragment"
+            android:name="com.galio.heydrink.ui.customer.StoreInfoFragment"
+            android:label="customer_store_info"
+            tools:layout="@layout/customer_store_info" />
+        <fragment
+            android:id="@+id/storeMenuFragment"
+            android:name="com.galio.heydrink.ui.customer.StoreMenuFragment"
+            android:label="StoreMenuFragment" />
+        <fragment
+            android:id="@+id/nav_customer_select_menu"
+            android:name="com.galio.heydrink.ui.customer.SelectMenuFragment"
+            android:label="@string/customer_select_menu"
+            tools:layout="@layout/customer_select_menu">
+            <action
+                android:id="@+id/action_nav_customer_select_menu_to_customerShoppingCartFragment"
+                app:destination="@id/customerShoppingCartFragment" />
+        </fragment>
+    </navigation>
 </navigation>

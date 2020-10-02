@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.customer.CustomerShoppingCartFragment">
+    tools:context=".ui.customer.ShoppingCartFragment">
 
     <ImageView
         android:id="@+id/menuImg"
@@ -57,8 +57,8 @@
     <ImageButton
         android:id="@+id/orderBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/customer_order_btn_dark"
+        android:layout_height="70dp"
+        android:src="@drawable/add_cart"
         android:scaleType="fitXY"
         android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"/>

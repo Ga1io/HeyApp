@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
     private boolean isCustomer = true;
 
     public HomeFragment() {
-        // Required empty public constructor
+        // Required em  pty public constructor
     }
 
     @Override

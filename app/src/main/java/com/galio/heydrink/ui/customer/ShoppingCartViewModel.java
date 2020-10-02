@@ -2,6 +2,6 @@ package com.galio.heydrink.ui.customer;
 
 import androidx.lifecycle.ViewModel;
 
-public class CustomerShoppingCartViewModel extends ViewModel {
+public class ShoppingCartViewModel extends ViewModel {
     // TODO: Implement the ViewModel
 }
