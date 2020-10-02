@@ -13,4 +13,5 @@ public class Menu implements Serializable {
     public String price;
     public int img = -1;
     public String info = "";
+    public HashMap<String, String> additional = new HashMap<>();
 }

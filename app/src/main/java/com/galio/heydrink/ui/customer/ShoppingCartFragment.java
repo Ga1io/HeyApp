@@ -116,7 +116,7 @@ public class ShoppingCartFragment extends Fragment {
 
                 // 텍스트 입력
                 optionName.setText(entry.getKey());
-                optionName.setText(entry.getValue() + "원");
+                optionPrice.setText(entry.getValue() + "원");
 
                 // LayoutParameter 설정
                 nameParam.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
