@@ -88,7 +88,19 @@
         android:layout_height="match_parent"
         android:layout_below="@id/linearLayout"
         android:layout_above="@id/orderBtn"
-        android:id="@+id/menuFragment"/>
+        android:id="@+id/menuFragment">
+    </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/orderBtn"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#F6F6F6"
+        android:clickable="true"
+        android:src="@drawable/shopping_cart" />
 
     <ImageButton
         android:id="@+id/orderBtn"

@@ -18,7 +18,6 @@ import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
     private ArrayList<Menu> data = new ArrayList<>();
@@ -88,7 +87,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                     Bundle data = new Bundle();
                     data.putSerializable("store", store);
                     data.putSerializable("menu", currentMenu);
-                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_menu_to_customerShoppingCartFragment, data);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_menu_to_customerMenuDetailFragment, data);
                     break;
             }
         }

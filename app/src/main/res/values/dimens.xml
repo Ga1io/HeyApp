@@ -25,6 +25,7 @@
     <!--Customer Select Store-->
     <dimen name="searchBtn_width">400dp</dimen>
     <dimen name="searchBtn_height">60dp</dimen>
+    <dimen name="floatingBtn_size">40dp</dimen>
 
     <!-- Customer Order-->
     <dimen name="order_layout_side_padding">15dp</dimen>
