@@ -9,6 +9,9 @@ public class Me extends User {
     // 장바구니
     public HashMap<Menu, ArrayList<Menu.Option>> cart = new HashMap();
 
+    // 주문내역
+    public ArrayList<CustomerOrder> orderList = new ArrayList<>();
+
     // 요구사항
     public String demand;
 

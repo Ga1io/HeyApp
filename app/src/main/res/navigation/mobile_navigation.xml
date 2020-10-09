@@ -74,7 +74,7 @@
         android:id="@+id/customer_payment"
         android:name="com.galio.heydrink.ui.customer.Payment"
         android:label="fragment_customer_payment"
-        tools:layout="@layout/fragment_customer_payment" >
+        tools:layout="@layout/customer_payment" >
         <action
             android:id="@+id/action_customer_payment_to_customer_order_finish"
             app:destination="@id/customer_order_finish" />
@@ -83,7 +83,7 @@
         android:id="@+id/customer_order_finish"
         android:name="com.galio.heydrink.ui.customer.Order_finish"
         android:label="fragment_customer_order_finish"
-        tools:layout="@layout/fragment_customer_order_finish" >
+        tools:layout="@layout/customer_order_finish" >
         <action
             android:id="@+id/action_customer_order_finish_to_nav_home"
             app:destination="@id/nav_home"

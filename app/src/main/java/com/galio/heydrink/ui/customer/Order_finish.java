@@ -27,7 +27,7 @@ public class Order_finish extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_customer_order_finish, container, false);
+        View root = inflater.inflate(R.layout.customer_order_finish, container, false);
 
         init(root);
 

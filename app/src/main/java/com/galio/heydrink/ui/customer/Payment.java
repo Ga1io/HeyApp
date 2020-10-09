@@ -29,7 +29,7 @@ public class Payment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_customer_payment, container, false);
+        View root = inflater.inflate(R.layout.customer_payment, container, false);
 
         init(root);
 
