@@ -1,4 +1,4 @@
-package com.galio.heydrink;
+package com.galio.heydrink.ui.customer;
 
 import android.os.Bundle;
 
@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class customer_shopping_cart extends Fragment {
+import com.galio.heydrink.R;
 
-    public customer_shopping_cart() {
+public class ShoppingCart extends Fragment {
+
+    public ShoppingCart() {
         // Required empty public constructor
     }
 
