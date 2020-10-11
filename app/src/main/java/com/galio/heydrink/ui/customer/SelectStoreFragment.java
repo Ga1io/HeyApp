@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.galio.heydrink.Adapter.StoreAdapter;
 import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class SelectStoreFragment extends Fragment {
     private SelectStoreViewModel selectStoreViewModel;
     private RecyclerView storeRecyclerView;
     private GridLayoutManager gridLayoutManager;
+    private FloatingActionButton shoppingCartBtn;
     private StoreAdapter storeAdapter = new StoreAdapter();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,6 +55,17 @@ public class SelectStoreFragment extends Fragment {
         gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         storeRecyclerView.setLayoutManager(gridLayoutManager);
         storeRecyclerView.setAdapter(storeAdapter);
+
+        shoppingCartBtn = view.findViewById(R.id.shoppingCartBtn);
+
+        shoppingCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("backFragment", "selectStore");
+                Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_customer_shopping_cart, bundle);
+            }
+        });
     }
 
     private ArrayList<Store> makeDummy(){

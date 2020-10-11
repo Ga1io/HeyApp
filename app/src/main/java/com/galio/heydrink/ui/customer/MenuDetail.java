@@ -31,7 +31,6 @@ import java.util.Map;
 
 public class MenuDetail extends Fragment {
 
-    private ShoppingCartViewModel mViewModel;
     private Menu menu;
 
     private ImageView menuImg;
@@ -57,7 +56,6 @@ public class MenuDetail extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ShoppingCartViewModel.class);
     }
 
     private void init(View v){

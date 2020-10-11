@@ -100,7 +100,7 @@
         android:id="@+id/customer_shopping_cart"
         android:name="com.galio.heydrink.ui.customer.ShoppingCart"
         android:label="fragment_customer_shopping_cart"
-        tools:layout="@layout/fragment_customer_shopping_cart" >
+        tools:layout="@layout/customer_shopping_cart" >
         <action
             android:id="@+id/action_customer_shopping_cart_to_nav_customer_select_store"
             app:destination="@id/nav_customer_select_store"

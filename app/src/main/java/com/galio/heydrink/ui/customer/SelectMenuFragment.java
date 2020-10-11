@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.galio.heydrink.Data.Me;
 import com.galio.heydrink.Data.Store;
 import com.galio.heydrink.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 
@@ -26,6 +27,8 @@ public class SelectMenuFragment extends Fragment {
     private FragmentTransaction fragmentTransaction;
     private Fragment storeMenuFragment;
     private Fragment storeInfoFragment = new StoreInfoFragment();
+
+    private FloatingActionButton shoppingCartBtn;
 
     private TextView storeNameTextView;
     private ImageView storeIconImageView;
@@ -77,6 +80,18 @@ public class SelectMenuFragment extends Fragment {
  
         storeIconImageView.setBackgroundResource(store.icon);
         storeNameTextView.setText(store.name);
+
+        shoppingCartBtn = v.findViewById(R.id.shoppingCartBtn);
+
+        shoppingCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("backFragment", "selectMenu");
+                bundle.putSerializable("store", store);
+                Navigation.findNavController(view).navigate(R.id.action_global_customer_shopping_cart, bundle);
+            }
+        });
 
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
