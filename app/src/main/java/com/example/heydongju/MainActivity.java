@@ -6,15 +6,19 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.heydongju.Customer.CustomerMenuDetailFragment;
 import com.example.heydongju.Customer.CustomerMenuFragment;
 import com.example.heydongju.Customer.CustomerStoreFragment;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    public NavController navController;
     CustomerStoreFragment store;
     CustomerMenuFragment menu;
     CustomerMenuDetailFragment menuDetail;
@@ -27,48 +31,12 @@ public class MainActivity extends AppCompatActivity {
         store = new CustomerStoreFragment();
         menu = new CustomerMenuFragment();
         menuDetail = new CustomerMenuDetailFragment();
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
     }
 
-    public void fragChange(){
 
-        FragmentManager fragmentManager = this.getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.frame, store);
-        fragmentTransaction.commit();
-    }
-
-    public void toMenu(StoreData store){
-
-        FragmentManager fragmentManager = this.getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //fragmentTransaction.addToBackStack(null);
-
-        Bundle bundle = new Bundle();
-        //  bundle.putSerializable("json", response.body());
-
-        bundle.putSerializable("store", store);
-        menu.setArguments(bundle); //data being send to SecondFragment
-        Log.e("fucking", store.name);
-        fragmentTransaction.replace(R.id.frame, menu);
-        fragmentTransaction.commit();
-    }
-    public void toMenuDetail(StoreData store, MenuData menu){
-
-        FragmentManager fragmentManager = this.getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //fragmentTransaction.addToBackStack(null);
-
-        Bundle bundle = new Bundle();
-        //  bundle.putSerializable("json", response.body());
-
-        bundle.putSerializable("store", store);
-        bundle.putSerializable("menu", menu);
-
-        menuDetail.setArguments(bundle); //data being send to SecondFragment
-        fragmentTransaction.replace(R.id.frame, menuDetail);
-        fragmentTransaction.commit();
-    }
 
 }
+
+

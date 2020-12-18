@@ -12,10 +12,13 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
+import com.example.heydongju.Data.Me;
 import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 public class CustomerMenuFragment extends Fragment {
 
@@ -23,7 +26,7 @@ public class CustomerMenuFragment extends Fragment {
     private FragmentManager fm;
     private FragmentTransaction fragmentTransaction;
     private Fragment storeMenuFragment;
-    //private Fragment storeInfoFragment = new StoreInfoFragment();
+    private Fragment storeInfoFragment = new CustomerStoreInfoFragment();
     private FloatingActionButton shoppingCartBtn;
 
     private TextView storeNameTextView;
@@ -34,36 +37,39 @@ public class CustomerMenuFragment extends Fragment {
 
     private ImageButton orderBtn;
 
-    private String currentFragment = "menu";
+    public static String currentFragment = "menu";
 
     public CustomerMenuFragment() {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.customer_menu, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if (getArguments() != null){
             store = (StoreData) getArguments().getSerializable("store");
-            Log.e("fucking yeas","what????");
-
-        }else{
-            Log.e("fucking yeas","whwfdsfsdfat????");
-
         }
 
-        storeMenuFragment = new CustomerSelectMenuFragment();
+        storeMenuFragment = new CustomerSelectMenuFragment(store);
 
         fm = getActivity().getSupportFragmentManager();
         fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.menuFragment, storeMenuFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-        init(root);
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.customer_menu, container, false);
 
+        init(root);
+        if (currentFragment.equals("selected")){
+            Log.e("sex","goood soogooood");
+        }else{
+
+        }
 
         return root;
     }
@@ -80,7 +86,7 @@ public class CustomerMenuFragment extends Fragment {
 
         shoppingCartBtn = v.findViewById(R.id.shoppingCartBtn);
 
-        /*shoppingCartBtn.setOnClickListener(new View.OnClickListener() {
+        shoppingCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
@@ -88,7 +94,7 @@ public class CustomerMenuFragment extends Fragment {
                 bundle.putSerializable("store", store);
                 Navigation.findNavController(view).navigate(R.id.action_global_customer_shopping_cart, bundle);
             }
-        });*/
+        });
 
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +112,7 @@ public class CustomerMenuFragment extends Fragment {
             }
         });
 
-     /*   infoBtn.setOnClickListener(new View.OnClickListener() {
+        infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(currentFragment.equals("info")){
@@ -120,9 +126,9 @@ public class CustomerMenuFragment extends Fragment {
 
                 currentFragment = "info";
             }
-        });*/
+        });
 
-      /*  orderBtn.setOnClickListener(new View.OnClickListener() {
+        orderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Me.getInstance().cart.size() == 0){
@@ -131,6 +137,6 @@ public class CustomerMenuFragment extends Fragment {
                     Navigation.findNavController(view).navigate(R.id.action_global_customer_order);
                 }
             }
-        });*/
+        });
     }
 }

@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.heydongju.Data.DeliverInfoData;
@@ -138,10 +139,7 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
                     prePosition = position;
                     break;
                 case R.id.orderBtn:
-                    Log.e("fuck", "yeah");
-                    MainActivity activity = (MainActivity) context;
-                    activity.fragChange();
-
+                    Navigation.findNavController(v).navigate(R.id.action_nav_customer_home_to_nav_customer_select_store);
 
                     break;
             }

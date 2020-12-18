@@ -1,5 +1,7 @@
 package com.example.heydongju.Customer;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +15,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.heydongju.Data.Me;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
+import com.example.heydongju.MainActivity;
 import com.example.heydongju.R;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -32,18 +37,19 @@ public class CustomerMenuDetailFragment extends Fragment {
     private ImageView menuImg;
     private TextView menuName;
     private TextView menuInfo;
-
+    private MainActivity activity;
     private ImageButton orderBtn;
     private StoreData store;
 
     // 체크박스와 옵션 이름 매핑해주는 변수
     private HashMap<CheckBox, TextView> optionNameMap = new HashMap<>();
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.customer_menu_detail, container, false);
-
+        activity=(MainActivity) getActivity();
         init (root);
 
         return root;
@@ -54,6 +60,7 @@ public class CustomerMenuDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void init(View v){
         this.menu = (MenuData) getArguments().getSerializable("menu");
         this.store = (StoreData) getArguments().getSerializable("store");
@@ -88,17 +95,24 @@ public class CustomerMenuDetailFragment extends Fragment {
                     }
                 }
 
-            //    Me.getInstance().cart.put(menu, options);
+                Me.getInstance().cart.put(menu, options);
 
-             //   Bundle bundle = new Bundle();
-             //   bundle.putSerializable("store", store);
-              //  Navigation.findNavController(view).navigate(R.id.action_customerMenuDetailFragment_to_navigation, bundle);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("store", store);
+                Navigation.findNavController(view).navigate(R.id.action_customerMenuDetailFragment_to_navigation, bundle);
             }
         });
 
         makeOptions(v);
+
+
+
+
     }
 
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void makeOptions(View v){
         if (menu.options.size() > 0){
             LinearLayout lr = v.findViewById(R.id.optionScrollLinearLayout);

@@ -103,8 +103,8 @@ public class CustomerHomeFragment extends Fragment {
         for (int i = 0; i < listTitle.size(); i++) {
             // 각 List의 값들을 data 객체에 set 해줍니다.
             StoreRecommend data = new StoreRecommend();
-            data.setStoreName(listTitle.get(i));
-            data.setStoreIcon(listIcon.get(i));
+            data.setName(listTitle.get(i));
+            data.setIcon(listIcon.get(i));
 
 
             // 각 값이 들어간 data를 adapter에 추가합니다.

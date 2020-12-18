@@ -20,8 +20,75 @@
         android:name="com.example.heydongju.Customer.CustomerStoreFragment"
         tools:layout="@layout/customer_store" >
         <action
-            android:id="@+id/action_nav_store_to_nav_customer_menu"
-            app:destination="@id/nav_customer_menu" />
+            android:id="@+id/action_nav_customer_select_store_to_nav_customer_select_menu"
+            app:destination="@id/navigation" />
+
+    </fragment>
+
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/nav_customer_select_menu">
+
+        <fragment
+            android:id="@+id/storeMenuFragment"
+            android:name="com.example.heydongju.Customer.CustomerMenuFragment"
+            tools:layout="@layout/customer_menu"
+            android:label="StoreMenuFragment" />
+        <fragment
+            android:id="@+id/nav_customer_select_menu"
+            android:name="com.example.heydongju.Customer.CustomerMenuFragment"
+            android:label="customer_select_menu"
+            tools:layout="@layout/customer_menu">
+            <action
+                android:id="@+id/action_nav_customer_select_menu_to_customerMenuDetailFragment"
+                app:destination="@id/customerMenuDetailFragment" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_customer_order"
+            app:destination="@id/customer_order" />
+        <action
+            android:id="@+id/action_global_customer_shopping_cart"
+            app:destination="@id/customer_shopping_cart" />
+    </navigation>
+    <fragment
+        android:id="@+id/customer_order"
+        android:name="com.example.heydongju.Customer.CustomerOrderFragment"
+        android:label="customer_order"
+        tools:layout="@layout/customer_order" >
+        <action
+            android:id="@+id/action_customer_order_to_customer_payment"
+            app:destination="@id/customer_payment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerMenuDetailFragment"
+        android:name="com.example.heydongju.Customer.CustomerMenuDetailFragment"
+        android:label="customer_menu_detail_fragment"
+        tools:layout="@layout/customer_menu_detail" >
+        <action
+            android:id="@+id/action_customerMenuDetailFragment_to_navigation"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/customer_payment"
+        android:name="com.example.heydongju.Customer.CustomerPayment"
+        android:label="fragment_customer_payment"
+        tools:layout="@layout/customer_payment" >
+        <action
+            android:id="@+id/action_customer_payment_to_customer_order_finish"
+            app:destination="@id/customer_order_finish" />
+    </fragment>
+    <fragment
+        android:id="@+id/customer_order_finish"
+        android:name="com.example.heydongju.Customer.CustomerOrderFinish"
+        android:label="fragment_customer_order_finish">
+        <action
+            android:id="@+id/action_customer_order_finish_to_nav_home"
+            app:destination="@id/nav_customer_home"
+            app:popUpTo="@id/nav_customer_home"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/nav_customer_menu"
@@ -40,14 +107,40 @@
     <fragment
         android:id="@+id/nav_deliver_home"
         android:name="com.example.heydongju.Deliver.DeliverBaseFragment"
-        tools:layout="@layout/deliver_base" >
+        tools:layout="@layout/deliver_home" >
     </fragment>
-
+    <fragment
+        android:id="@+id/nav_customer_base"
+        android:name="com.example.heydongju.Customer.CustomerBaseFragment"
+        tools:layout="@layout/customer_base" >
+        <action
+            android:id="@+id/action_nav_customer_base_to_nav_customer_select_menu"
+            app:destination="@id/nav_customer_select_menu" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_customer_home"
         android:name="com.example.heydongju.Customer.CustomerBaseFragment"
-        tools:layout="@layout/customer_base" >
+        tools:layout="@layout/customer_home" >
+        <action
+            android:id="@+id/action_nav_customer_home_to_nav_customer_select_store"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/action_nav_customer_home_to_nav_customer_select_menu"
+            app:destination="@id/nav_customer_select_menu" />
     </fragment>
-
+    <fragment
+        android:id="@+id/customer_shopping_cart"
+        android:name="com.example.heydongju.Customer.CustomerShoppingCart"
+        android:label="fragment_customer_shopping_cart"
+        tools:layout="@layout/customer_shopping_cart" >
+        <action
+            android:id="@+id/action_customer_shopping_cart_to_nav_customer_select_store"
+            app:destination="@id/nav_store"
+            app:popUpTo="@id/nav_store" />
+        <action
+            android:id="@+id/action_customer_shopping_cart_to_navigation"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/navigation" />
+    </fragment>
 </navigation>

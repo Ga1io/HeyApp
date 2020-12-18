@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.heydongju.Customer.CustomerMenuFragment;
 import com.example.heydongju.Data.CustomerOrderData;
 import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.MainActivity;
@@ -84,8 +85,18 @@ public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdap
             switch (view.getId()){
                 case R.id.storeGridItem:
                     StoreData store = new StoreData(currentName, currentIcon);
+                    Bundle data = new Bundle();
+                    data.putSerializable("store", store);
                     MainActivity activity = (MainActivity) context;
-                    activity.toMenu(store);
+
+                    if(activity.navController.getCurrentDestination().getId()==R.id.nav_store){
+                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_customer_select_menu, data);
+                    }
+                    else{
+                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_home_to_nav_customer_select_menu, data);
+                    }
+
+
                     break;
             }
         }

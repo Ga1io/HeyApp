@@ -1,6 +1,7 @@
 package com.example.heydongju.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -10,9 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.Data.StoreRecommend;
+import com.example.heydongju.MainActivity;
 import com.example.heydongju.R;
 
 import java.util.ArrayList;
@@ -20,7 +25,7 @@ import java.util.ArrayList;
 public class StoreRecommendAdapter extends RecyclerView.Adapter<StoreRecommendAdapter.ItemViewHolder> {
 
     // adapter에 들어갈 list 입니다.
-    public ArrayList<StoreRecommend> listData = new ArrayList<>();
+    public ArrayList<StoreRecommend> store = new ArrayList<>();
 
     private Context context;
     // Item의 클릭 상태를 저장할 array 객체
@@ -40,44 +45,75 @@ public class StoreRecommendAdapter extends RecyclerView.Adapter<StoreRecommendAd
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         // Item을 하나, 하나 보여주는(bind 되는) 함수입니다.
-        holder.onBind(listData.get(position), position);
+        String storeName = store.get(position).name;
+        int storeIcon = store.get(position).icon;
+
+        holder.onBind(storeIcon, storeName);
     }
 
     @Override
     public int getItemCount() {
         // RecyclerView의 총 개수 입니다.
-        return listData.size();
+        return store.size();
     }
 
     public void addItem(StoreRecommend data) {
         // 외부에서 item을 추가시킬 함수입니다.
-        listData.add(data);
+        store.add(data);
     }
     public void deleteItem(StoreRecommend data) {
         // 외부에서 item을 추가시킬 함수입니다.
-        listData.remove(data);
+        store.remove(data);
     }
 
     // RecyclerView의 핵심인 ViewHolder 입니다.
     // 여기서 subView를 setting 해줍니다.
-    class ItemViewHolder extends RecyclerView.ViewHolder{
+    class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private ImageView storeIcon;
-        private TextView storeName;
-        private StoreRecommend data;
+        private CardView cardView;
+        private ImageView icon;
+        private TextView name;
+
+        private int currentIcon;
+        private String currentName;
 
         ItemViewHolder(View itemView) {
             super(itemView);
+            cardView = itemView.findViewById(R.id.storeGridItem);
+            icon = itemView.findViewById(R.id.storeIcon);
+            name = itemView.findViewById(R.id.storeName);
 
-            storeIcon=itemView.findViewById(R.id.storeIcon);
-            storeName=itemView.findViewById(R.id.storeName);
+            cardView.setOnClickListener(this);
         }
 
-        void onBind(StoreRecommend data, int position) {
-            this.data = data;
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.storeGridItem:
+                    StoreData store = new StoreData(currentName, currentIcon);
+                    Bundle data = new Bundle();
+                    data.putSerializable("store", store);
+                    MainActivity activity = (MainActivity) context;
 
-            storeIcon.setImageResource(data.getStoreIcon());
-            storeName.setText(data.getStoreName());
+                    if(activity.navController.getCurrentDestination().getId()==R.id.nav_store){
+                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_customer_select_menu, data);
+                    }
+                    else{
+                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_home_to_nav_customer_select_menu, data);
+                    }
+
+
+                    break;
+            }
+        }
+
+        void onBind(int icon, String name) {
+            this.icon.setBackgroundResource(icon);
+            this.name.setText(name);
+
+            this.currentName = name;
+            this.currentIcon = icon;
+
 
         }
 

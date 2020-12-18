@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.heydongju.Customer.CustomerMenuFragment;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.MainActivity;
@@ -86,9 +87,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.menuItemRelativeLayout:
+                    CustomerMenuFragment.currentFragment="selected";
 
-                    MainActivity activity = (MainActivity) context;
-                    activity.toMenuDetail(this.store, this.currentMenu);
+                    Bundle data = new Bundle();
+                    data.putSerializable("store", store);
+                    data.putSerializable("menu", currentMenu);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_menu_to_customerMenuDetailFragment, data);
                     break;
             }
         }

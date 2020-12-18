@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.example.heydongju.R;
 
@@ -32,7 +33,7 @@ public class CustomerBaseFragment extends Fragment {
 
         home.setSelected(true);
         CustomerHomeFragment first = new CustomerHomeFragment ();
-        CustomerSearchFragment second = new CustomerSearchFragment ();
+        CustomerStoreFragment second = new CustomerStoreFragment ();
         CustomerMyListFragment third = new CustomerMyListFragment ();
         CustomerMyPageFragment forth = new CustomerMyPageFragment ();
 
@@ -97,11 +98,8 @@ public class CustomerBaseFragment extends Fragment {
                     mypage.setSelected(false);
                     mylist.setSelected(false);
 
-                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.replace(R.id.frame, second);
-                    fragmentTransaction.commit();
+                    Navigation.findNavController(root).navigate(R.id.action_nav_customer_home_to_nav_customer_select_store);
+
 
                 }
             }
