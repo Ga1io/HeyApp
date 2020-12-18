@@ -1,0 +1,24 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#D5D5D5</item>
+        <item name="colorControlActivated">#FFE400</item>
+    </style>
+    <style name="cup" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/cup</item>
+    </style>
+</resources>

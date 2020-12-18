@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/searchStoreBtn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/search_store" />
+        <ImageButton
+            android:id="@+id/searchDrinkBtn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/search_drink" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/linear"
+        android:layout_marginTop="10dp"
+        android:id="@+id/storeRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shoppingCartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F6F6F6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:src="@drawable/shopping_cart" />
+</RelativeLayout>

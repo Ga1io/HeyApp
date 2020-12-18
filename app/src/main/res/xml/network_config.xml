@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- http 프로토콜을 허용하려면 등록해야 한다.-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">54.180.98.72</domain>
+    </domain-config>
+</network-security-config>
