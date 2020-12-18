@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_choose">
+    <fragment
+        android:id="@+id/nav_choose"
+        android:name="com.example.heydongju.Common.ChooseFragment"
+        tools:layout="@layout/common_choose" >
+        <action
+            android:id="@+id/action_nav_choose_to_nav_login"
+            app:destination="@id/nav_login" />
+        <action
+            android:id="@+id/action_nav_choose_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.heydongju.Common.LoginFragment"
+        tools:layout="@layout/common_login" >
+        <action
+            android:id="@+id/action_nav_login_to_nav_deliver_home"
+            app:destination="@id/nav_deliver_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_deliver_home"
+        android:name="com.example.heydongju.Deliver.DeliverBaseFragment"
+        tools:layout="@layout/deliver_base" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_customer_home"
+        android:name="com.example.heydongju.Customer.CustomerBaseFragment"
+        tools:layout="@layout/customer_base" >
+    </fragment>
+
+</navigation>

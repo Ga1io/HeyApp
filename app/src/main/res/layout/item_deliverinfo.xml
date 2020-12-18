@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customerItemRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/boarder"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/train"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기차"
+        android:ellipsize="end"
+        android:textSize="20dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/hideRecyclerView"
+        android:layout_below="@id/train">
+
+        <ImageView
+            android:id="@+id/avater"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/default_profile" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_toRightOf="@id/avater"
+            android:layout_marginLeft="25dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/deliverName"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:text="박동훈"
+                android:textSize="15dp"
+                android:textColor="#000000"/>
+
+            <RatingBar
+                android:id="@+id/deliverStar"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:theme="@style/RatingBar"
+                android:numStars="5"
+                android:rating="2.5"
+                android:stepSize="0.5"
+                android:isIndicator="true"/>
+
+
+            <RatingBar
+                android:id="@+id/deliverCups"
+                style="@style/cup"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:theme="@style/Widget.AppCompat.RatingBar.Small"
+                android:numStars="5"
+                android:rating="3"
+                android:stepSize="1"
+                android:isIndicator="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textColor="#000000"
+                    android:text="주문 마감  " />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:text="13:23" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/avater"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/infoRelativeLayout">
+
+            <TextView
+                android:id="@+id/detailInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="세부 사항들\n가나다라마바\n아메리카노"
+                android:textSize="15dp"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:textColor="#000000"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infoRelativeLayout"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/orderBtn"
+                android:layout_width="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/customer_item_order_btn" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
