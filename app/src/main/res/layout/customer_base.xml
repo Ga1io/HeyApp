@@ -49,13 +49,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp">
+
             <ImageView
                 android:id="@+id/image2"
-                android:layout_width="25dp"
+                android:layout_width="13dp"
+                android:layout_height="22dp"
                 android:layout_centerHorizontal="true"
-                android:layout_height="25dp"
-                android:background="@drawable/home_selector">
-            </ImageView>
+                android:background="@drawable/drink_selector"></ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_below="@+id/image2"
