@@ -84,7 +84,7 @@ public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdap
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.storeGridItem:
-                    StoreData store = new StoreData(currentName, currentIcon);
+                    StoreData store = new StoreData(currentIcon, currentName);
                     Bundle data = new Bundle();
                     data.putSerializable("store", store);
                     MainActivity activity = (MainActivity) context;

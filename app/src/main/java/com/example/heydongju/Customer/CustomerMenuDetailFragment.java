@@ -146,8 +146,8 @@ public class CustomerMenuDetailFragment extends Fragment {
                 optionCheck.setId(checkID);
 
                 // 텍스트 입력
-                optionName.setText(op.name);
-                optionPrice.setText(op.price + "원");
+                optionName.setText(op.menuName);
+                optionPrice.setText(op.menuPrice + "원");
 
                 // LayoutParameter 설정
                 nameParam.addRule(RelativeLayout.ALIGN_PARENT_LEFT);

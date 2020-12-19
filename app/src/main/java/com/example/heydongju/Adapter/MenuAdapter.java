@@ -14,7 +14,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.heydongju.Customer.CustomerMenuFragment;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.MainActivity;
@@ -23,7 +22,7 @@ import com.example.heydongju.R;
 import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
-    private ArrayList<MenuData> data = new ArrayList<>();
+    public ArrayList<MenuData> listData = new ArrayList<>();
     private Context mContext;
     private StoreData store;
 
@@ -47,16 +46,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        holder.onBind(data.get(position));
+        holder.onBind(listData.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return listData.size();
+    }
+
+    public void addItem(MenuData data) {
+        // 외부에서 item을 추가시킬 함수입니다.
+        listData.add(data);
+    }
+    public void deleteItem(MenuData data) {
+        listData.remove(data);
     }
 
     public void setMenu(ArrayList<MenuData> data) {
-        this.data = data;
+        this.listData = data;
     }
 
     public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -87,12 +94,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.menuItemRelativeLayout:
-                    CustomerMenuFragment.currentFragment="selected";
 
-                    Bundle data = new Bundle();
-                    data.putSerializable("store", store);
-                    data.putSerializable("menu", currentMenu);
-                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_menu_to_customerMenuDetailFragment, data);
+                    MainActivity activity = (MainActivity) context;
+                    //activity.toMenuDetail(this.store, this.currentMenu);
                     break;
             }
         }
@@ -118,7 +122,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
                 MenuData.Option op = currentMenu.options.get(i);
 
-                String option = op.name + " " + op.price + "원";
+                String option = op.menuName + " " + op.menuPrice + "원";
                 optionText.setText(option);
 
                 params.addRule(RelativeLayout.BELOW, textId);

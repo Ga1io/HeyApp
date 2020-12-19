@@ -1,10 +1,29 @@
 package com.example.heydongju.Data;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class AdvertiseData {
-    String content;
-    String title;
-    Integer recommendImg;
-    String content2;
+//    String content;
+//    String title;
+//    Integer recommendImg;
+//    String content2;
+
+    @SerializedName("content")
+    @Expose
+    private String content;
+
+    @SerializedName("title")
+    @Expose
+    private String title;
+
+    @SerializedName("recommendImg")
+    @Expose
+    private Integer recommendImg;
+
+    @SerializedName("content2")
+    @Expose
+    private String content2;
 
     public String getContent2() {
         return content2;

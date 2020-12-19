@@ -66,7 +66,7 @@ public class CustomerStoreFragment extends Fragment {
                 "이디야", "맥도날드", "스타벅스", "탐앤탐스", "더 벤티", "요거프레소", "커피나무"};
 
         for (int i=0; i<iconIds.length; i++){
-            store.add(new StoreData(storeNames[i], iconIds[i]));
+            store.add(new StoreData(iconIds[i], storeNames[i]));
         }
         return store;
     }

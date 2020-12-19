@@ -1,70 +1,95 @@
 package com.example.heydongju.Data;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class StoreData implements Serializable {
-    public int icon;
+
     public String name;
-    public double lang;
-    public double lng;
-    public double rate;
+    public int icon;
+
+    @SerializedName("store_icon")
+    @Expose
+    private int storeIcon;
+
+    @SerializedName("store_name")
+    @Expose
+    private String storeName;
+
+    @SerializedName("store_lang")
+    @Expose
+    private double storeLang;
+
+    @SerializedName("store_lng")
+    @Expose
+    private double storeLng;
+
+    @SerializedName("store_rate")
+    @Expose
+    private double storeRate;
+
+    @SerializedName("store_address")
+    @Expose
+    private String storeAddress;
+
+    public StoreData(int storeIcon, String storeName ){
+        this.storeIcon = storeIcon;
+        this.storeName = storeName;
+//        this.storeLang = storeLang;
+//        this.storeLng = storeLng;
+//        this.storeRate = storeRate;
+//        this.storeAddress = storeAddress;
+    }
+
 
     public int getIcon() {
-        return icon;
+        return storeIcon;
     }
 
     public void setIcon(int icon) {
-        this.icon = icon;
+        this.storeIcon = storeIcon;
     }
 
     public String getName() {
-        return name;
+        return storeName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.storeName = storeName;
     }
 
     public double getLang() {
-        return lang;
+        return storeLang;
     }
 
     public void setLang(double lang) {
-        this.lang = lang;
+        this.storeLang = storeLang;
     }
 
     public double getLng() {
-        return lng;
+        return storeLng;
     }
 
     public void setLng(double lng) {
-        this.lng = lng;
+        this.storeLng = storeLng;
     }
 
     public double getRate() {
-        return rate;
+        return storeRate;
     }
 
     public void setRate(double rate) {
-        this.rate = rate;
+        this.storeRate = storeRate;
     }
 
     public String getAddress() {
-        return address;
+        return storeAddress;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.storeAddress = storeAddress;
     }
 
-    public String address;
-
-    public StoreData(){
-
-    }
-
-    public StoreData(String name, int icon){
-        this.name = name;
-        this.icon = icon;
-    }
 }

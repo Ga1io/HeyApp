@@ -1,5 +1,8 @@
 package com.example.heydongju.Data;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,17 +18,38 @@ public class MenuData implements Serializable {
     public int img = -1;
     public String info = "";
 
+    @SerializedName("menu_name")
+    @Expose
+    private String menuName;
+
+    @SerializedName("menu_price")
+    @Expose
+    private String menuPrice;
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public String getMenuPrice() {return menuPrice;}
+
+    public void setMenuPrice(String menuPrice) {this.menuPrice = menuPrice;}
+
+
     public static class Option{
         private static HashMap<MenuData, ArrayList<Option>> optionHashMap = new HashMap<>();
 
         private MenuData menu;
-        public String name;
-        public String price;
+        public String menuName;
+        public String menuPrice;
 
-        public Option(MenuData menu, String name, String price){
+        public Option(MenuData menu, String menuName, String menuPrice){
             this.menu = menu;
-            this.name = name;
-            this.price = price;
+            this.menuName = menuName;
+            this.menuPrice = menuPrice;
 
             if (optionHashMap.containsKey(menu)){
                 optionHashMap.get(menu).add(this);
@@ -44,7 +68,7 @@ public class MenuData implements Serializable {
 
             if (ops != null){
                 for (int i =0; i<ops.size(); i++){
-                    if (ops.get(i).name.equals(name)){
+                    if (ops.get(i).menuName.equals(name)){
                         op = ops.get(i);
                     }
                 }

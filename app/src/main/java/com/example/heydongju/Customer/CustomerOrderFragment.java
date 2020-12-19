@@ -151,7 +151,7 @@ public class CustomerOrderFragment extends Fragment {
                             ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                     int optionId = v.generateViewId();
-                    optionName.setText("   " + options.get(i).name);
+                    optionName.setText("   " + options.get(i).menuName);
                     optionName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
                     optionName.setId(optionId);
 
@@ -167,7 +167,7 @@ public class CustomerOrderFragment extends Fragment {
                             ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                     // 가격 입력
-                    optionPrice.setText(options.get(i).price + "원");
+                    optionPrice.setText(options.get(i).menuPrice + "원");
                     optionPrice.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
 
                     // 가격 Layout Parameter 설정

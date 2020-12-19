@@ -1,5 +1,6 @@
 package com.example.heydongju.Common;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -17,10 +18,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 
+import com.example.heydongju.FrontActivity;
+import com.example.heydongju.MainActivity;
 import com.example.heydongju.R;
 import com.example.heydongju.Server.ApiInterface;
 import com.example.heydongju.Data.ReqData;
 import com.example.heydongju.Data.ResData;
+import com.example.heydongju.Server.HttpClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,8 +38,10 @@ public class LoginFragment extends Fragment {
     ImageButton without = null;
     TextView findid = null;
     TextView findpw = null;
-    ApiInterface api;
+    FrontActivity frontActivity;
 
+    private static String TAG = "MainActivity";
+    ApiInterface api;
 
     EditText mEmailView;
     EditText mPasswordView;
@@ -74,16 +80,13 @@ public class LoginFragment extends Fragment {
 
         login = (ImageButton) root.findViewById(R.id.login);
         join = (ImageButton) root.findViewById(R.id.join);
+        //without = (ImageButton) root.findViewById(R.id.without);
         findid = (TextView) root.findViewById(R.id.findId);
         findpw = (TextView) root.findViewById(R.id.findPw);
 
 
-        join.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        api= HttpClient.getRetrofit().create(ApiInterface.class);
 
-            }
-        });
 
         findid.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,33 +100,40 @@ public class LoginFragment extends Fragment {
 
             }
         });
+
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mode.equals("deliver")){
-                    Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_deliver_home);
-                }else{
-                //    Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_deliver_home);
 
+                    Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_deliver_home);
+                    String id, pw;
+                    id = mEmailView.getText().toString();
+                    pw= mPasswordView.getText().toString();
+                    requestPost(id, pw);
+                }else{
+                    //    Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_deliver_home);
                 }
 
-                //  activity.requestPostLogin(userID,userPW);
-              /*  String id, pw;
-                id = mEmailView.getText().toString();
-                pw= mPasswordView.getText().toString();
-                requestPost(id, pw);*/
             }
         });
+
 
         return root;
     }
     public void requestPost(String id, String pw) {
         ReqData reqData = new ReqData( id, pw);
         Call<ResData> call = api.requestPostLogin( reqData );
-        Log.e("sex","뭐냐고?");
+        Log.e("requestPost","post");
 
-        Log.e("sex",id);
-        Log.e("sex",pw);
+        Log.e("id",id);
+        Log.e("pw",pw);
         // 비동기로 백그라운드 쓰레드로 동작
         call.enqueue( new Callback<ResData>() {
             // 통신성공 후 텍스트뷰에 결과값 출력
@@ -131,33 +141,35 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(Call<ResData> call, Response<ResData> response) {
                 if(response.code()==200){
-                    Log.e("sex","뭐노?c");
-
+                    Log.e("success!",String.valueOf(response.code()));
+                }
+                else if(response.code()==201){
+                    Log.e("fail1","fail1");
                 }
                 else if(response.code()==202){
 
 
-                    Log.e("sex","뭐노?cc");
+                    Log.e("fail2","fail2");
 
-                    Log.e("sex", String.valueOf(response.body().getId()));
-                    Log.e("sex", String.valueOf(response.body().getPassword()));
+                    Log.e("fail", String.valueOf(response.body().getId()));
+                    Log.e("fail", String.valueOf(response.body().getPassword()));
 
                 }
 
 
                 else if(response.code()==401){
-                    Log.e("sex","뭐노?");
+                    Log.e("fail","idfail");
 
                     Toast.makeText(getContext().getApplicationContext(), "없는 아이디입니다.", Toast.LENGTH_LONG).show();
                 }
                 else if(response.code()==402){
-                    Log.e("sex","뭐노?");
+                    Log.e("fail","pwfail");
 
                     Toast.makeText(getContext().getApplicationContext(), "계정이 비활성 상태이거나 비밀번호가 틀립니다.", Toast.LENGTH_LONG).show();
 
                 }
                 else{
-                    Log.e("serwerwqerweqrewqex", String.valueOf(response.code()));
+                    Log.e("wronglogin", String.valueOf(response.code()));
 
                     Toast.makeText(getContext().getApplicationContext(), "잘못된 아이디나 비밀번호입니다.", Toast.LENGTH_LONG).show();
                 }

@@ -46,3 +46,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
 
 }
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14.1'
+}
+task prepareKotlinBuildScriptModel {}
