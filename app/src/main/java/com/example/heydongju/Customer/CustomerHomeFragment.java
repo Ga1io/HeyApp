@@ -169,14 +169,11 @@ public class CustomerHomeFragment extends Fragment {
     }
     private void getData2() {
         // 임의의 데이터입니다.
-        List<String> listTitle = Arrays.asList("스타벅스", "요거프레스", "맥도널드", "버거킹", "이디야", "벤티");
+        List<String> listTitle = Arrays.asList("스타벅스", "요거프레스", "맥도널드");
         List<Integer> listIcon = Arrays.asList(
                 R.drawable.starbucks,
                 R.drawable.yogerpresso,
-                R.drawable.mcdonald,
-                R.drawable.burkerking,
-                R.drawable.ediya,
-                R.drawable.venti
+                R.drawable.mcdonald
         );
         for (int i = 0; i < listTitle.size(); i++) {
             // 각 List의 값들을 data 객체에 set 해줍니다.

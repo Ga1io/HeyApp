@@ -170,7 +170,7 @@
             app:destination="@id/nav_store" />
         <action
             android:id="@+id/action_nav_customer_home_to_nav_customer_select_menu"
-            app:destination="@id/nav_customer_select_menu" />
+            app:destination="@id/navigation" />
         <action
             android:id="@+id/action_nav_customer_home_to_nav_customer_mylist"
             app:destination="@id/nav_customer_mylist" />

@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -72,6 +73,7 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
     // 여기서 subView를 setting 해줍니다.
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private RelativeLayout main;
         private RelativeLayout hideRecyclerView;
         private ImageView deliverPicture;
         private ImageView orderBtn;
@@ -94,6 +96,7 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
             time=itemView.findViewById(R.id.time);
             train=itemView.findViewById(R.id.train);
             hideRecyclerView=itemView.findViewById(R.id.hideRecyclerView);
+            main=itemView.findViewById(R.id.customerItemRecyclerView);
 
         }
 
@@ -103,14 +106,24 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
 
             //deliverName.setText(data.getDeliverName());
             deliverName.setText("박동훈");
-            deliverStar.setRating(5);
-            deliverCups.setRating(5);
+            deliverStar.setRating(4);
+            deliverCups.setRating(3);
             time.setText("11:45");
 
-           // deliverStar.setRating(data.getStar());
+           // deliverStar.setRating(data.getStar());selectedItems
 
 
             changeVisibility(selectedItems.get(position));
+
+            if(data.selected==true){
+                main.setSelected(true);
+                train.setBackground(null);
+            }else{
+                main.setSelected(false);
+                train.setBackground(context.getResources().getDrawable(R.drawable.deliverinfo_background_selector));
+
+            }
+
 
             hideRecyclerView.setOnClickListener(this);
             train.setOnClickListener(this);
@@ -125,11 +138,16 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
                     if (selectedItems.get(position)) {
                         // 펼쳐진 Item을 클릭 시
                         selectedItems.delete(position);
+                        data.setSelected(false);
                     } else {
                         // 직전의 클릭됐던 Item의 클릭상태를 지움
                         selectedItems.delete(prePosition);
                         // 클릭한 Item의 position을 저장
                         selectedItems.put(position, true);
+                        for(int i=0; i<listData.size(); i++){
+                            listData.get(i).setSelected(false);
+                        }
+                        data.setSelected(true);
                     }
                     notifyItemChanged(position);
 

@@ -5,6 +5,15 @@ public class DeliverInfoData {
     public String deliverName;
     public Float deliverCups;
     public Float deliverStar;
+    public boolean selected=false;
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     public String getTime() {
         return time;
