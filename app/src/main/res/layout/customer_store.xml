@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp">
+
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/searchStoreBtn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/search_store" />
+
+        <ImageButton
+            android:id="@+id/searchDrinkBtn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/search_drink" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/storeRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear2">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shoppingCartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#F6F6F6"
+        android:clickable="true"
+        android:src="@drawable/shopping_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="@+id/storeRecyclerView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.896" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <RelativeLayout
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/home_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image1"
+                android:layout_centerHorizontal="true"
+                android:text="Home"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="13dp"
+                android:layout_height="22dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/drink_selector"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image2"
+                android:layout_centerHorizontal="true"
+                android:text="음료 주문하기"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mylist"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/home_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image3"
+                android:layout_centerHorizontal="true"
+                android:text="현재 진행중인 주문"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mypage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/mypage_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image4"
+                android:layout_centerHorizontal="true"
+                android:text="마이 페이지"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

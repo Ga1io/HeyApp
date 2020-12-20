@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/totalPriceScheme"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/addressScheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:text="배달 주소" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="middle"
+                android:layout_marginTop="10dp"
+                android:text="중앙대학교 서울캠퍼스"
+                android:background="@drawable/boarder"
+                android:singleLine="true" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boarder"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/foodScheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="배달 음식" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/orderLinearLayout"
+                android:orientation="vertical"></LinearLayout>
+
+            <TextView
+                android:id="@+id/demandScheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="요청사항" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="배달 요청사항을 입력해주세요."
+                android:layout_marginTop="10dp"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/notice"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="주의사항\n\n배달시 책임 없고\n....\n.....\n....." />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/totalPriceScheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/orderBtn"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:textColor="#BC952B"
+        android:layout_marginLeft="10dp"
+        android:text="총 금액:  " />
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/totalPriceScheme"
+        android:layout_alignTop="@id/totalPriceScheme"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:textColor="#BC952B"
+        android:text="32,000원" />
+
+    <ImageButton
+        android:id="@+id/orderBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:layout_above="@+id/linear"
+        android:src="@drawable/customer_item_order_btn" />
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <RelativeLayout
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/home_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image1"
+                android:layout_centerHorizontal="true"
+                android:text="Home"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="13dp"
+                android:layout_height="22dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/drink_selector"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image2"
+                android:layout_centerHorizontal="true"
+                android:text="음료 주문하기"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mylist"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/home_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image3"
+                android:layout_centerHorizontal="true"
+                android:text="현재 진행중인 주문"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mypage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/mypage_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image4"
+                android:layout_centerHorizontal="true"
+                android:text="마이 페이지"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_marginVertical="15dp"
+        android:id="@+id/hideRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/avater"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/default_profile" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/linear2"
+            android:layout_toRightOf="@id/avater"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/deliverName"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:text="박동훈"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <RatingBar
+                android:id="@+id/deliverStar"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="2.5"
+                android:stepSize="0.5"
+                android:theme="@style/RatingBar" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="배달 동의서 작성 여부"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중앙대학교 컴공 3학년"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:weightSum="3"
+           android:layout_below="@+id/linear2"
+           android:layout_height="100dp">
+           <ImageView
+               android:layout_weight="1"
+               android:layout_margin="15dp"
+               android:layout_width="0dp"
+               android:background="@drawable/dummy1"
+               android:layout_height="match_parent">
+           </ImageView>
+           <ImageView
+               android:layout_weight="1"
+               android:layout_margin="15dp"
+
+               android:layout_width="0dp"
+               android:background="@drawable/dummy2"
+               android:layout_height="match_parent">
+           </ImageView>
+           <ImageView
+               android:layout_weight="1"
+               android:layout_margin="15dp"
+
+               android:layout_width="0dp"
+               android:background="@drawable/dummy3"
+               android:layout_height="match_parent">
+           </ImageView>
+       </LinearLayout>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/hideRecyclerView"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/boarder"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="20dp"
+            android:layout_height="70dp"
+            android:id="@+id/layout_review">
+
+            <TextView
+                android:id="@+id/review"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#000000"
+                android:gravity="center_vertical"
+                android:text="배달 약관 동의하기"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="24dp"
+                android:background="@drawable/arrow_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/review"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/boarder"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/layout_edit"
+            android:paddingHorizontal="20dp"
+            android:layout_below="@id/layout_review">
+
+            <TextView
+                android:id="@+id/tagchange"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/boarder"
+                android:textColor="#000000"
+                android:gravity="center_vertical"
+                android:text="이번 달 결제 금액 보기"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="24dp"
+                android:background="@drawable/arrow_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tagchange"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/boarder"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/layout_changePW"
+            android:paddingHorizontal="22dp"
+            android:layout_below="@id/layout_edit">
+
+            <TextView
+                android:id="@+id/pwchange"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/boarder"
+                android:textColor="#000000"
+                android:gravity="center_vertical"
+                android:text="이번달 배달 금액 보기"
+                android:textSize="24sp" />
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="24dp"
+                android:background="@drawable/arrow_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/pwchange"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/boarder"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/layout_changeLang"
+            android:paddingHorizontal="20dp"
+            android:layout_below="@id/layout_changePW">
+            <TextView
+                android:id="@+id/language"
+                android:layout_width="match_parent"
+                android:text="후기 작성"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent"
+                android:background="@drawable/boarder" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/boarder"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/layout_delete"
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/layout_changeLang">
+
+            <TextView
+                android:id="@+id/quit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/boarder"
+                android:gravity="center_vertical"
+                android:text="게장삭제"
+                android:textColor="#D31F09"
+                android:textSize="24sp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/linear"
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <RelativeLayout
+                android:id="@+id/home"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp">
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="25dp"
+                    android:background="@drawable/home_selector">
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/image1"
+                    android:layout_centerHorizontal="true"
+                    android:text="Home"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="13dp"
+                    android:layout_height="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/drink_selector"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/image2"
+                    android:layout_centerHorizontal="true"
+                    android:text="음료 주문하기"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mylist"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp">
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="25dp"
+                    android:background="@drawable/home_selector">
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/image3"
+                    android:layout_centerHorizontal="true"
+                    android:text="현재 진행중인 주문"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mypage"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp">
+                <ImageView
+                    android:id="@+id/image4"
+                    android:layout_width="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="25dp"
+                    android:background="@drawable/mypage_selector">
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/image4"
+                    android:layout_centerHorizontal="true"
+                    android:text="마이 페이지"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

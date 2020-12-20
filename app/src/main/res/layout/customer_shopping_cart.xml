@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="장바구니 목록 나오는 부분" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linear"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="뒤로가기" />
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <RelativeLayout
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/home_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image1"
+                android:layout_centerHorizontal="true"
+                android:text="Home"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="13dp"
+                android:layout_height="22dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/drink_selector"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image2"
+                android:layout_centerHorizontal="true"
+                android:text="음료 주문하기"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mylist"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/home_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image3"
+                android:layout_centerHorizontal="true"
+                android:text="현재 진행중인 주문"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mypage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/mypage_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image4"
+                android:layout_centerHorizontal="true"
+                android:text="마이 페이지"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
