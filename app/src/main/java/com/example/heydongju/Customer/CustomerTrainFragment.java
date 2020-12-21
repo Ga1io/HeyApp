@@ -3,17 +3,13 @@ package com.example.heydongju.Customer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +20,6 @@ import com.example.heydongju.Adapter.MenuAdapter;
 import com.example.heydongju.Data.CustomerOrderData;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
-import com.example.heydongju.MainActivity;
 import com.example.heydongju.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,7 +27,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class CustomerStoreFragment extends Fragment {
+public class CustomerTrainFragment extends Fragment {
 
     private CustomerOrderData customerOrderData;
     private MenuAdapter adapter2=new MenuAdapter();
@@ -52,7 +47,7 @@ public class CustomerStoreFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.customer_store, container, false);
+        View root = inflater.inflate(R.layout.customer_train, container, false);
         home = (RelativeLayout) root.findViewById(R.id.home);
         mylist = (RelativeLayout) root.findViewById(R.id.mylist);
         search = (RelativeLayout) root.findViewById(R.id.search);
@@ -60,7 +55,7 @@ public class CustomerStoreFragment extends Fragment {
         order = (ImageView) root.findViewById(R.id.order);
         plz = (ImageView) root.findViewById(R.id.plz);
 
-        search.setSelected(true);
+        home.setSelected(true);
         customerOrderData= new CustomerOrderData();
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +67,7 @@ public class CustomerStoreFragment extends Fragment {
                     mylist.setSelected(false);
                     search.setSelected(false);
                     mypage.setSelected(false);
-                    Navigation.findNavController(root).navigate(R.id.action_nav_customer_select_store_to_nav_customer_home);
+                    Navigation.findNavController(root).navigate(R.id.action_nav_train_to_nav_customer_home);
 
                 }
             }
@@ -88,7 +83,7 @@ public class CustomerStoreFragment extends Fragment {
                     mypage.setSelected(false);
                     search.setSelected(false);
 
-                    Navigation.findNavController(root).navigate(R.id.action_nav_customer_select_store_to_nav_customer_mylist);
+                    Navigation.findNavController(root).navigate(R.id.action_nav_train_to_nav_customer_mylist);
 
                 }
             }
@@ -104,6 +99,7 @@ public class CustomerStoreFragment extends Fragment {
                     mypage.setSelected(false);
                     mylist.setSelected(false);
 
+                    Navigation.findNavController(root).navigate(R.id.action_nav_customer_train_to_nav_customer_select_store);
 
 
                 }
@@ -120,7 +116,7 @@ public class CustomerStoreFragment extends Fragment {
                     mylist.setSelected(false);
                     search.setSelected(false);
 
-                    Navigation.findNavController(root).navigate(R.id.action_nav_customer_select_store_to_nav_customer_mypage);
+                    Navigation.findNavController(root).navigate(R.id.action_nav_train_to_nav_customer_mypage);
 
 
                 }
@@ -162,7 +158,7 @@ public class CustomerStoreFragment extends Fragment {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  Bundle bundle = new Bundle();
+                //  Bundle bundle = new Bundle();
                 //bundle.putString("backFragment", "selectStore");
                 //Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_customer_shopping_cart, bundle);
             }
@@ -175,11 +171,8 @@ public class CustomerStoreFragment extends Fragment {
     private ArrayList<StoreData> getData(){
         ArrayList<StoreData> store = new ArrayList<>();
 
-        Integer[] iconIds = {R.drawable.amasvin, R.drawable.angel_in_us, R.drawable.bebridge, R.drawable.burkerking,
-                R.drawable.coffeebin, R.drawable.ediya, R.drawable.mcdonald, R.drawable.starbucks, R.drawable.tomtom,
-                R.drawable.venti, R.drawable.yogerpresso, R.drawable.coffeenamu};
-        String[] storeNames = {"아마스빈", "엔젤리너스", "베브릿지", "버거킹", "커피빈",
-                "이디야", "맥도날드", "스타벅스", "탐앤탐스", "더 벤티", "요거프레소", "커피나무"};
+        Integer[] iconIds = {R.drawable.amasvin, R.drawable.angel_in_us, R.drawable.bebridge};
+        String[] storeNames = {"아마스빈", "엔젤리너스", "베브릿지"};
 
         for (int i=0; i<iconIds.length; i++){
             store.add(new StoreData(storeNames[i], iconIds[i]));

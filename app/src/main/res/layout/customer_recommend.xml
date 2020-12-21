@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -32,75 +31,62 @@
             android:layout_height="40dp"
             android:layout_marginHorizontal="30dp"
             android:layout_toRightOf="@+id/title"
-            android:background="@drawable/toggle"></ImageView>
+            android:background="@drawable/toggle">
+        </ImageView>
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:descendantFocusability="blocksDescendants"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#A9F5F2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:text="2. 음류수 Pick"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="기차역 등록하기"
-                android:textSize="20dp">
-
+                android:layout_height="wrap_content">
             </TextView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/plz"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/plz"
+                    android:layout_height="200dp">
+                </ImageView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/menuRecyclerView"
+                    android:background="@drawable/shape"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="더보기"
-                android:textSize="15dp"></TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="오늘의 카페"
-                android:textSize="20dp"></TextView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/order"
+        app:layout_constraintBottom_toTopOf="@+id/linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:background="@drawable/customer_item_order_btn"
+        android:layout_height="50dp">
+    </ImageView>
     <LinearLayout
         android:id="@+id/linear"
+        android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="4"
         app:layout_constraintBottom_toBottomOf="parent"

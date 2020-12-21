@@ -99,7 +99,7 @@ public class StoreRecommendAdapter extends RecyclerView.Adapter<StoreRecommendAd
                         Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_customer_select_menu, data);
                     }
                     else{
-                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_home_to_nav_customer_select_menu, data);
+                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_home_to_nav_customer_select_store, data);
                     }
 
 

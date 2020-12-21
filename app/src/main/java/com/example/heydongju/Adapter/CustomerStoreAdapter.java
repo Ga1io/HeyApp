@@ -2,6 +2,7 @@ package com.example.heydongju.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdapter.StoreViewHolder> {
     private ArrayList<StoreData> store;
     private Context context;
-
+    public StoreData storeData;
     public CustomerStoreAdapter(){
         store = new ArrayList<>();
     }
@@ -42,7 +43,7 @@ public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdap
     public StoreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        storeData= new StoreData();
         View view = inflater.inflate(R.layout.item_store, parent, false);
         StoreViewHolder holder = new StoreViewHolder(view);
 
@@ -84,18 +85,18 @@ public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdap
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.storeGridItem:
-                    StoreData store = new StoreData(currentName, currentIcon);
-                    Bundle data = new Bundle();
-                    data.putSerializable("store", store);
+                    storeData.setName(currentName);
+                    storeData.setIcon(currentIcon);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("store", storeData);
                     MainActivity activity = (MainActivity) context;
+                    if(activity.navController.getCurrentDestination().getId()==R.id.nav_train) {
+                        Navigation.findNavController(view).navigate(R.id.self_train, bundle);
 
-                    if(activity.navController.getCurrentDestination().getId()==R.id.nav_store){
-                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_customer_select_menu, data);
-                    }
-                    else{
-                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_home_to_nav_customer_select_menu, data);
-                    }
+                    }else{
+                        Navigation.findNavController(view).navigate(R.id.self, bundle);
 
+                    }
 
                     break;
             }

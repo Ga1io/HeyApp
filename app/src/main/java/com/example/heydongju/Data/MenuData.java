@@ -6,14 +6,24 @@ import java.util.HashMap;
 
 public class MenuData implements Serializable {
     public static final int NO_IMG = -1;
+    public boolean selected=false;
 
     public String name;
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     // Key: 옵션이름(샷추가, 펄추가), Value: 가격(500원)
     public ArrayList<Option> options = new ArrayList<>();
     public String price;
     public int img = -1;
     public String info = "";
+
 
     public static class Option{
         private static HashMap<MenuData, ArrayList<Option>> optionHashMap = new HashMap<>();
