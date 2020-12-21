@@ -18,10 +18,19 @@
     <fragment
         android:id="@+id/nav_login"
         android:name="com.example.heydongju.Common.LoginFragment"
-        tools:layout="@layout/customer_store" >
+        tools:layout="@layout/common_login" >
         <action
             android:id="@+id/action_nav_choose_to_nav_login"
             app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_sigin_in"
+            app:destination="@id/sign_in"/>
+    </fragment>
+    <fragment
+        android:id="@+id/sign_in"
+        android:name="com.example.heydongju.Common.JoinFragment"
+        tools:layout="@layout/sign_in">
+
     </fragment>
     <fragment
         android:id="@+id/nav_store"

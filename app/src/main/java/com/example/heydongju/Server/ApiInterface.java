@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
     // base_url + "api/login" 으로 POST 통신
-    @POST("services/login/")
+    @POST("services/public/login/")
     Call<ResData> requestPostLogin(@Body ReqData reqData );   // @Body : request 파라미터
 
 
