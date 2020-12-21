@@ -118,23 +118,23 @@ public class JoinFragment extends Fragment {
                     country_no=2;
                 }
 
-                requestPost(id, user_pw, pw_confirm, userEmail, userName, userBirth, userSpicy, country_no);
+                requestPost(id, user_pw, pw_confirm, userEmail, userName, userBirth);
             }
         });
         return root;
     }
 
-    public void requestPost(String id, String userPw, String pwConfirm, String userEmail, String userName, String userBirth, int userSpicy, int countryNo) {
-        JoinData joinData = new JoinData(id, userPw, pwConfirm, userEmail, userName, userBirth, userSpicy, countryNo);
-        Call<JoinData> call = api.requestJoin( joinData );
+    public void requestPost(String id, String userPw, String pwConfirm, String userEmail, String userName, String userBirth, String userPhone) {
+        JoinData joinData = new JoinData(id, userPw, pwConfirm, userEmail, userName, userBirth);
+        Call<JoinData> call = api.requestJoin( JoinData );
         Log.d("id", id);
         Log.d("userPw", userPw);
         Log.d("pwConfirm", pwConfirm);
-        Log.d("userEmail", userEmail);
         Log.d("userName", userName);
         Log.d("userBirth", userBirth);
-        Log.d("userSpicy", String.valueOf(userSpicy));
-        Log.d("countryNo", String.valueOf(countryNo));
+        Log.d("userEmail", userEmail);
+        Log.d("phoneNum", userPhone);
+
 
 
 /*
