@@ -24,12 +24,38 @@
             app:destination="@id/nav_customer_home" />
     </fragment>
     <fragment
+        android:id="@+id/nav_train"
+        android:name="com.example.heydongju.Customer.CustomerTrainFragment"
+        tools:layout="@layout/customer_train" >
+        <action
+            android:id="@+id/self_train"
+            app:destination="@id/nav_train" />
+        <action
+            android:id="@+id/action_nav_customer_train_to_nav_customer_select_store"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/action_nav_train_to_nav_customer_select_menu"
+            app:destination="@id/navigation" />
+        <action
+            android:id="@+id/action_nav_train_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/action_nav_train_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+        <action
+            android:id="@+id/action_nav_train_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+    </fragment>
+    <fragment
         android:id="@+id/nav_store"
         android:name="com.example.heydongju.Customer.CustomerStoreFragment"
         tools:layout="@layout/customer_store" >
         <action
             android:id="@+id/action_nav_customer_select_store_to_nav_customer_select_menu"
             app:destination="@id/navigation" />
+        <action
+            android:id="@+id/self"
+            app:destination="@id/nav_store" />
         <action
             android:id="@+id/action_nav_customer_select_store_to_nav_customer_home"
             app:destination="@id/nav_customer_home" />
@@ -168,6 +194,9 @@
         <action
             android:id="@+id/action_nav_customer_home_to_nav_customer_select_store"
             app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/action_nav_customer_home_to_nav_train"
+            app:destination="@id/nav_train" />
         <action
             android:id="@+id/action_nav_customer_home_to_nav_customer_select_menu"
             app:destination="@id/navigation" />

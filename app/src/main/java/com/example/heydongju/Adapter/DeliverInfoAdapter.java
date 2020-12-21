@@ -158,7 +158,7 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
                     prePosition = position;
                     break;
                 case R.id.orderBtn:
-                    Navigation.findNavController(v).navigate(R.id.action_nav_customer_home_to_nav_customer_select_store);
+                    Navigation.findNavController(v).navigate(R.id.action_nav_customer_home_to_nav_train);
 
                     break;
             }

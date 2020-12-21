@@ -34,6 +34,156 @@
             android:background="@drawable/toggle">
         </ImageView>
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/dblack"></RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:weightSum="20">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+                <ImageView
+                    android:id="@+id/traintype"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/train1"></ImageView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+                <RelativeLayout
+                    android:id="@+id/first"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/green">
+
+                    <TextView
+                        android:id="@+id/first_dest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="목적지1"></TextView>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="11:34"
+                    android:textColor="#166C9D"
+                    android:textSize="15dp"></TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+                <RelativeLayout
+                    android:id="@+id/second"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/blue">
+
+                    <TextView
+                        android:id="@+id/second_dest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="목적지2"></TextView>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="11:34"
+                    android:textColor="#166C9D"
+                    android:textSize="15dp"></TextView>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+                <RelativeLayout
+                    android:id="@+id/third"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="4"
+                    android:background="@drawable/red">
+
+                    <TextView
+                        android:id="@+id/third_dest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="목적지3"></TextView>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="11:34"
+                    android:textColor="#166C9D"
+                    android:textSize="15dp"></TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -41,7 +191,7 @@
         app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

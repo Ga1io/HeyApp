@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     CustomerMenuFragment menu;
     CustomerMenuDetailFragment menuDetail;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
     }
-
 
 
 }

@@ -27,6 +27,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     private Context mContext;
     private StoreData store;
 
+    public MenuAdapter() {
+    }
+
     public MenuAdapter(StoreData store) {
         this.store = store;
     }
@@ -65,7 +68,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         private TextView menuPrice;
 
         private Context context;
-        private RelativeLayout relativeLayout;
+        private RelativeLayout relativemenu;
 
         private MenuData currentMenu = null;
         private StoreData store;
@@ -78,21 +81,30 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             menuImg = itemView.findViewById(R.id.menuImg);
             menuName = itemView.findViewById(R.id.menuName);
             menuPrice = itemView.findViewById(R.id.menuPrice);
-            relativeLayout = itemView.findViewById(R.id.menuItemRelativeLayout);
+   //         relativeLayout = itemView.findViewById(R.id.menuItemRelativeLayout);
+            relativemenu = itemView.findViewById(R.id.menu);
 
-            relativeLayout.setOnClickListener(this);
+            relativemenu.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.menuItemRelativeLayout:
+                case R.id.menu:
                     CustomerMenuFragment.currentFragment="selected";
+                    if(currentMenu.selected){
+                        currentMenu.selected=false;
 
-                    Bundle data = new Bundle();
-                    data.putSerializable("store", store);
-                    data.putSerializable("menu", currentMenu);
-                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_menu_to_customerMenuDetailFragment, data);
+                    }else{
+                        currentMenu.selected=true;
+
+                    }
+
+                    //Bundle data = new Bundle();
+                    //data.putSerializable("store", store);
+                    //data.putSerializable("menu", currentMenu);
+                    notifyDataSetChanged();
+                    //Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_menu_to_customerMenuDetailFragment, data);
                     break;
             }
         }
@@ -109,8 +121,16 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             menuName.setText(menu.name);
             menuPrice.setText(menu.price + "원");
 
+
+            if(menu.selected==true){
+                relativemenu.setSelected(true);
+            }else{
+                relativemenu.setSelected(false);
+            }
+
+
             // 옵션 동적 생성
-            int textId = R.id.menuName;
+     /*       int textId = R.id.menuName;
             for (int i = 0; i < currentMenu.options.size(); i++) {
                 TextView optionText = new TextView(context);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
@@ -140,7 +160,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 params.addRule(RelativeLayout.ALIGN_LEFT, R.id.menuName);
 
                 menuPrice.setLayoutParams(params);
-            }
+            }*/
         }
     }
 }

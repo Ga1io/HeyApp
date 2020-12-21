@@ -32,7 +32,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class CustomerStoreFragment extends Fragment {
+public class CustomerRecommendFragment extends Fragment {
 
     private CustomerOrderData customerOrderData;
     private MenuAdapter adapter2=new MenuAdapter();
@@ -52,7 +52,8 @@ public class CustomerStoreFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.customer_store, container, false);
+        View root = inflater.inflate(R.layout.customer_recommend, container, false);
+
         home = (RelativeLayout) root.findViewById(R.id.home);
         mylist = (RelativeLayout) root.findViewById(R.id.mylist);
         search = (RelativeLayout) root.findViewById(R.id.search);
@@ -60,7 +61,7 @@ public class CustomerStoreFragment extends Fragment {
         order = (ImageView) root.findViewById(R.id.order);
         plz = (ImageView) root.findViewById(R.id.plz);
 
-        search.setSelected(true);
+        home.setSelected(true);
         customerOrderData= new CustomerOrderData();
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,22 +148,17 @@ public class CustomerStoreFragment extends Fragment {
 
         }
 
-        storeRecyclerView = root.findViewById(R.id.storeRecyclerView);
-        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        storeRecyclerView.setLayoutManager(linearLayoutManager);
-        storeRecyclerView.setAdapter(adapter);
 
         menuRecyclerView = root.findViewById(R.id.menuRecyclerView);
         gridLayoutManager = new GridLayoutManager(getActivity(), 4);
         menuRecyclerView.setLayoutManager(gridLayoutManager);
         menuRecyclerView.setAdapter(adapter2);
-
-
+        
 
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  Bundle bundle = new Bundle();
+                //  Bundle bundle = new Bundle();
                 //bundle.putString("backFragment", "selectStore");
                 //Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_customer_shopping_cart, bundle);
             }

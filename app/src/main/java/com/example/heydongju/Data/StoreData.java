@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class StoreData implements Serializable {
     public int icon;
-    public String name;
+    public String name="";
     public double lang;
     public double lng;
     public double rate;
