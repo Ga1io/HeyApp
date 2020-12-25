@@ -121,14 +121,15 @@
                 android:id="@+id/image3"
                 android:layout_width="25dp"
                 android:layout_centerHorizontal="true"
-                android:layout_height="25dp"
-                android:background="@drawable/home_selector">
+                android:layout_height="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/myorderselector">
             </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_below="@+id/image3"
                 android:layout_centerHorizontal="true"
-                android:text="현재 진행중인 주문"
+                android:text="My orders"
                 android:layout_height="wrap_content">
             </TextView>
         </RelativeLayout>

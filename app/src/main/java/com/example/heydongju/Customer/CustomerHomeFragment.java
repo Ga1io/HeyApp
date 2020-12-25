@@ -8,8 +8,6 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +18,7 @@ import com.example.heydongju.Adapter.DeliverInfoAdapter;
 import com.example.heydongju.Adapter.StoreRecommendAdapter;
 import com.example.heydongju.Data.AdvertiseData;
 import com.example.heydongju.Data.DeliverInfoData;
-import com.example.heydongju.Data.StoreRecommend;
+import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.R;
 
 import java.util.Arrays;
@@ -177,7 +175,7 @@ public class CustomerHomeFragment extends Fragment {
         );
         for (int i = 0; i < listTitle.size(); i++) {
             // 각 List의 값들을 data 객체에 set 해줍니다.
-            StoreRecommend data = new StoreRecommend();
+            StoreData data = new StoreData();
             data.setName(listTitle.get(i));
             data.setIcon(listIcon.get(i));
 

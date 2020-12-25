@@ -49,6 +49,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85">
         <ImageButton
+            android:background="@drawable/shape"
             android:id="@+id/login"
             android:layout_width="100dp"
             android:layout_height="45dp"
@@ -77,6 +78,7 @@
 
         <ImageButton
             android:id="@+id/join"
+            android:background="@drawable/shape"
             android:layout_width="100dp"
             android:layout_height="45dp"
             android:adjustViewBounds="true"

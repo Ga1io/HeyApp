@@ -6,8 +6,6 @@ import java.util.HashMap;
 public class Me extends User {
     private static final Me ourInstance = new Me();
 
-    // 장바구니
-    public HashMap<MenuData, ArrayList<MenuData.Option>> cart = new HashMap();
 
     // 주문내역
     public ArrayList<CustomerOrderData> orderList = new ArrayList<>();

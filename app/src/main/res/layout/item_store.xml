@@ -8,25 +8,28 @@
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:id="@+id/wow"
+        android:layout_width="110dp"
+        android:background="@drawable/selector_store"
+
+        android:layout_height="130dp">
 
         <ImageView
+            android:padding="1dp"
+            android:layout_centerHorizontal="true"
             android:id="@+id/storeIcon"
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"/>
+            android:layout_height="100dp"/>
 
         <TextView
             android:id="@+id/storeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
             android:layout_below="@id/storeIcon"
-            android:layout_alignRight="@id/storeIcon"
-            android:layout_alignLeft="@id/storeIcon"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:ellipsize="end"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="@android:color/black"
             android:text="맥도날드" />
     </RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,16 +15,16 @@ import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.heydongju.Customer.CustomerMenuFragment;
-import com.example.heydongju.Data.CustomerOrderData;
+import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.MainActivity;
 import com.example.heydongju.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdapter.StoreViewHolder> {
-    private ArrayList<StoreData> store;
+    public ArrayList<StoreData> store;
     private Context context;
     public StoreData storeData;
     public CustomerStoreAdapter(){
@@ -55,19 +56,33 @@ public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdap
         String storeName = store.get(position).name;
         int storeIcon = store.get(position).icon;
 
-        holder.bind(storeIcon, storeName);
+        holder.bind(store.get(position),storeIcon, storeName,position);
+    }
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
     @Override
     public int getItemCount() {
         return store.size();
     }
-
+    public void addItem(StoreData data) {
+        // 외부에서 item을 추가시킬 함수입니다.
+        store.add(data);
+    }
     public class StoreViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private CardView cardView;
         private ImageView icon;
         private TextView name;
+        private int position;
+        private StoreData data;
 
+        private RelativeLayout wow;
         private int currentIcon;
         private String currentName;
 
@@ -78,6 +93,7 @@ public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdap
             icon = itemView.findViewById(R.id.storeIcon);
             name = itemView.findViewById(R.id.storeName);
 
+            wow = itemView.findViewById(R.id.wow);
             cardView.setOnClickListener(this);
         }
 
@@ -89,25 +105,37 @@ public class CustomerStoreAdapter extends RecyclerView.Adapter<CustomerStoreAdap
                     storeData.setIcon(currentIcon);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("store", storeData);
+                    bundle.putSerializable("stores", store);
+
                     MainActivity activity = (MainActivity) context;
                     if(activity.navController.getCurrentDestination().getId()==R.id.nav_train) {
                         Navigation.findNavController(view).navigate(R.id.self_train, bundle);
 
-                    }else{
-                        Navigation.findNavController(view).navigate(R.id.self, bundle);
-
+                    }else if(activity.navController.getCurrentDestination().getId()==R.id.nav_recommend) {
+                        Navigation.findNavController(view).navigate(R.id.self_recommend, bundle);
                     }
-
+                    else{
+                        Navigation.findNavController(view).navigate(R.id.self, bundle);
+                       // Collections.swap(store,position, 0);
+                    }
                     break;
             }
         }
 
-        public void bind(int icon, String name){
+        public void bind(StoreData data,int icon, String name, int poisiton){
             this.icon.setBackgroundResource(icon);
             this.name.setText(name);
+            this.position = position;
 
+            this.data=data;
             this.currentName = name;
             this.currentIcon = icon;
+
+            if(data.isSelected()){
+                wow.setSelected(true);
+            }
+
+
         }
     }
 }

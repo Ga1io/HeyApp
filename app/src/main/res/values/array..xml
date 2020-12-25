@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="장소">
+        <item>310관</item>
+        <item>208관</item>
+        <item>진원이방</item>
+        <item>동훈이방</item>
+        <item>원지빌딩</item>
+        <item>깡촌(분당)</item>
+    </string-array>
+</resources>

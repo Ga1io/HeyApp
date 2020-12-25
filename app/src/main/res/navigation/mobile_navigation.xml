@@ -24,6 +24,32 @@
             app:destination="@id/nav_customer_home" />
     </fragment>
     <fragment
+        android:id="@+id/nav_recommend"
+        android:name="com.example.heydongju.Customer.CustomerRecommendFragment"
+        tools:layout="@layout/customer_recommend" >
+        <action
+            android:id="@+id/self_recommend"
+            app:destination="@id/nav_recommend" />
+        <action
+            android:id="@+id/action_nav_customer_recommend_to_nav_customer_select_store"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/action_nav_customer_recommend_to_nav_amount"
+            app:destination="@id/nav_amount" />
+        <action
+            android:id="@+id/action_nav_recommend_to_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/action_nav_recommend_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/action_nav_recommend_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+        <action
+            android:id="@+id/action_nav_recommend_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+    </fragment>
+    <fragment
         android:id="@+id/nav_train"
         android:name="com.example.heydongju.Customer.CustomerTrainFragment"
         tools:layout="@layout/customer_train" >
@@ -31,11 +57,14 @@
             android:id="@+id/self_train"
             app:destination="@id/nav_train" />
         <action
+            android:id="@+id/action_nav_customer_train_to_nav_amount"
+            app:destination="@id/nav_amount" />
+        <action
             android:id="@+id/action_nav_customer_train_to_nav_customer_select_store"
             app:destination="@id/nav_store" />
         <action
             android:id="@+id/action_nav_train_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
+            app:destination="@id/nav_store" />
         <action
             android:id="@+id/action_nav_train_to_nav_customer_mylist"
             app:destination="@id/nav_customer_mylist" />
@@ -52,7 +81,10 @@
         tools:layout="@layout/customer_store" >
         <action
             android:id="@+id/action_nav_customer_select_store_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/action_nav_customer_select_store_to_nav_amount"
+            app:destination="@id/nav_amount" />
         <action
             android:id="@+id/self"
             app:destination="@id/nav_store" />
@@ -66,127 +98,46 @@
             android:id="@+id/action_nav_customer_select_store_to_nav_customer_mypage"
             app:destination="@id/nav_customer_mypage" />
     </fragment>
-    <fragment
-        android:id="@+id/customer_order"
-        android:name="com.example.heydongju.Customer.CustomerOrderFragment"
-        android:label="customer_order"
-        tools:layout="@layout/customer_order" >
-        <action
-            android:id="@+id/action_customer_order_to_customer_payment"
-            app:destination="@id/customer_payment" />
-        <action
-            android:id="@+id/action_customer_order_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
-        <action
-            android:id="@+id/action_customer_order_to_to_nav_customer_home"
-            app:destination="@id/nav_customer_home" />
-        <action
-            android:id="@+id/action_customer_order_to_nav_customer_mylist"
-            app:destination="@id/nav_customer_mylist" />
-        <action
-            android:id="@+id/action_customer_order_to_to_nav_customer_mypage"
-            app:destination="@id/nav_customer_mypage" />
-        <action
-            android:id="@+id/action_customer_order_to_to_nav_store"
-            app:destination="@id/nav_store" />
-    </fragment>
-    <fragment
-        android:id="@+id/customerMenuDetailFragment"
-        android:name="com.example.heydongju.Customer.CustomerMenuDetailFragment"
-        android:label="customer_menu_detail_fragment"
-        tools:layout="@layout/customer_menu_detail" >
-        <action
-            android:id="@+id/action_customerMenuDetailFragment_to_navigation"
-            app:destination="@id/navigation"
-            app:popUpTo="@id/navigation"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_customerMenuDetailFragment_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
-        <action
-            android:id="@+id/action_customerMenuDetailFragment_to_nav_customer_home"
-            app:destination="@id/nav_customer_home" />
-        <action
-            android:id="@+id/action_customerMenuDetailFragment_to_nav_customer_mylist"
-            app:destination="@id/nav_customer_mylist" />
-        <action
-            android:id="@+id/action_customerMenuDetailFragment_to_nav_customer_mypage"
-            app:destination="@id/nav_customer_mypage" />
-        <action
-            android:id="@+id/action_customerMenuDetailFragment_to_nav_customer_store"
-            app:destination="@id/nav_store" />
-    </fragment>
 
 
     <fragment
-        android:id="@+id/customer_payment"
-        android:name="com.example.heydongju.Customer.CustomerPayment"
-        android:label="fragment_customer_payment"
+        android:id="@+id/nav_amount"
+        android:name="com.example.heydongju.Customer.CustomerAmountFragment"
+        tools:layout="@layout/customer_amount" >
+        <action
+            android:id="@+id/nav_customer_amount_to_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_customer_amount_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_customer_amount_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_customer_amount_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+        <action
+            android:id="@+id/nav_customer_amount_to_nav_customer_payment"
+            app:destination="@id/nav_payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_payment"
+        android:name="com.example.heydongju.Customer.CustomerPaymentFragment"
         tools:layout="@layout/customer_payment" >
         <action
-            android:id="@+id/action_customer_payment_to_customer_order_finish"
-            app:destination="@id/customer_order_finish" />
-        <action
-            android:id="@+id/action_customer_payment_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
-        <action
-            android:id="@+id/action_customer_payment_to_nav_customer_home"
-            app:destination="@id/nav_customer_home" />
-        <action
-            android:id="@+id/action_customer_payment_to_nav_customer_mylist"
-            app:destination="@id/nav_customer_mylist" />
-        <action
-            android:id="@+id/action_customer_payment_to_nav_customer_mypage"
-            app:destination="@id/nav_customer_mypage" />
-        <action
-            android:id="@+id/action_customer_payment_to_nav_store"
+            android:id="@+id/nav_customer_payment_to_nav_customer_select_menu"
             app:destination="@id/nav_store" />
-    </fragment>
-    <fragment
-        android:id="@+id/customer_order_finish"
-        android:name="com.example.heydongju.Customer.CustomerOrderFinish"
-        android:label="fragment_customer_order_finish">
         <action
-            android:id="@+id/action_customer_order_finish_to_nav_home"
-            app:destination="@id/nav_customer_home"
-            app:popUpTo="@id/nav_customer_home"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_customer_order_finish_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
-        <action
-            android:id="@+id/action_customer_order_finish_to_nav_customer_home"
+            android:id="@+id/nav_customer_payment_to_nav_customer_home"
             app:destination="@id/nav_customer_home" />
         <action
-            android:id="@+id/action_customer_order_finish_to_nav_customer_mylist"
+            android:id="@+id/nav_customer_payment_to_nav_customer_mylist"
             app:destination="@id/nav_customer_mylist" />
         <action
-            android:id="@+id/action_customer_order_finish_to_nav_customer_mypage"
-            app:destination="@id/nav_customer_mypage" />
-        <action
-            android:id="@+id/action_customer_order_finish_to_nav_store"
-            app:destination="@id/nav_store" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_customer_menu"
-        android:name="com.example.heydongju.Customer.CustomerMenuFragment"
-        tools:layout="@layout/customer_menu" >
-        <action
-            android:id="@+id/nav_customer_menu_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
-        <action
-            android:id="@+id/nav_customer_menu_to_nav_customer_home"
-            app:destination="@id/nav_customer_home" />
-        <action
-            android:id="@+id/nav_customer_menu_to_nav_customer_mylist"
-            app:destination="@id/nav_customer_mylist" />
-        <action
-            android:id="@+id/nav_customer_menu_to_nav_customer_mypage"
+            android:id="@+id/nav_customer_payment_to_nav_customer_mypage"
             app:destination="@id/nav_customer_mypage" />
     </fragment>
-
-
-
     <fragment
         android:id="@+id/nav_customer_home"
         android:name="com.example.heydongju.Customer.CustomerHomeFragment"
@@ -195,11 +146,14 @@
             android:id="@+id/action_nav_customer_home_to_nav_customer_select_store"
             app:destination="@id/nav_store" />
         <action
+            android:id="@+id/action_nav_customer_home_to_nav_recommend"
+            app:destination="@id/nav_recommend" />
+        <action
             android:id="@+id/action_nav_customer_home_to_nav_train"
             app:destination="@id/nav_train" />
         <action
             android:id="@+id/action_nav_customer_home_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
+            app:destination="@id/nav_store" />
         <action
             android:id="@+id/action_nav_customer_home_to_nav_customer_mylist"
             app:destination="@id/nav_customer_mylist" />
@@ -213,7 +167,7 @@
         tools:layout="@layout/customer_mylist" >
         <action
             android:id="@+id/action_nav_customer_mylist_to_nav_customer_select_menu"
-            app:destination="@id/navigation" />
+            app:destination="@id/nav_store" />
         <action
             android:id="@+id/action_nav_customer_mylist_store_to_nav_customer_home"
             app:destination="@id/nav_customer_home" />
@@ -239,72 +193,6 @@
             app:destination="@id/nav_customer_mylist" />
     </fragment>
 
-    <fragment
-        android:id="@+id/customer_shopping_cart"
-        android:name="com.example.heydongju.Customer.CustomerShoppingCart"
-        android:label="fragment_customer_shopping_cart"
-        tools:layout="@layout/customer_shopping_cart" >
-        <action
-            android:id="@+id/action_customer_shopping_cart_to_nav_customer_select_store"
-            app:destination="@id/nav_store"
-            app:popUpTo="@id/nav_store" />
-        <action
-            android:id="@+id/action_customer_shopping_cart_to_navigation"
-            app:destination="@id/navigation"
-            app:popUpTo="@id/navigation" />
-        <action
-            android:id="@+id/action_customer_shopping_cart_to_nav_customer_home"
-            app:destination="@id/nav_customer_home" />
-        <action
-            android:id="@+id/action_customer_shopping_cart_to_nav_customer_mylist"
-            app:destination="@id/nav_customer_mylist" />
-        <action
-            android:id="@+id/action_customer_shopping_cart_to_nav_customer_mypage"
-            app:destination="@id/nav_customer_mypage" />
-    </fragment>
 
-    <navigation android:id="@+id/navigation"
-        app:startDestination="@id/nav_customer_select_menu">
-
-        <fragment
-            android:id="@+id/storeMenuFragment"
-            android:name="com.example.heydongju.Customer.CustomerMenuFragment"
-            tools:layout="@layout/customer_menu"
-            android:label="StoreMenuFragment" >
-            <action
-                android:id="@+id/action_storeMenuFragment_to_nav_customer_home"
-                app:destination="@id/nav_customer_home" />
-            <action
-                android:id="@+id/action_storeMenuFragment_to_nav_customer_mylist"
-                app:destination="@id/nav_customer_mylist" />
-            <action
-                android:id="@+id/action_storeMenuFragment_to_nav_customer_mypage"
-                app:destination="@id/nav_customer_mypage" />
-        </fragment>
-        <fragment
-            android:id="@+id/nav_customer_select_menu"
-            android:name="com.example.heydongju.Customer.CustomerMenuFragment"
-            android:label="customer_select_menu"
-            tools:layout="@layout/customer_menu">
-            <action
-                android:id="@+id/action_nav_customer_select_menu_to_customerMenuDetailFragment"
-                app:destination="@id/customerMenuDetailFragment" />
-            <action
-                android:id="@+id/action_nav_customer_select_menu_to_nav_customer_home"
-                app:destination="@id/nav_customer_home" />
-            <action
-                android:id="@+id/action_nav_customer_select_menu_to_nav_customer_mylist"
-                app:destination="@id/nav_customer_mylist" />
-            <action
-                android:id="@+id/action_nav_customer_select_menu_to_nav_customer_mypage"
-                app:destination="@id/nav_customer_mypage" />
-        </fragment>
-        <action
-            android:id="@+id/action_global_customer_order"
-            app:destination="@id/customer_order" />
-        <action
-            android:id="@+id/action_global_customer_shopping_cart"
-            app:destination="@id/customer_shopping_cart" />
-    </navigation>
 
 </navigation>

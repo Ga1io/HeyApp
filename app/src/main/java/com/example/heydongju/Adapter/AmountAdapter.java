@@ -2,12 +2,12 @@ package com.example.heydongju.Adapter;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -19,27 +19,26 @@ import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.heydongju.Data.CustomerOrderData;
 import com.example.heydongju.Data.DeliverInfoData;
-import com.example.heydongju.Data.StoreData;
+import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.MainActivity;
 import com.example.heydongju.R;
 
 import java.util.ArrayList;
 
-public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.ItemViewHolder> {
+import static com.example.heydongju.Customer.CustomerAmountFragment.totalPrice;
+
+public class AmountAdapter extends RecyclerView.Adapter<AmountAdapter.ItemViewHolder> {
 
     // adapter에 들어갈 list 입니다.
-    public ArrayList<DeliverInfoData> listData = new ArrayList<>();
+    public ArrayList<MenuData> listData = new ArrayList<>();
     private Context context;
-    private ArrayList<StoreData> stores = new ArrayList<>();
-    private StoreData store1=new StoreData();
-    private StoreData store2=new StoreData();
-    private StoreData store3=new StoreData();
-
     // Item의 클릭 상태를 저장할 array 객체
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
     // 직전에 클릭됐던 Item의 position
     private int prePosition = -1;
+    public int priceSum=0;
 
     @NonNull
     @Override
@@ -47,7 +46,7 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
         // LayoutInflater를 이용하여 전 단계에서 만들었던 item.xml을 inflate 시킵니다.
         // return 인자는 ViewHolder 입니다.
         context = parent.getContext();
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_deliverinfo, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_amount, parent, false);
         return new ItemViewHolder(view);
     }
 
@@ -71,7 +70,7 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
         return listData.size();
     }
 
-    public void addItem(DeliverInfoData data) {
+    public void addItem(MenuData data) {
         // 외부에서 item을 추가시킬 함수입니다.
         listData.add(data);
     }
@@ -80,99 +79,101 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
     // 여기서 subView를 setting 해줍니다.
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private TextView drinkName;
+        private TextView drinkPrice;
         private RelativeLayout main;
         private RelativeLayout hideRecyclerView;
-        private ImageView deliverPicture;
-        private ImageView orderBtn;
-        private TextView deliverName;
-        private LinearLayout train;
-        private RatingBar deliverStar;
-        private RatingBar deliverCups;
-        private TextView time;
-        private DeliverInfoData data;
+        private RelativeLayout whole;
+        CardView less;
+        CardView more;
+        TextView prnumber;
         private int position;
+        MainActivity activity = (MainActivity)context;
 
-        private ImageView caffe1;
-        private ImageView caffe2;
-        private ImageView caffe3;
-        private TextView caffe1text;
-        private TextView caffe2text;
-        private TextView caffe3text;
+        private RelativeLayout relative1;
+        private RelativeLayout relative2;
+        private RelativeLayout relative3;
+        private RelativeLayout relative4;
+        private RelativeLayout relative5;
+        private RelativeLayout relative6;
+        private RelativeLayout relative7;
+        private RelativeLayout relative8;
 
+        private TextView optiontext1;
+        private TextView optiontext2;
+        private TextView optiontext3;
+        private TextView optiontext4;
+        private TextView optiontext5;
+        private TextView optiontext6;
+        private TextView optiontext7;
+        private TextView optiontext8;
+
+        private CheckBox option1;
+        private CheckBox option2;
+        private CheckBox option3;
+        private CheckBox option4;
+        private CheckBox option5;
+        private CheckBox option6;
+        private CheckBox option7;
+        private CheckBox option8;
+
+        private MenuData data;
 
         ItemViewHolder(View itemView) {
             super(itemView);
+            main=itemView.findViewById(R.id.layout_food);
             hideRecyclerView=itemView.findViewById(R.id.hideRecyclerView);
-            deliverPicture=itemView.findViewById(R.id.avater);
-            deliverName=itemView.findViewById(R.id.deliverName);
-            deliverStar=itemView.findViewById(R.id.deliverStar);
-            deliverCups=itemView.findViewById(R.id.deliverCups);
-            orderBtn=itemView.findViewById(R.id.orderBtn);
-            time=itemView.findViewById(R.id.time);
-            train=itemView.findViewById(R.id.train);
-            main=itemView.findViewById(R.id.customerItemRecyclerView);
-            caffe1=itemView.findViewById(R.id.caffe1);
-            caffe2=itemView.findViewById(R.id.caffe2);
-            caffe3=itemView.findViewById(R.id.caffe3);
-            caffe1text=itemView.findViewById(R.id.caffe1text);
-            caffe2text=itemView.findViewById(R.id.caffe2text);
-            caffe3text=itemView.findViewById(R.id.caffe3text);
+            drinkPrice=itemView.findViewById(R.id.drink_price);
+            drinkName=itemView.findViewById(R.id.drink_name);
+            less=itemView.findViewById(R.id.less);
+            more=itemView.findViewById(R.id.more);
+            prnumber=itemView.findViewById(R.id.prnumber);
+            whole=itemView.findViewById(R.id.layout_whole);
+            prnumber=itemView.findViewById(R.id.prnumber);
+
+
 
         }
 
-        void onBind(DeliverInfoData data, int position) {
+        void onBind(MenuData data, int position) {
             this.data = data;
             this.position = position;
 
             //deliverName.setText(data.getDeliverName());
-            deliverName.setText("박동훈");
-            deliverStar.setRating(4);
-            deliverCups.setRating(3);
-            time.setText("11:45");
+            drinkName.setText(data.name);
+            drinkPrice.setText(String.valueOf(data.price));
+            prnumber.setText(String.valueOf(data.amount));
 
 
-            store1.setIcon(R.drawable.burkerking);
-            store1.setName("버거킹");
-            store2.setIcon(R.drawable.ediya);
-            store2.setName("이디야");
-            store3.setIcon(R.drawable.mcdonald);
-            store3.setName("맥도널드");
 
-            caffe1.setBackground(context.getResources().getDrawable(store1.getIcon()));
-            caffe2.setBackground(context.getResources().getDrawable(store2.getIcon()));
-            caffe3.setBackground(context.getResources().getDrawable(store3.getIcon()));
+            if(data.getOptions()!=null){
 
-            caffe1text.setText("버거킹");
-            caffe1text.setText("이디야");
-            caffe1text.setText("맥도널드");
+            }
 
+            for(int i=0; i<listData.size(); i++){
+                listData.get(i).setSelected(false);
+            }
             // deliverStar.setRating(data.getStar());selectedItems
-
-            stores.add(store1);
-            stores.add(store2);
-            stores.add(store3);
-
-            changeVisibility(selectedItems.get(position));
-
             if(data.selected==true){
-                main.setSelected(true);
-                train.setBackground(null);
+                whole.setSelected(true);
             }else{
-                main.setSelected(false);
-                train.setBackground(context.getResources().getDrawable(R.drawable.deliverinfo_background_selector));
+                whole.setSelected(false);
             }
 
 
-            hideRecyclerView.setOnClickListener(this);
-            train.setOnClickListener(this);
-            orderBtn.setOnClickListener(this);
 
+
+            main.setOnClickListener(this);
+            changeVisibility(selectedItems.get(position));
+            hideRecyclerView.setOnClickListener(this);
+            less.setOnClickListener(this);
+            more.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.train:
+                case R.id.layout_food:
                     if (selectedItems.get(position)) {
                         // 펼쳐진 Item을 클릭 시
                         selectedItems.delete(position);
@@ -196,9 +197,39 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
                     prePosition = position;
                     break;
                 case R.id.orderBtn:
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("stores", stores);
-                    Navigation.findNavController(v).navigate(R.id.action_nav_customer_home_to_nav_train, bundle);
+                    Navigation.findNavController(v).navigate(R.id.action_nav_customer_home_to_nav_train);
+
+                    break;
+                case R.id.less:
+                    if(data.amount>0){
+                        data.amount=data.amount-1;
+                    }
+                    prnumber.setText(String.valueOf(data.amount));
+
+                    priceSum=0;
+                    for(int i=0; i<listData.size(); i++){
+                        priceSum=priceSum+listData.get(i).getAmount()*listData.get(i).getPrice();
+                        Log.e(String.valueOf(i)+"아이템", listData.get(i).getAmount()+"개 "+listData.get(i).getPrice()+"원");
+                    }
+
+                    Log.e("가격", String.valueOf(priceSum));
+
+                    totalPrice.setText(String.valueOf(priceSum));
+
+                    break;
+                case R.id.more:
+                    data.amount=data.amount+1;
+                    prnumber.setText(String.valueOf(data.amount));
+
+                    priceSum=0;
+
+                    for(int i=0; i<listData.size(); i++){
+                        priceSum=priceSum+listData.get(i).getAmount()*listData.get(i).getPrice();
+                        Log.e(String.valueOf(i)+"아이템", listData.get(i).getAmount()+"개 "+listData.get(i).getPrice()+"원");
+                    }
+
+                    Log.e("가격", String.valueOf(priceSum));
+                    totalPrice.setText(String.valueOf(priceSum));
 
                     break;
             }
@@ -211,7 +242,7 @@ public class DeliverInfoAdapter extends RecyclerView.Adapter<DeliverInfoAdapter.
 
         private void changeVisibility(final boolean isExpanded) {
             // height 값을 dp로 지정해서 넣고싶으면 아래 소스를 이용
-            int dpValue = 300;
+            int dpValue = 100;
             float d = context.getResources().getDisplayMetrics().density;
             int height = (int) (dpValue * d);
 

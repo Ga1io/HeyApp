@@ -7,60 +7,80 @@ import java.util.HashMap;
 public class MenuData implements Serializable {
     public static final int NO_IMG = -1;
     public boolean selected=false;
-
+    public int amount;
     public String name;
+    public int price=0;
+    public int img = -1;
+
+    public ArrayList<String> options=new ArrayList<>();
+
+    public ArrayList<Boolean> getOptionSelected() {
+        return optionSelected;
+    }
+
+    public void setOptionSelected(ArrayList<Boolean> optionSelected) {
+        this.optionSelected = optionSelected;
+    }
+
+    public ArrayList<Boolean> optionSelected=new ArrayList<>();
+
+    public ArrayList<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(ArrayList<String> options) {
+        this.options = options;
+    }
+
 
     public boolean isSelected() {
         return selected;
     }
+
+    public static int getNoImg() {
+        return NO_IMG;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
+    }
+
+
 
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
 
     // Key: 옵션이름(샷추가, 펄추가), Value: 가격(500원)
-    public ArrayList<Option> options = new ArrayList<>();
-    public String price;
-    public int img = -1;
-    public String info = "";
 
 
-    public static class Option{
-        private static HashMap<MenuData, ArrayList<Option>> optionHashMap = new HashMap<>();
 
-        private MenuData menu;
-        public String name;
-        public String price;
-
-        public Option(MenuData menu, String name, String price){
-            this.menu = menu;
-            this.name = name;
-            this.price = price;
-
-            if (optionHashMap.containsKey(menu)){
-                optionHashMap.get(menu).add(this);
-            }else{
-                ArrayList<Option> ops = new ArrayList<>();
-                ops.add(this);
-
-                optionHashMap.put(menu, ops);
-            }
-        }
-
-        public static Option findByName(MenuData menu, String name){
-            Option op = null;
-
-            ArrayList<Option> ops = optionHashMap.get(menu);
-
-            if (ops != null){
-                for (int i =0; i<ops.size(); i++){
-                    if (ops.get(i).name.equals(name)){
-                        op = ops.get(i);
-                    }
-                }
-            }
-
-            return op;
-        }
-    }
 }

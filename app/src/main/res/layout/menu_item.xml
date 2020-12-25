@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout android:id="@+id/menu"
     android:layout_width="90dp"
     android:background="@drawable/rec_selector"

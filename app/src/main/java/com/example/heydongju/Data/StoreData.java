@@ -9,6 +9,16 @@ public class StoreData implements Serializable {
     public double lng;
     public double rate;
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    private boolean selected=false;
+
     public int getIcon() {
         return icon;
     }

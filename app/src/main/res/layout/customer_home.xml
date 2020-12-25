@@ -63,8 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="기차역 등록하기"
-                android:textSize="20dp">
+                android:text="운행중인 기차"
+                android:textSize="25dp">
 
             </TextView>
 
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="오늘의 카페"
-                android:textSize="20dp"></TextView>
+                android:textSize="25dp"></TextView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview2"
@@ -155,14 +155,15 @@
                 android:id="@+id/image3"
                 android:layout_width="25dp"
                 android:layout_centerHorizontal="true"
-                android:layout_height="25dp"
-                android:background="@drawable/home_selector">
+                android:layout_height="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/myorderselector">
             </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_below="@+id/image3"
                 android:layout_centerHorizontal="true"
-                android:text="현재 진행중인 주문"
+                android:text="My orders"
                 android:layout_height="wrap_content">
             </TextView>
         </RelativeLayout>

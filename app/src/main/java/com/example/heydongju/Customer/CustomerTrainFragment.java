@@ -25,6 +25,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 public class CustomerTrainFragment extends Fragment {
@@ -41,9 +44,10 @@ public class CustomerTrainFragment extends Fragment {
     private RelativeLayout mypage;
     private RecyclerView menuRecyclerView;
     private StoreData storeData;
-    private LinearLayoutManager linearLayoutManager;
+    private GridLayoutManager linearLayoutManager;
     private ImageView order;
     private ImageView plz;
+    private ArrayList<StoreData> stores;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +58,12 @@ public class CustomerTrainFragment extends Fragment {
         mypage = (RelativeLayout) root.findViewById(R.id.mypage);
         order = (ImageView) root.findViewById(R.id.order);
         plz = (ImageView) root.findViewById(R.id.plz);
+
+        stores = new ArrayList<>();
+        if (getArguments() != null) {
+            stores = (ArrayList<StoreData>) getArguments().getSerializable("stores");
+            storeData = (StoreData) getArguments().getSerializable("store");
+        }
 
         home.setSelected(true);
         customerOrderData= new CustomerOrderData();
@@ -122,21 +132,32 @@ public class CustomerTrainFragment extends Fragment {
                 }
             }
         });
-        adapter.setStores(getData());
+        getData(stores);
 
 
-        if (getArguments() != null) {
-            Bundle bundle = getArguments();
-            storeData = (StoreData) getArguments().getSerializable("store");
-        }
 
 
 
         if(storeData!=null){
             plz.setBackground(null);
-            adapter2.setMenu(makeDummy(storeData));
+            makeDummy(storeData);
+
+            for(int i=0; i<stores.size(); i++){
+                if(stores.get(i).getName().equals(storeData.getName())){
+                    stores.get(i).setSelected(true);
+
+                    Log.e("select",stores.get(0).getName());
+                }
+                else{
+                    stores.get(i).setSelected(false);
+
+                }
+            }
+
             adapter2.notifyDataSetChanged();
             Log.e("sedfdfdx!",storeData.name);
+
+
         }
         else{
             Log.e("sedfdfdx!","sexsdsfdfsd");
@@ -144,7 +165,7 @@ public class CustomerTrainFragment extends Fragment {
         }
 
         storeRecyclerView = root.findViewById(R.id.storeRecyclerView);
-        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        linearLayoutManager = new GridLayoutManager(getActivity(), 3);
         storeRecyclerView.setLayoutManager(linearLayoutManager);
         storeRecyclerView.setAdapter(adapter);
 
@@ -158,9 +179,19 @@ public class CustomerTrainFragment extends Fragment {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //  Bundle bundle = new Bundle();
-                //bundle.putString("backFragment", "selectStore");
-                //Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_customer_shopping_cart, bundle);
+                ArrayList<MenuData> selectedMenu = new ArrayList<>();
+                for(int i=0; i<adapter2.data.size(); i++) {
+                    if (adapter2.data.get(i).isSelected()){
+                        selectedMenu.add(adapter2.data.get(i));
+                    }
+                }
+
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("store", storeData);
+                bundle.putSerializable("menu", selectedMenu);
+
+                Navigation.findNavController(view).navigate(R.id.action_nav_customer_train_to_nav_amount,bundle);
             }
         });
 
@@ -168,132 +199,154 @@ public class CustomerTrainFragment extends Fragment {
 
         return root;
     }
-    private ArrayList<StoreData> getData(){
-        ArrayList<StoreData> store = new ArrayList<>();
+    private void getData(ArrayList<StoreData> stores){
 
-        Integer[] iconIds = {R.drawable.amasvin, R.drawable.angel_in_us, R.drawable.bebridge};
-        String[] storeNames = {"아마스빈", "엔젤리너스", "베브릿지"};
 
-        for (int i=0; i<iconIds.length; i++){
-            store.add(new StoreData(storeNames[i], iconIds[i]));
-        }
-        return store;
+        adapter.addItem(stores.get(0));
+        adapter.addItem(stores.get(1));
+        adapter.addItem(stores.get(2));
+
+        adapter.notifyDataSetChanged();
+
     }
-    private ArrayList<MenuData> makeDummy(StoreData storeData){
+    private void makeDummy(StoreData storeData) {
+
         ArrayList<MenuData> data = new ArrayList<>();
+        List<String> menuName = new ArrayList<>();
+        List<Integer> listIcon = new ArrayList<>();
+        List<Integer> listPrice = new ArrayList<>();
+        List<List<String>> options = new ArrayList<>();
+        List<List<Boolean>> listOptionSelected = new ArrayList<>();
 
-        if(storeData.name=="아마스빈") {
-            String[] menuName = {"아이스 아메리카노", "녹차 프라페", "미숫가루", "카페라떼", "망고스무디",
-                    "체리스무디", "토마토주스", "자바칩프라페", "타로 버블티", "딸기 요거트 스무디"};
+        if (storeData.name.equals("맥도널드")) {
+            menuName = Arrays.asList("맥도널드 아메리카아", "녹차 프라페", "미숫가루", "카페라떼", "망고스무디",
+                    "체리스무디", "토마토주스", "자바칩프라페", "타로 버블티", "딸기 요거트 스무디");
 
-            Integer[] menuImg = {R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
-                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble};
+            listIcon = Arrays.asList(
+                    R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
+                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble, R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
+                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble
+            );
+            listPrice = Arrays.asList(
+                    1200, 1500, 2000,1000,1000,3000,
+                    1000,1000,1000,1000
+            );
+            options = Arrays.asList(
+                    Arrays.asList("옵션1", "옵션2","옵션3", "옵션4", "옵션5", "옵션6", "옵션7", "옵션8"),
+                    Arrays.asList("샷추가", "고추"),
+                    Arrays.asList("샷추가", "원샷"),
+                    Arrays.asList("샷추가", "노현규"),
+                    Arrays.asList("샷추가", "고기추가"),
+                    Arrays.asList("샷추가", "쌈무추가"),
+                    Arrays.asList("샷추가", "그르릉"),
+                    Arrays.asList("샷추가", "섹스"),
+                    Arrays.asList("샷추가", "변영무"),
+                    Arrays.asList("샷추가", "현규영무섹스")
+            );
+            listOptionSelected = Arrays.asList(
+                    Arrays.asList(false,false,false, false, false, false, false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false)
+            );
+        } else if (storeData.name.equals("스타벅스")) {
 
-            int price = 1000;
-            int idx = 0;
+            menuName = Arrays.asList("스타벅스꺼 dasdf아메리카아", "녹차 프라페", "미숫가루", "카페라떼", "망고스무디",
+                    "체리스무디", "토마토주스", "자바칩프라페", "타로 버블티", "딸기 요거트 스무디");
 
-            for (int i = 0; i<10; i++){
-                price += 500;
+            listIcon = Arrays.asList(
+                    R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
+                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble, R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
+                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble
+            );
+            listPrice = Arrays.asList(
+                    1200, 1500, 2000,1000,1000,3000,
+                    1000,1000,1000,1000
+            );
+            options = Arrays.asList(
+                    Arrays.asList("옵션1", "옵션2","옵션3", "옵션4", "옵션5", "옵션6", "옵션7", "옵션8"),
+                    Arrays.asList("샷추가", "고추"),
+                    Arrays.asList("샷추가", "원샷"),
+                    Arrays.asList("샷추가", "노현규"),
+                    Arrays.asList("샷추가", "고기추가"),
+                    Arrays.asList("샷추가", "쌈무추가"),
+                    Arrays.asList("샷추가", "그르릉"),
+                    Arrays.asList("샷추가", "섹스"),
+                    Arrays.asList("샷추가", "변영무"),
+                    Arrays.asList("샷추가", "현규영무섹스")
+            );
+            listOptionSelected = Arrays.asList(
+                    Arrays.asList(false,false,false, false, false, false, false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false)
+            );
+        } else {
 
-                MenuData newMenu = new MenuData();
-                newMenu.name = menuName[i];
-                newMenu.price = NumberFormat.getNumberInstance(Locale.US).format(price);
-                newMenu.info = "메뉴에 대한 설명......";
+            menuName = Arrays.asList("노이스 기타드등", "녹차 프라페", "미숫가루", "카페라떼", "망고스무디",
+                    "체리스무디", "토마토주스", "자바칩프라페", "타로 버블티", "딸기 요거트 스무디");
 
-                if (i== 2 || i ==3 || i == 8){
-                    ArrayList<MenuData.Option> options = new ArrayList<>();
-
-                    options.add(new MenuData.Option(newMenu, "타피오카 펄 추가", "500"));
-                    options.add(new MenuData.Option(newMenu,"알로에 펄 추가", "500"));
-                    options.add(new MenuData.Option(newMenu,"샷추가", "500"));
-
-                    newMenu.options = options;
-                }
-
-                if (i == 0 || i == 3 || i ==4 || i == 7 || i== 8){
-                    newMenu.img = menuImg[idx];
-                    idx++;
-                }
-
-                data.add(newMenu);
-            }
+            listIcon = Arrays.asList(
+                    R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
+                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble, R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
+                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble
+            );
+            listPrice = Arrays.asList(
+                    1200, 1500, 2000,1000,1000,3000,
+                    1000,1000,1000,1000
+            );
+            options = Arrays.asList(
+                    Arrays.asList("옵션1", "옵션2","옵션3", "옵션4", "옵션5", "옵션6", "옵션7", "옵션8"),
+                    Arrays.asList("샷추가", "고추"),
+                    Arrays.asList("샷추가", "원샷"),
+                    Arrays.asList("샷추가", "노현규"),
+                    Arrays.asList("샷추가", "고기추가"),
+                    Arrays.asList("샷추가", "쌈무추가"),
+                    Arrays.asList("샷추가", "그르릉"),
+                    Arrays.asList("샷추가", "섹스"),
+                    Arrays.asList("샷추가", "변영무"),
+                    Arrays.asList("샷추가", "현규영무섹스")
+            );
+            listOptionSelected = Arrays.asList(
+                    Arrays.asList(false,false,false, false, false, false, false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false),
+                    Arrays.asList(false, false)
+            );
         }
-        else if(storeData.name=="베브릿지"){
 
-            String[] menuName = {"노이스 아메리카아", "녹차 프라페", "미숫가루", "카페라떼", "망고스무디",
-                    "체리스무디", "토마토주스", "자바칩프라페", "타로 버블티", "딸기 요거트 스무디"};
-
-            Integer[] menuImg = {R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
-                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble};
-
-            int price = 1000;
-            int idx = 0;
-
-            for (int i = 0; i<10; i++){
-                price += 500;
-
-                MenuData newMenu = new MenuData();
-                newMenu.name = menuName[i];
-                newMenu.price = NumberFormat.getNumberInstance(Locale.US).format(price);
-                newMenu.info = "메뉴에 대한 설명......";
-
-                if (i== 2 || i ==3 || i == 8){
-                    ArrayList<MenuData.Option> options = new ArrayList<>();
-
-                    options.add(new MenuData.Option(newMenu, "타피오카 펄 추가", "500"));
-                    options.add(new MenuData.Option(newMenu,"알로에 펄 추가", "500"));
-                    options.add(new MenuData.Option(newMenu,"샷추가", "500"));
-
-                    newMenu.options = options;
-                }
-
-                if (i == 0 || i == 3 || i ==4 || i == 7 || i== 8){
-                    newMenu.img = menuImg[idx];
-                    idx++;
-                }
-
-                data.add(newMenu);
-            }
+        for (int i = 0; i < menuName.size(); i++) {
+            // 각 List의 값들을 data 객체에 set 해줍니다.
+            MenuData menuData = new MenuData();
+            menuData.setName(menuName.get(i));
+            menuData.setImg(listIcon.get(i));
+            menuData.setPrice(listPrice.get(i));
+         //   menuData.setOptions((ArrayList<String>) options.get(i));
+         //   menuData.setOptionSelected((ArrayList<Boolean>) listOptionSelected.get(i));
+            // 각 값이 들어간 data를 adapter에 추가합니다.
+            adapter2.addItem(menuData);
         }
-        else{
+        // adapter의 이 변경되었다는 것을 알려줍니다.
+        adapter2.notifyDataSetChanged();
 
-            String[] menuName = {"아이스 아메리카노", "녹차 프라페", "미숫가루", "카페라떼", "망고스무디",
-                    "체리스무디", "토마토주스", "자바칩프라페", "타로 버블티", "딸기 요거트 스무디"};
-
-            Integer[] menuImg = {R.drawable.sample_ahah, R.drawable.sample_cafelette, R.drawable.sample_mangosm,
-                    R.drawable.sample_javafrape, R.drawable.sample_tarobubble};
-
-            int price = 1000;
-            int idx = 0;
-
-            for (int i = 0; i<10; i++){
-                price += 500;
-
-                MenuData newMenu = new MenuData();
-                newMenu.name = menuName[i];
-                newMenu.price = NumberFormat.getNumberInstance(Locale.US).format(price);
-                newMenu.info = "메뉴에 대한 설명......";
-
-                if (i== 2 || i ==3 || i == 8){
-                    ArrayList<MenuData.Option> options = new ArrayList<>();
-
-                    options.add(new MenuData.Option(newMenu, "타피오카 펄 추가", "500"));
-                    options.add(new MenuData.Option(newMenu,"알로에 펄 추가", "500"));
-                    options.add(new MenuData.Option(newMenu,"샷추가", "500"));
-
-                    newMenu.options = options;
-                }
-
-                if (i == 0 || i == 3 || i ==4 || i == 7 || i== 8){
-                    newMenu.img = menuImg[idx];
-                    idx++;
-                }
-
-                data.add(newMenu);
-            }
-        }
-
-        return data;
     }
 
 }

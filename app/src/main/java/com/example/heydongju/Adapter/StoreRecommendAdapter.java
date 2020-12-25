@@ -2,8 +2,6 @@ package com.example.heydongju.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.heydongju.Data.StoreData;
-import com.example.heydongju.Data.StoreRecommend;
 import com.example.heydongju.MainActivity;
 import com.example.heydongju.R;
 
@@ -25,7 +22,7 @@ import java.util.ArrayList;
 public class StoreRecommendAdapter extends RecyclerView.Adapter<StoreRecommendAdapter.ItemViewHolder> {
 
     // adapter에 들어갈 list 입니다.
-    public ArrayList<StoreRecommend> store = new ArrayList<>();
+    public ArrayList<StoreData> store = new ArrayList<>();
 
     private Context context;
     // Item의 클릭 상태를 저장할 array 객체
@@ -48,7 +45,7 @@ public class StoreRecommendAdapter extends RecyclerView.Adapter<StoreRecommendAd
         String storeName = store.get(position).name;
         int storeIcon = store.get(position).icon;
 
-        holder.onBind(storeIcon, storeName);
+        holder.onBind(store.get(position));
     }
 
     @Override
@@ -57,11 +54,11 @@ public class StoreRecommendAdapter extends RecyclerView.Adapter<StoreRecommendAd
         return store.size();
     }
 
-    public void addItem(StoreRecommend data) {
+    public void addItem(StoreData data) {
         // 외부에서 item을 추가시킬 함수입니다.
         store.add(data);
     }
-    public void deleteItem(StoreRecommend data) {
+    public void deleteItem(StoreData data) {
         // 외부에서 item을 추가시킬 함수입니다.
         store.remove(data);
     }
@@ -95,24 +92,18 @@ public class StoreRecommendAdapter extends RecyclerView.Adapter<StoreRecommendAd
                     data.putSerializable("store", store);
                     MainActivity activity = (MainActivity) context;
 
-                    if(activity.navController.getCurrentDestination().getId()==R.id.nav_store){
-                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_customer_select_menu, data);
-                    }
-                    else{
-                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_home_to_nav_customer_select_store, data);
-                    }
-
+                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_home_to_nav_recommend, data);
 
                     break;
             }
         }
 
-        void onBind(int icon, String name) {
-            this.icon.setBackgroundResource(icon);
-            this.name.setText(name);
+        void onBind(StoreData store) {
+            this.icon.setBackgroundResource(store.icon);
+            this.name.setText(store.name);
 
-            this.currentName = name;
-            this.currentIcon = icon;
+            this.currentName = store.name;
+            this.currentIcon = store.icon;
 
 
         }
