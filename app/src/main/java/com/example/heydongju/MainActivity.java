@@ -29,15 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
-        if (fragmentList != null) {
-            //TODO: Perform your logic to pass back press here
-            for(Fragment fragment : fragmentList){
-                if(fragment instanceof OnBackPressedListener){
-                    ((OnBackPressedListener)fragment).onBackPressed();
-                }
-            }
+        if(navController.getCurrentDestination().getId()==R.id.nav_store||navController.getCurrentDestination().getId()==R.id.nav_customer_home||navController.getCurrentDestination().getId()==R.id.nav_customer_mypage||navController.getCurrentDestination().getId()==R.id.nav_customer_mylist){
+        }else{
+            super.onBackPressed();
         }
+
     }
 }
 

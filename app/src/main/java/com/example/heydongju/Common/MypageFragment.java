@@ -12,10 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.heydongju.OnBackPressedListener;
 import com.example.heydongju.R;
 
-public class MypageFragment extends Fragment implements OnBackPressedListener {
+public class MypageFragment extends Fragment {
     private RelativeLayout home;
     private RelativeLayout mylist;
     private RelativeLayout search;
@@ -182,8 +181,5 @@ public class MypageFragment extends Fragment implements OnBackPressedListener {
         return root;
     }
 
-    @Override
-    public void onBackPressed() {
 
-    }
 }

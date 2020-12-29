@@ -19,13 +19,12 @@ import com.example.heydongju.Adapter.StoreRecommendAdapter;
 import com.example.heydongju.Data.AdvertiseData;
 import com.example.heydongju.Data.DeliverInfoData;
 import com.example.heydongju.Data.StoreData;
-import com.example.heydongju.OnBackPressedListener;
 import com.example.heydongju.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomerHomeFragment extends Fragment implements OnBackPressedListener {
+public class CustomerHomeFragment extends Fragment  {
     private DeliverInfoAdapter adapter;
     private StoreRecommendAdapter adapter2;
     private AdvertiseAdapter adapter3;
@@ -214,8 +213,5 @@ public class CustomerHomeFragment extends Fragment implements OnBackPressedListe
         adapter3.notifyDataSetChanged();
     }
 
-    @Override
-    public void onBackPressed() {
 
-    }
 }

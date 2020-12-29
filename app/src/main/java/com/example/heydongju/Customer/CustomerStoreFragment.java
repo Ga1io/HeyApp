@@ -20,7 +20,6 @@ import com.example.heydongju.Adapter.MenuAdapter;
 import com.example.heydongju.Data.CustomerOrderData;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
-import com.example.heydongju.OnBackPressedListener;
 import com.example.heydongju.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,7 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class CustomerStoreFragment extends Fragment implements OnBackPressedListener {
+public class CustomerStoreFragment extends Fragment {
 
     private CustomerOrderData customerOrderData;
     private MenuAdapter adapter2 = new MenuAdapter();
@@ -287,8 +286,4 @@ public class CustomerStoreFragment extends Fragment implements OnBackPressedList
 
     }
 
-    @Override
-    public void onBackPressed() {
-
-    }
 }

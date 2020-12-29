@@ -12,17 +12,14 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.heydongju.Adapter.AdvertiseAdapter;
 import com.example.heydongju.Adapter.DeliverInfoAdapter;
-import com.example.heydongju.Adapter.StoreRecommendAdapter;
 import com.example.heydongju.Data.DeliverInfoData;
-import com.example.heydongju.OnBackPressedListener;
 import com.example.heydongju.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomerMyListFragment extends Fragment implements OnBackPressedListener {
+public class CustomerMyListFragment extends Fragment  {
     private RelativeLayout home;
     private RelativeLayout mylist;
     private RelativeLayout search;
@@ -146,8 +143,4 @@ public class CustomerMyListFragment extends Fragment implements OnBackPressedLis
         adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void onBackPressed() {
-
-    }
 }
