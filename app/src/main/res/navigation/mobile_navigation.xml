@@ -22,21 +22,45 @@
         android:name="com.example.heydongju.Common.LoginFragment"
         tools:layout="@layout/common_login" >
         <action
-            android:id="@+id/action_nav_choose_to_nav_login"
+            android:id="@+id/action_nav_choose_to_nav_customer_home"
             app:destination="@id/nav_customer_home" />
         <action
-            android:id="@+id/action_nav_login_to_nav_signup"
+            android:id="@+id/action_nav_login_to_nav_signup_first"
+            app:destination="@id/nav_siginup_first"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_siginup_first"
+        android:name="com.example.heydongju.Common.SignupFirstFragment"
+        tools:layout="@layout/common_siginup_first" >
+        <action
+            android:id="@+id/action_nav_first_to_nav_signup_second"
+            app:destination="@id/nav_siginup_second"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_siginup_second"
+        android:name="com.example.heydongju.Common.SignupSecondFragment"
+        tools:layout="@layout/common_signup_second" >
+        <action
+            android:id="@+id/action_nav_second_to_nav_signup_third"
+            app:destination="@id/nav_siginup_third"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_siginup_third"
+        android:name="com.example.heydongju.Common.SignupSecondFragment"
+        tools:layout="@layout/common_signup_second" >
+        <action
+            android:id="@+id/action_nav_third_to_nav_signup"
             app:destination="@id/sign_up"/>
     </fragment>
     <fragment
         android:id="@+id/sign_up"
-        android:name="com.example.heydongju.Common.JoinFragment"
-        tools:layout="@layout/sign_in">
+        android:name="com.example.heydongju.Common.SignupFragment"
+        tools:layout="@layout/common_signup">
         <action
             android:id="@+id/action_nav_sign_to_nav_login"
             app:destination="@id/nav_login"/>
-
     </fragment>
+
     <fragment
         android:id="@+id/nav_recommend"
         android:name="com.example.heydongju.Customer.CustomerRecommendFragment"

@@ -105,7 +105,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("mode", "signup");
-                Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_signup,bundle);
+                Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_signup_first,bundle);
 
             }
         });

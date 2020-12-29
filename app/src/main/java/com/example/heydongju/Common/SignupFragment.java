@@ -1,7 +1,6 @@
 package com.example.heydongju.Common;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.heydongju.FrontActivity;
 import com.example.heydongju.R;
 import com.example.heydongju.Server.ApiInterface;
 import com.example.heydongju.Server.HttpClient;
@@ -29,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class JoinFragment extends Fragment {
+public class SignupFragment extends Fragment {
 
     private EditText id_text;
     private EditText pw_text;
@@ -56,7 +53,7 @@ public class JoinFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.sign_in, container, false);
+        View root = inflater.inflate(R.layout.common_signup, container, false);
         id_text = (EditText) root.findViewById(R.id.id);
         pw_text= (EditText) root.findViewById(R.id.pw);
         pw_confirm_text = (EditText) root.findViewById(R.id.pw_confirm);
