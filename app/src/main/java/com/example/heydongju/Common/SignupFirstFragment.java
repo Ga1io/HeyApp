@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,6 +48,8 @@ public class SignupFirstFragment extends Fragment {
 
         confirm= (ImageView) root.findViewById(R.id.confirm);
         continu= (ImageView) root.findViewById(R.id.continu);
+
+
 
         pw_confirm_text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -131,6 +134,7 @@ public class SignupFirstFragment extends Fragment {
             public void onClick(View view) {
                 //중복 검사 테스트를 만들어야함(서버랑 통신해서 하는거)
                 //일단 그냥 confirmed를 바꾸게 더미
+                Toast.makeText(getContext().getApplicationContext(), "아이디 중복 dfd 해주세요.", Toast.LENGTH_LONG).show();
 
 
                 confirmed=true;
