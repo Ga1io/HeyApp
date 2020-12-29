@@ -159,12 +159,17 @@ public class CustomerRecommendFragment extends Fragment {
                         selectedMenu.add(adapter2.data.get(i));
                     }
                 }
+                if (selectedMenu.size()==0) {
+                }
+                else{
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("store", storeData);
+                    bundle.putSerializable("menu", selectedMenu);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_recommend_to_nav_amount,bundle);
 
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("store", storeData);
-                bundle.putSerializable("menu", selectedMenu);
-                Navigation.findNavController(view).navigate(R.id.action_nav_customer_recommend_to_nav_amount,bundle);
+                }
+
 
             }
         });

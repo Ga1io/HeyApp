@@ -103,6 +103,7 @@
            android:layout_below="@+id/linear2"
            android:layout_height="100dp">
            <ImageView
+               android:id="@+id/recent"
                android:layout_weight="1"
                android:layout_margin="15dp"
                android:layout_width="0dp"
@@ -110,6 +111,7 @@
                android:layout_height="match_parent">
            </ImageView>
            <ImageView
+               android:id="@+id/orderhistory"
                android:layout_weight="1"
                android:layout_margin="15dp"
 
@@ -118,6 +120,7 @@
                android:layout_height="match_parent">
            </ImageView>
            <ImageView
+               android:id="@+id/deliverhistory"
                android:layout_weight="1"
                android:layout_margin="15dp"
 
@@ -141,7 +144,7 @@
             android:id="@+id/layout_review">
 
             <TextView
-                android:id="@+id/review"
+                android:id="@+id/agree"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="#000000"
@@ -158,7 +161,7 @@
                 android:layout_height="24dp"
                 android:background="@drawable/arrow_button"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/review"
+                app:layout_constraintEnd_toEndOf="@+id/agree"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -173,7 +176,7 @@
             android:layout_below="@id/layout_review">
 
             <TextView
-                android:id="@+id/tagchange"
+                android:id="@+id/monthorder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/boarder"
@@ -191,7 +194,7 @@
                 android:layout_height="24dp"
                 android:background="@drawable/arrow_button"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tagchange"
+                app:layout_constraintEnd_toEndOf="@+id/monthorder"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -205,7 +208,7 @@
             android:layout_below="@id/layout_edit">
 
             <TextView
-                android:id="@+id/pwchange"
+                android:id="@+id/monthdeliver"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -219,20 +222,20 @@
                 android:layout_height="24dp"
                 android:background="@drawable/arrow_button"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/pwchange"
+                app:layout_constraintEnd_toEndOf="@+id/monthdeliver"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/commentbox"
             android:background="@drawable/boarder"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:id="@+id/layout_changeLang"
             android:paddingHorizontal="20dp"
             android:layout_below="@id/layout_changePW">
             <TextView
-                android:id="@+id/language"
+                android:id="@+id/comment"
                 android:layout_width="match_parent"
                 android:text="후기 작성"
                 android:textSize="24sp"
@@ -240,8 +243,39 @@
                 android:gravity="center_vertical"
                 android:layout_height="match_parent"
                 android:background="@drawable/boarder" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="24dp"
+                android:background="@drawable/arrow_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/comment"
+                app:layout_constraintTop_toTopOf="parent" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/boarder"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:paddingHorizontal="20dp"
+            android:layout_below="@id/layout_changePW">
+            <TextView
+                android:id="@+id/faq"
+                android:layout_width="match_parent"
+                android:text="FAQ"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:gravity="center_vertical"
+                android:layout_height="match_parent"
+                android:background="@drawable/boarder" />
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="24dp"
+                android:background="@drawable/arrow_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/faq"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:background="@drawable/boarder"
             android:layout_width="match_parent"
@@ -249,15 +283,15 @@
             android:id="@+id/layout_delete"
             android:paddingHorizontal="20dp"
             android:layout_marginTop="30dp"
-            android:layout_below="@id/layout_changeLang">
+            android:layout_below="@id/commentbox">
 
             <TextView
-                android:id="@+id/quit"
+                android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/boarder"
                 android:gravity="center_vertical"
-                android:text="게장삭제"
+                android:text="회원정보 수정"
                 android:textColor="#D31F09"
                 android:textSize="24sp" />
 

@@ -15,6 +15,8 @@
             android:id="@+id/action_nav_choose_to_nav_customer_home"
             app:destination="@id/nav_customer_home" />
     </fragment>
+
+
     <fragment
         android:id="@+id/nav_login"
         android:name="com.example.heydongju.Common.LoginFragment"
@@ -138,6 +140,7 @@
             android:id="@+id/nav_customer_payment_to_nav_customer_mypage"
             app:destination="@id/nav_customer_mypage" />
     </fragment>
+
     <fragment
         android:id="@+id/nav_customer_home"
         android:name="com.example.heydongju.Customer.CustomerHomeFragment"
@@ -180,8 +183,11 @@
     </fragment>
     <fragment
         android:id="@+id/nav_customer_mypage"
-        android:name="com.example.heydongju.Customer.CustomerMyPageFragment"
-        tools:layout="@layout/customer_mypage" >
+        android:name="com.example.heydongju.Common.MypageFragment"
+        tools:layout="@layout/common_mypage" >
+        <action
+            android:id="@+id/action_nav_common_mypage_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
         <action
             android:id="@+id/action_nav_customer_mypage_to_nav_customer_home"
             app:destination="@id/nav_customer_home" />
@@ -189,10 +195,186 @@
             android:id="@+id/action_nav_customer_mypage_to_nav_customer_st"
             app:destination="@id/nav_store" />
         <action
-            android:id="@+id/action_nav_customer_mypage_to_nav_customer_myliste"
-            app:destination="@id/nav_customer_mylist" />
+            android:id="@+id/action_nav_customer_mypage_to_nav_common_recent"
+            app:destination="@id/nav_recent" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_common_orderhistory"
+            app:destination="@id/nav_orderhistory" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_common_deliverhistory"
+            app:destination="@id/nav_deliverhistory" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_agree"
+            app:destination="@id/nav_agree" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_monthdeliver"
+            app:destination="@id/nav_mothdeliver" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_monthorder"
+            app:destination="@id/nav_monthorder" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_comment"
+            app:destination="@id/nav_comment" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_status"
+            app:destination="@id/nav_status" />
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_faq"
+            app:destination="@id/nav_faq" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_agree"
+        android:name="com.example.heydongju.Common.AgreeFragment"
+        tools:layout="@layout/common_agree" >
+        <action
+            android:id="@+id/nav_common_agree_to_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_agree_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_agree_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_agree_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_comment"
+        android:name="com.example.heydongju.Common.CommentFragment"
+        tools:layout="@layout/common_comment" >
+        <action
+            android:id="@+id/nav_common_comment_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_comment_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_comment_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_comment_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_deliverhistory"
+        android:name="com.example.heydongju.Common.DeliverHistoryFragment"
+        tools:layout="@layout/common_deliveryhisotry" >
+        <action
+            android:id="@+id/nav_common_deliverhistory_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_deliverhistory_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_deliverhistory_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_deliverhistory_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_faq"
+        android:name="com.example.heydongju.Common.FAQFragment"
+        tools:layout="@layout/common_faq" >
+        <action
+            android:id="@+id/nav_common_faq_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_faq_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_faq_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_faq_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_mothdeliver"
+        android:name="com.example.heydongju.Common.MonthDeliverFragment"
+        tools:layout="@layout/common_monthdeliver" >
+        <action
+            android:id="@+id/nav_common_mothdeliver_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_mothdeliver_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_mothdeliver_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_mothdeliver_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
 
-
+    <fragment
+        android:id="@+id/nav_monthorder"
+        android:name="com.example.heydongju.Common.MonthOrderFragment"
+        tools:layout="@layout/common_monthorder" >
+        <action
+            android:id="@+id/nav_common_monthorder_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_monthorder_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_monthorder_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_monthorder_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_recent"
+        android:name="com.example.heydongju.Common.RecentFragment"
+        tools:layout="@layout/common_recent" >
+        <action
+            android:id="@+id/nav_common_recent_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_recent_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_recent_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_recent_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_orderhistory"
+        android:name="com.example.heydongju.Common.OrderHistoryFragment"
+        tools:layout="@layout/common_orderhistory" >
+        <action
+            android:id="@+id/nav_common_orderhistory_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_orderhistory_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_orderhistory_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_orderhistory_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_status"
+        android:name="com.example.heydongju.Common.StatusFragment"
+        tools:layout="@layout/common_status" >
+        <action
+            android:id="@+id/nav_common_status_nav_customer_select_menu"
+            app:destination="@id/nav_store" />
+        <action
+            android:id="@+id/nav_common_status_to_nav_customer_home"
+            app:destination="@id/nav_customer_home" />
+        <action
+            android:id="@+id/nav_common_status_to_nav_customer_mylist"
+            app:destination="@id/nav_customer_mylist" />
+        <action
+            android:id="@+id/nav_common_status_to_nav_customer_mypage"
+            app:destination="@id/nav_customer_mypage" />
+    </fragment>
 </navigation>

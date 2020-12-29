@@ -8,6 +8,7 @@ public class StoreData implements Serializable {
     public double lang;
     public double lng;
     public double rate;
+    public String address;
 
     public boolean isSelected() {
         return selected;
@@ -67,7 +68,6 @@ public class StoreData implements Serializable {
         this.address = address;
     }
 
-    public String address;
 
     public StoreData(){
 

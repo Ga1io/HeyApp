@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="중앙대학교"
+            android:textSize="30dp"></TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/title"
+            android:background="@drawable/bar"></ImageView>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_toRightOf="@+id/title"
+            android:background="@drawable/toggle"></ImageView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="배달 내역"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/linear"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <RelativeLayout
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/home_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image1"
+                android:layout_centerHorizontal="true"
+                android:text="Home"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="13dp"
+                android:layout_height="22dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/drink_selector"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image2"
+                android:layout_centerHorizontal="true"
+                android:text="음료 주문하기"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mylist"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/myorderselector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image3"
+                android:layout_centerHorizontal="true"
+                android:text="My orders"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mypage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="25dp"
+                android:background="@drawable/mypage_selector">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/image4"
+                android:layout_centerHorizontal="true"
+                android:text="마이 페이지"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

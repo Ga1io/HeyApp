@@ -16,12 +16,13 @@ import com.example.heydongju.Adapter.AdvertiseAdapter;
 import com.example.heydongju.Adapter.DeliverInfoAdapter;
 import com.example.heydongju.Adapter.StoreRecommendAdapter;
 import com.example.heydongju.Data.DeliverInfoData;
+import com.example.heydongju.OnBackPressedListener;
 import com.example.heydongju.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomerMyListFragment extends Fragment {
+public class CustomerMyListFragment extends Fragment implements OnBackPressedListener {
     private RelativeLayout home;
     private RelativeLayout mylist;
     private RelativeLayout search;
@@ -145,4 +146,8 @@ public class CustomerMyListFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

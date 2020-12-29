@@ -185,13 +185,19 @@ public class CustomerTrainFragment extends Fragment {
                         selectedMenu.add(adapter2.data.get(i));
                     }
                 }
+                if (selectedMenu.size()==0) {
+                }
+                else{
 
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("store", storeData);
-                bundle.putSerializable("menu", selectedMenu);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("store", storeData);
+                    bundle.putSerializable("menu", selectedMenu);
 
-                Navigation.findNavController(view).navigate(R.id.action_nav_customer_train_to_nav_amount,bundle);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_train_to_nav_amount,bundle);
+
+                }
+
             }
         });
 

@@ -20,6 +20,7 @@ import com.example.heydongju.Adapter.MenuAdapter;
 import com.example.heydongju.Data.CustomerOrderData;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
+import com.example.heydongju.OnBackPressedListener;
 import com.example.heydongju.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -28,7 +29,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class CustomerStoreFragment extends Fragment {
+public class CustomerStoreFragment extends Fragment implements OnBackPressedListener {
 
     private CustomerOrderData customerOrderData;
     private MenuAdapter adapter2 = new MenuAdapter();
@@ -161,11 +162,16 @@ public class CustomerStoreFragment extends Fragment {
                     }
                 }
 
+                if (selectedMenu.size()==0) {
+                }
+                else{
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("store", storeData);
+                    bundle.putSerializable("menu", selectedMenu);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_amount,bundle);
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("store", storeData);
-                bundle.putSerializable("menu", selectedMenu);
-                Navigation.findNavController(view).navigate(R.id.action_nav_customer_select_store_to_nav_amount,bundle);
+                }
+
 
             }
         });
@@ -281,4 +287,8 @@ public class CustomerStoreFragment extends Fragment {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }
