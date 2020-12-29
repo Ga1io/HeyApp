@@ -3,12 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        layout="@layout/app_bar">
+    </include>
+
     <LinearLayout
         android:id="@+id/linear"
-        android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,15 +46,15 @@
 
             <ImageView
                 android:id="@+id/image2"
-                android:layout_width="20dp"
-                android:layout_height="25dp"
+                android:layout_width="13dp"
+                android:layout_height="22dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/drink_selector"></ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_below="@+id/image2"
                 android:layout_centerHorizontal="true"
-                android:text="store"
+                android:text="음료 주문하기"
                 android:layout_height="wrap_content">
             </TextView>
         </RelativeLayout>
@@ -71,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_below="@+id/image3"
                 android:layout_centerHorizontal="true"
-                android:text="My list"
+                android:text="My orders"
                 android:layout_height="wrap_content">
             </TextView>
         </RelativeLayout>

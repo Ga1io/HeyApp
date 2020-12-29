@@ -36,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
         if(navController.getCurrentDestination().getId()==R.id.nav_store
                 ||navController.getCurrentDestination().getId()==R.id.nav_customer_home||
                 navController.getCurrentDestination().getId()==R.id.nav_customer_mypage||
-                navController.getCurrentDestination().getId()==R.id.nav_customer_mylist)
+                navController.getCurrentDestination().getId()==R.id.nav_customer_mylist||
+                navController.getCurrentDestination().getId()==R.id.nav_deliver_home||
+                navController.getCurrentDestination().getId()==R.id.nav_deliver_mylist||
+                navController.getCurrentDestination().getId()==R.id.nav_deliver_store)
         {
         }else{
             super.onBackPressed();

@@ -33,6 +33,7 @@ public class MypageFragment extends Fragment {
     private TextView comment;
     private TextView status;
     private TextView faq;
+    private ImageView toggle;
     private SharedViewModel model;
     private String mode;
 
@@ -52,6 +53,7 @@ public class MypageFragment extends Fragment {
         mylist = (RelativeLayout) root.findViewById(R.id.mylist);
         search = (RelativeLayout) root.findViewById(R.id.search);
         mypage = (RelativeLayout) root.findViewById(R.id.mypage);
+        toggle = (ImageView) root.findViewById(R.id.toggle);
         mypage.setSelected(true);
 
         recent = (ImageView) root.findViewById(R.id.recent);
@@ -65,10 +67,10 @@ public class MypageFragment extends Fragment {
         faq = (TextView) root.findViewById(R.id.faq);
 
         model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
-
-
         mode=model.getMode();
-        Log.e("mode",mode);
+
+
+
 
         recent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +137,8 @@ public class MypageFragment extends Fragment {
                     mylist.setSelected(false);
                     search.setSelected(false);
                     mypage.setSelected(false);
+
+
                     if(mode=="customer")
                         Navigation.findNavController(view).navigate(R.id.action_nav_customer_mypage_to_nav_customer_home);
                     else
@@ -154,6 +158,7 @@ public class MypageFragment extends Fragment {
                     mypage.setSelected(false);
                     search.setSelected(false);
 
+
                     if(mode=="customer")
                         Navigation.findNavController(view).navigate(R.id.action_nav_common_mypage_to_nav_customer_mylist);
                     else
@@ -172,6 +177,7 @@ public class MypageFragment extends Fragment {
                     home.setSelected(false);
                     mypage.setSelected(false);
                     mylist.setSelected(false);
+
 
                     if(mode=="customer")
                         Navigation.findNavController(root).navigate(R.id.action_nav_customer_mypage_to_nav_customer_st);
@@ -198,6 +204,25 @@ public class MypageFragment extends Fragment {
                 }
             }
         });
+
+        toggle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+
+                if(mode.equals("customer")) {
+                    Navigation.findNavController(root).navigate(R.id.action_nav_customer_mypage_to_nav_deliver_home);
+                    Log.e("mode",mode);
+                    model.setMode("deliver");
+                }
+                else if(mode.equals("deliver")){
+                    Navigation.findNavController(root).navigate(R.id.action_nav_deliver_mypage_to_nav_customer_home);
+                    Log.e("mode",mode);
+                    model.setMode("customer");
+                }
+            }
+        });
+
         return root;
     }
 

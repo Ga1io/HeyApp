@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import com.example.heydongju.Data.CustomerOrderData;
 import com.example.heydongju.Data.MenuData;
 import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.R;
+import com.example.heydongju.Server.SharedViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -35,6 +37,9 @@ public class DeliverStoreFragment extends Fragment {
     private RelativeLayout mylist;
     private RelativeLayout search;
     private RelativeLayout mypage;
+    private ImageView toggle;
+    private SharedViewModel model;
+    private String mode;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,6 +49,9 @@ public class DeliverStoreFragment extends Fragment {
         mylist = (RelativeLayout) root.findViewById(R.id.mylist);
         search = (RelativeLayout) root.findViewById(R.id.search);
         mypage = (RelativeLayout) root.findViewById(R.id.mypage);
+        model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        toggle = (ImageView) root.findViewById(R.id.toggle);
+        mode=model.getMode();
 
 
         search.setSelected(true);
@@ -99,6 +107,15 @@ public class DeliverStoreFragment extends Fragment {
 
 
                 }
+            }
+        });
+
+        toggle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                    Navigation.findNavController(root).navigate(R.id.action_nav_deliver_store_to_nav_customer_home);
+                    Log.e("mode",mode);
+                    model.setMode("customer");
             }
         });
 
