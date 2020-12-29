@@ -1,7 +1,6 @@
 package com.example.heydongju.Deliver;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,47 +8,37 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.heydongju.Adapter.AdvertiseAdapter;
 import com.example.heydongju.Adapter.DeliverInfoAdapter;
-import com.example.heydongju.Adapter.StoreRecommendAdapter;
-import com.example.heydongju.Data.AdvertiseData;
 import com.example.heydongju.Data.DeliverInfoData;
-import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.R;
-import com.example.heydongju.Server.SharedViewModel;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class DeliverHomeFragment extends Fragment  {
-    private DeliverInfoAdapter adapter;
-    private StoreRecommendAdapter adapter2;
-    private AdvertiseAdapter adapter3;
+public class DeliverMyListFragment extends Fragment  {
     private RelativeLayout home;
     private RelativeLayout mylist;
     private RelativeLayout search;
+    private DeliverInfoAdapter adapter;
+
     private RelativeLayout mypage;
-    private SharedViewModel model;
-    private String mode;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.deliver_home, container, false);
-        model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        View root = inflater.inflate(R.layout.deliver_mylist, container, false);
         home = (RelativeLayout) root.findViewById(R.id.home);
         mylist = (RelativeLayout) root.findViewById(R.id.mylist);
         search = (RelativeLayout) root.findViewById(R.id.search);
         mypage = (RelativeLayout) root.findViewById(R.id.mypage);
-        home.setSelected(true);
-        mode=model.getMode();
-        Log.e("model",mode);
+        mylist.setSelected(true);
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerview);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        adapter = new DeliverInfoAdapter();
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +50,7 @@ public class DeliverHomeFragment extends Fragment  {
                     mylist.setSelected(false);
                     search.setSelected(false);
                     mypage.setSelected(false);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_deliver_mylist_to_nav_deliver_home);
 
                 }
             }
@@ -76,8 +66,6 @@ public class DeliverHomeFragment extends Fragment  {
                     mypage.setSelected(false);
                     search.setSelected(false);
 
-                    Navigation.findNavController(view).navigate(R.id.action_nav_deliver_home_to_nav_deliver_mylist);
-
                 }
             }
         });
@@ -92,7 +80,7 @@ public class DeliverHomeFragment extends Fragment  {
                     mypage.setSelected(false);
                     mylist.setSelected(false);
 
-                    Navigation.findNavController(root).navigate(R.id.action_nav_deliver_home_to_nav_deliver_store);
+                    Navigation.findNavController(root).navigate(R.id.action_nav_deliver_mylist_to_nav_deliver_store);
 
 
                 }
@@ -109,7 +97,7 @@ public class DeliverHomeFragment extends Fragment  {
                     mylist.setSelected(false);
                     search.setSelected(false);
 
-                    Navigation.findNavController(view).navigate(R.id.action_nav_deliver_home_to_nav_deliver_mypage);
+                    Navigation.findNavController(root).navigate(R.id.action_nav_deliver_mylist_to_nav_deliver_mypage);
 
 
                 }
@@ -117,12 +105,8 @@ public class DeliverHomeFragment extends Fragment  {
         });
 
 
-
-
-
         return root;
     }
-
 
 
 }
