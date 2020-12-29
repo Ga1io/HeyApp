@@ -2,6 +2,8 @@ package com.example.heydongju;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +26,11 @@ public class FrontActivity extends AppCompatActivity {
         Timer timer =new Timer();
         timer.schedule(m_task, 2000);
 
+    }
+
+    public void jointoLogin(){
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.navigate(R.id.action_nav_sign_to_nav_login);
     }
 
     TimerTask m_task = new TimerTask(){

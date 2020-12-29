@@ -10,12 +10,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.heydongju.FrontActivity;
 import com.example.heydongju.R;
@@ -36,10 +38,10 @@ public class JoinFragment extends Fragment {
     private EditText name_text;
     private String birth_text;
     private TextView birth;
-    private int country_no;
-    private EditText spicy_text;
+    private EditText cauid_text;
+    private EditText phone_text;
     Spinner spinner = null;
-    ImageButton join = null;
+    RelativeLayout join = null;
     Button btnYearMonthPicker;
     ApiInterface api;
 
@@ -59,13 +61,13 @@ public class JoinFragment extends Fragment {
         pw_text= (EditText) root.findViewById(R.id.pw);
         pw_confirm_text = (EditText) root.findViewById(R.id.pw_confirm);
         name_text = (EditText) root.findViewById(R.id.name);
-        spicy_text = (EditText) root.findViewById(R.id.cauid);
+        cauid_text = (EditText) root.findViewById(R.id.cauid);
         email_text=(EditText) root.findViewById(R.id.email);
+        phone_text=(EditText) root.findViewById(R.id.phone);
         spinner = (Spinner)root.findViewById(R.id.spinner);
         api = HttpClient.getRetrofit().create( ApiInterface.class );
-        join = (ImageButton) root.findViewById(R.id.join);
+        join = (RelativeLayout) root.findViewById(R.id.join);
 
-        spicy_text.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "5")});
 
 
         btnYearMonthPicker = root.findViewById(R.id.btn_year_month_picker);
@@ -88,80 +90,53 @@ public class JoinFragment extends Fragment {
                 String id=id_text.getText().toString();
                 String user_pw=pw_text.getText().toString();
                 String pw_confirm=pw_confirm_text.getText().toString();
+                String userCauId=cauid_text.getText().toString();
                 String userEmail= email_text.getText().toString();
                 String userName=name_text.getText().toString();
                 String userBirth=birth_text;
-                int userSpicy=0;
+                String userPhone=phone_text.getText().toString();
 
-                char tmp;
-                boolean digit=true;
-                for(int i = 0 ; i < spicy_text.getText().toString().length() ; i++) { //입력받은 문자열인 input의 길이만큼 반복
-                    tmp = spicy_text.getText().toString().charAt(i); //한글자씩 검사하기 위해서 char형 변수인 tmp에 임시저장
-                    if(Character.isDigit(tmp) == false) { //문자열이 숫자가 아닐 경우
-                        digit = false; //output의 값을 false로 바꿈
-                    }
-                }
-                if(spicy_text.getText().toString().length()==0){
-                    digit=false;
-                }
-                if(!digit){
-                    userSpicy=0;
-                }
-                else{
-                    userSpicy=Integer.parseInt(spicy_text.getText().toString());
-                }
-                int country_no;
-                String country=spinner.getSelectedItem().toString();
-                if(country=="America"){
-                    country_no=1;
-                }else{
-                    country_no=2;
-                }
-
-                requestPost(id, user_pw, pw_confirm, userEmail, userName, userBirth);
+                requestPost(view, id, user_pw, pw_confirm, userName, userCauId, userBirth, userEmail, userPhone);
             }
         });
         return root;
     }
 
-    public void requestPost(String id, String userPw, String pwConfirm, String userEmail, String userName, String userBirth, String userPhone) {
-        JoinData joinData = new JoinData(id, userPw, pwConfirm, userEmail, userName, userBirth);
-        Call<JoinData> call = api.requestJoin( JoinData );
+    public void requestPost(View view, String id, String userPw, String pwConfirm, String userName, String userCauId, String userBirth, String userEmail, String userPhone) {
+        JoinData joinData = new JoinData(id, userPw, pwConfirm, userName, userCauId, userBirth, userEmail, userPhone);
+        Call<JoinData> call = api.requestJoin(joinData);
         Log.d("id", id);
         Log.d("userPw", userPw);
         Log.d("pwConfirm", pwConfirm);
         Log.d("userName", userName);
+        Log.e("userCauId",userCauId);
         Log.d("userBirth", userBirth);
         Log.d("userEmail", userEmail);
         Log.d("phoneNum", userPhone);
 
 
-
-/*
-- 아이디 혹은 이메일 중복: JsonResponse({"message": "INVALID_FORM"}, status=401)
-- 비밀번호 확인 틀림: JsonResponse({"message": "INVALID_PASSWORD"}, status=402)
-- 로그인 성공: JsonResponse({"message": "SUCCESS"}, status=200)
- */
         call.enqueue( new Callback<JoinData>() {
             @Override
             public void onResponse(Call<JoinData> call, Response<JoinData> response) {
 
                 if(response.code()==200){
                     Toast.makeText(getContext().getApplicationContext(), "회원가입 성공입니다. 가입하신 이메일로 인증 후에 로그인 가능합니다.", Toast.LENGTH_LONG).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("join", "join");
+                    Navigation.findNavController(view).navigate(R.id.action_nav_sign_to_nav_login,bundle);
 
-
-                    FrontActivity activity = (FrontActivity) getActivity();
-                    activity.jointoLogin();
                 }else if(response.code()==401){
                     Toast.makeText(getContext().getApplicationContext(), "아이디 혹은 이메일 중복입니다.", Toast.LENGTH_LONG).show();
+                    Log.d("error1",String.valueOf(response.body()));
                 }
                 else if(response.code()==402){
                     Toast.makeText(getContext().getApplicationContext(), "비밀번호가 비밀번호 재입력과 일치하지 않습니다.", Toast.LENGTH_LONG).show();
+                    Log.d("error2", String.valueOf(response.body()));
                 }
                 else{
                     Toast.makeText(getContext().getApplicationContext(), "올바르지 않은 정보입니다..", Toast.LENGTH_LONG).show();
-                    Log.d("error", String.valueOf(response.body()));
-                    Log.d("error", String.valueOf(response.code()));
+                    Log.d("error3", String.valueOf(response.body()));
+
                 }
             }
 

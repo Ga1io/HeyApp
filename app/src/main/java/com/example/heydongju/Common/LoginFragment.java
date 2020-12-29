@@ -103,6 +103,9 @@ public class LoginFragment extends Fragment {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("mode", "signup");
+                Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_signup,bundle);
 
             }
         });
