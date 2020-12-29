@@ -300,6 +300,21 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_nav_deliver_mypage_to_nav_deliver_home">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_deliver_mypage_to_nav_deliver_mylist">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_deliver_mypage_to_nav_deliver_store">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -336,6 +351,37 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="nav_deliver_mylist">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_nav_deliver_mylist_to_nav_deliver_home">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_deliver_mylist_to_nav_deliver_mypage">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_deliver_mylist_to_nav_deliver_store">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="nav_deliver_store">
                     <value>
                       <LayoutPositions>
@@ -353,6 +399,11 @@
                               </value>
                             </entry>
                             <entry key="action_nav_deliver_store_to_nav_deliver_mylist">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_nav_deliver_store_to_nav_deliver_mypage">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -445,12 +496,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_nav_choose_to_nav_login">
+                            <entry key="action_nav_login_to_nav_deliver_home">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_nav_login_to_nav_signup">
+                            <entry key="action_nav_login_to_nav_signup_first">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -682,6 +733,69 @@
                               </value>
                             </entry>
                             <entry key="self_recommend">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="nav_siginup_first">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="256" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_nav_first_to_nav_signup_second">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="nav_siginup_second">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="368" />
+                            <option name="y" value="256" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_nav_second_to_nav_signup_third">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="nav_siginup_third">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="724" />
+                            <option name="y" value="256" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_nav_third_to_nav_signup">
                               <value>
                                 <LayoutPositions />
                               </value>

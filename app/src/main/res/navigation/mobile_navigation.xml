@@ -135,6 +135,9 @@
         <action
             android:id="@+id/action_nav_customer_select_store_to_nav_customer_mypage"
             app:destination="@id/nav_customer_mypage" />
+        <action
+            android:id="@+id/action_nav_customer_store_to_nav_deliver_home"
+            app:destination="@id/nav_deliver_home"/>
     </fragment>
 
 
@@ -199,6 +202,9 @@
         <action
             android:id="@+id/action_nav_customer_home_to_nav_customer_mypage"
             app:destination="@id/nav_customer_mypage" />
+        <action
+            android:id="@+id/action_nav_customer_home_to_nav_deliver_home"
+            app:destination="@id/nav_deliver_home"/>
     </fragment>
     <fragment
         android:id="@+id/nav_deliver_home"
@@ -213,6 +219,9 @@
         <action
             android:id="@+id/action_nav_deliver_home_to_nav_deliver_mypage"
             app:destination="@id/nav_customer_mypage" />
+        <action
+            android:id="@+id/action_nav_deliver_home_to_nav_customer_home"
+            app:destination="@id/nav_customer_home"/>
     </fragment>
     <fragment
         android:id="@+id/nav_deliver_store"
@@ -227,6 +236,9 @@
         <action
             android:id="@+id/action_nav_deliver_store_to_nav_deliver_mylist"
             app:destination="@id/nav_deliver_mylist"/>
+        <action
+            android:id="@+id/action_nav_deliver_store_to_nav_customer_home"
+            app:destination="@id/nav_customer_home"/>
     </fragment>
     <fragment
         android:id="@+id/nav_deliver_mylist"
@@ -241,6 +253,9 @@
         <action
             android:id="@+id/action_nav_deliver_mylist_to_nav_deliver_mypage"
             app:destination="@id/nav_customer_mypage"/>
+        <action
+            android:id="@+id/action_nav_deliver_mylist_to_nav_customer_home"
+            app:destination="@id/nav_customer_home"/>
     </fragment>
     <fragment
         android:id="@+id/nav_customer_mylist"
@@ -258,6 +273,9 @@
         <action
             android:id="@+id/action_nav_customer_mylist_to_nav_customer_mypage"
             app:destination="@id/nav_customer_mypage" />
+        <action
+            android:id="@+id/action_nav_customer_mylist_to_nav_deliver_home"
+            app:destination="@id/nav_deliver_home"/>
     </fragment>
     <fragment
         android:id="@+id/nav_customer_mypage"
@@ -308,6 +326,12 @@
         <action
             android:id="@+id/action_nav_deliver_mypage_to_nav_deliver_mylist"
             app:destination="@id/nav_deliver_mylist"/>
+        <action
+            android:id="@+id/action_nav_customer_mypage_to_nav_deliver_home"
+            app:destination="@id/nav_deliver_home"/>
+        <action
+            android:id="@+id/action_nav_deliver_mypage_to_nav_customer_home"
+            app:destination="@id/nav_customer_home"/>
     </fragment>
 
     <fragment

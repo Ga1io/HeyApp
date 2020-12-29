@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class CustomerHomeFragment extends Fragment  {
     private RelativeLayout mylist;
     private RelativeLayout search;
     private RelativeLayout mypage;
+    private ImageView toggle;
     private SharedViewModel model;
     private String mode;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,6 +48,7 @@ public class CustomerHomeFragment extends Fragment  {
         mylist = (RelativeLayout) root.findViewById(R.id.mylist);
         search = (RelativeLayout) root.findViewById(R.id.search);
         mypage = (RelativeLayout) root.findViewById(R.id.mypage);
+        toggle = (ImageView) root.findViewById(R.id.toggle);
         home.setSelected(true);
         mode=model.getMode();
         Log.e("model",mode);
@@ -113,6 +116,16 @@ public class CustomerHomeFragment extends Fragment  {
 
 
                 }
+            }
+        });
+
+        toggle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Navigation.findNavController(root).navigate(R.id.action_nav_customer_home_to_nav_deliver_home);
+                Log.e("mode",mode);
+                model.setMode("deliver");
+
             }
         });
 
