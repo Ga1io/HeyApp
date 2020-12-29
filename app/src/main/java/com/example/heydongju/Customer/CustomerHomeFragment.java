@@ -1,6 +1,7 @@
 package com.example.heydongju.Customer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +22,7 @@ import com.example.heydongju.Data.AdvertiseData;
 import com.example.heydongju.Data.DeliverInfoData;
 import com.example.heydongju.Data.StoreData;
 import com.example.heydongju.R;
+import com.example.heydongju.Server.SharedViewModel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,15 +35,20 @@ public class CustomerHomeFragment extends Fragment  {
     private RelativeLayout mylist;
     private RelativeLayout search;
     private RelativeLayout mypage;
+    private SharedViewModel model;
+    private String mode;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.customer_home, container, false);
+        model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         home = (RelativeLayout) root.findViewById(R.id.home);
         mylist = (RelativeLayout) root.findViewById(R.id.mylist);
         search = (RelativeLayout) root.findViewById(R.id.search);
         mypage = (RelativeLayout) root.findViewById(R.id.mypage);
         home.setSelected(true);
+        mode=model.getMode();
+        Log.e("model",mode);
 
 
         home.setOnClickListener(new View.OnClickListener() {

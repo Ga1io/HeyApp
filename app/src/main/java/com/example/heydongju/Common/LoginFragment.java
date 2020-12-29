@@ -118,7 +118,7 @@ public class LoginFragment extends Fragment {
                     String id, pw;
                     id = mEmailView.getText().toString();
                     pw= mPasswordView.getText().toString();
-                    requestPost(id, pw);
+                    requestPost(view, id, pw);
                 }else{
                     //    Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_deliver_home);
                 }
@@ -128,7 +128,7 @@ public class LoginFragment extends Fragment {
 
         return root;
     }
-    public void requestPost(String id, String pw) {
+    public void requestPost(View view, String id, String pw) {
         ReqData reqData = new ReqData( id, pw);
         Call<ResData> call = api.requestPostLogin( reqData );
         Log.e("requestPost","post");
@@ -145,13 +145,12 @@ public class LoginFragment extends Fragment {
                     Log.e("success!",String.valueOf(response.code()));
 
                     String user_id=response.body().getId();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("user_id",user_id);
 
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    intent.putExtra("user_id",user_id);
+                    Navigation.findNavController(view).navigate(R.id.action_nav_login_to_nav_deliver_home);
 
-                    startActivity(intent);
+
+
+
 
                 }
                 else if(response.code()==201){

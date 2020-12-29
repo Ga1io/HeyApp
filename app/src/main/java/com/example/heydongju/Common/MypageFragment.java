@@ -1,6 +1,7 @@
 package com.example.heydongju.Common;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.heydongju.R;
+import com.example.heydongju.Server.SharedViewModel;
 
 public class MypageFragment extends Fragment {
     private RelativeLayout home;
@@ -30,6 +33,8 @@ public class MypageFragment extends Fragment {
     private TextView comment;
     private TextView status;
     private TextView faq;
+    private SharedViewModel model;
+    private String mode;
 
     //agree
     //comment
@@ -58,6 +63,12 @@ public class MypageFragment extends Fragment {
         comment = (TextView) root.findViewById(R.id.comment);
         status = (TextView) root.findViewById(R.id.status);
         faq = (TextView) root.findViewById(R.id.faq);
+
+        model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+
+        mode=model.getMode();
+        Log.e("mode",mode);
 
         recent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +135,10 @@ public class MypageFragment extends Fragment {
                     mylist.setSelected(false);
                     search.setSelected(false);
                     mypage.setSelected(false);
-                    Navigation.findNavController(view).navigate(R.id.action_nav_customer_mypage_to_nav_customer_home);
+                    if(mode=="customer")
+                        Navigation.findNavController(view).navigate(R.id.action_nav_customer_mypage_to_nav_customer_home);
+                    else
+                        Navigation.findNavController(view).navigate(R.id.action_nav_deliver_mypage_to_nav_deliver_home);
 
                 }
             }
@@ -140,7 +154,10 @@ public class MypageFragment extends Fragment {
                     mypage.setSelected(false);
                     search.setSelected(false);
 
-                    Navigation.findNavController(view).navigate(R.id.action_nav_common_mypage_to_nav_customer_mylist);
+                    if(mode=="customer")
+                        Navigation.findNavController(view).navigate(R.id.action_nav_common_mypage_to_nav_customer_mylist);
+                    else
+                        Navigation.findNavController(view).navigate(R.id.action_nav_deliver_mypage_to_nav_deliver_mylist);
 
                 }
             }
@@ -156,7 +173,10 @@ public class MypageFragment extends Fragment {
                     mypage.setSelected(false);
                     mylist.setSelected(false);
 
-                    Navigation.findNavController(root).navigate(R.id.action_nav_customer_mypage_to_nav_customer_st);
+                    if(mode=="customer")
+                        Navigation.findNavController(root).navigate(R.id.action_nav_customer_mypage_to_nav_customer_st);
+                    else
+                        Navigation.findNavController(root).navigate(R.id.action_nav_deliver_mypage_to_nav_deliver_store);
 
 
                 }
