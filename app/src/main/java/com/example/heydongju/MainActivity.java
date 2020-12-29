@@ -33,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(navController.getCurrentDestination().getId()==R.id.nav_store||navController.getCurrentDestination().getId()==R.id.nav_customer_home||navController.getCurrentDestination().getId()==R.id.nav_customer_mypage||navController.getCurrentDestination().getId()==R.id.nav_customer_mylist){
+        if(navController.getCurrentDestination().getId()==R.id.nav_store
+                ||navController.getCurrentDestination().getId()==R.id.nav_customer_home||
+                navController.getCurrentDestination().getId()==R.id.nav_customer_mypage||
+                navController.getCurrentDestination().getId()==R.id.nav_customer_mylist)
+        {
         }else{
             super.onBackPressed();
         }
